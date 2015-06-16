@@ -17,7 +17,7 @@
 .profile{
     border-bottom: 1px solid #b7b6b6;
 }
-.profile h3{
+.profile h4{
     margin:0 0 20px 0;
     color:#b7b6b6;
 }
@@ -75,4 +75,14 @@ button.button.create-btn.activated{
 .btn-fb{
     background-color: #3A5795;
     color:#fff;
+}
+.modal-backdrop{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.design-popup{
+    width: 80%;
+  margin: 100px auto;
+}
+.custom{
+    padding: 10px;
 }

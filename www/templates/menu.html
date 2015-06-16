@@ -7,6 +7,7 @@
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
+                <button class="button button-clear" style="position:absolute;right:5px;"><i class="fa fa-shopping-cart"></i></button>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
@@ -16,13 +17,13 @@
         <ion-content>
            <div class="profile text-center">
                <img src="img/profile-pic.png">
-               <h3>User name</h3>
+               <h4>User name</h4>
            </div>
             <ion-list class="menu-items">
                 <ion-item menu-close href="#/app/home">
                     Home
                 </ion-item>
-                <ion-item menu-close href="#">
+                <ion-item menu-close href="#/app/customize">
                     My orders
                 </ion-item>
                 <ion-item menu-close href="#/app/cart">

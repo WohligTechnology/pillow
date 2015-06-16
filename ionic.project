@@ -1,4 +1,12 @@
 {
-  "name": "pillow",
-  "app_id": ""
+  "name": "sass",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }
