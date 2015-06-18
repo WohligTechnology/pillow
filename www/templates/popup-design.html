@@ -1,21 +1,24 @@
 <ion-view class="design-popup">
     <ion-content>
         <div class="text-center custom">
-            <h3>Design a product with your photo</h3>
-            <ion-list>
-                <ion-item>
+            <h4>Design a product with your photo</h4>
+            <ion-list class="pad-item">
+                <ion-item href="#/app/customize" ng-click="closeModal();">
                     Camera
                 </ion-item>
-                <ion-item>
+                <ion-item href="#/app/customize" ng-click="closeModal();">
                     Gallery
                 </ion-item>
-                <ion-item>
+                <ion-item href="#/app/customize" ng-click="closeModal();">
                     Facebook
                 </ion-item>
-            </ion-list>
-            <button class="button button-block" ng-click="closeModal();">
+                <ion-item>
+                    <button class="button" ng-click="closeModal();">
                 Cancel
             </button>
+                </ion-item>
+            </ion-list>
+            
         </div>
     </ion-content>
 </ion-view>

@@ -80,12 +80,15 @@ button.button.create-btn.activated{
     background-color: rgba(0, 0, 0, 0.4);
 }
 .design-popup{
-    width: 80%;
-  margin: 100px auto;
+    width: 100%;
+  margin: 175px auto 0;
 }
 .custom{
     padding: 10px;
 }
 .bar .title.title-left{
     text-align: center;
+}
+.pad-item .item-content{
+    padding: 16px;
 }

@@ -58,7 +58,19 @@ angular.module('starter.controllers', [])
     };
 })
 .controller('CustomizeCtrl', function($scope) {})
-.controller('CartCtrl', function($scope) {})
+.controller('orderCtrl', function($scope) {})
+.controller('CartCtrl', function($scope,$ionicPopup, $timeout, $window) {
+      $scope.addcart = function () {
+
+        var alertPopup = $ionicPopup.show({
+            title: "Added to cart!",
+            //                template: 'Login Successfull'
+        });
+        $timeout(function () {
+            alertPopup.close(); //close the popup after 3 seconds for some reason
+        }, 3000);
+    }
+})
 .controller('LoginCtrl', function($scope) {})
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
