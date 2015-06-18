@@ -63,7 +63,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: "templates/order.html",
-          controller: 'orderCtrl'
+          controller: 'OrderCtrl'
+        }
+      }
+    })
+  
+      .state('app.all-order', {
+      url: "/all-order",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/all-order.html",
+          controller: 'AllorderCtrl'
         }
       }
     })

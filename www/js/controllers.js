@@ -58,7 +58,8 @@ angular.module('starter.controllers', [])
     };
 })
 .controller('CustomizeCtrl', function($scope) {})
-.controller('orderCtrl', function($scope) {})
+.controller('OrderCtrl', function($scope) {})
+.controller('AllorderCtrl', function($scope) {})
 .controller('CartCtrl', function($scope,$ionicPopup, $timeout, $window) {
       $scope.addcart = function () {
 
