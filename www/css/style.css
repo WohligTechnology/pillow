@@ -86,3 +86,6 @@ button.button.create-btn.activated{
 .custom{
     padding: 10px;
 }
+.bar .title.title-left{
+    text-align: center;
+}
