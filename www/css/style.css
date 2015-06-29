@@ -92,3 +92,6 @@ button.button.create-btn.activated{
 .pad-item .item-content{
     padding: 16px;
 }
+.cart-list .item-input{
+    padding:0;
+}
