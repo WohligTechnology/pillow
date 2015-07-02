@@ -1,97 +1,178 @@
 /* Empty. Add your own CSS if you like */
-.homebg{
-    background-color:#ecf0f1;
+
+@font-face {
+    font-family: 'ArialRounded';
+    src: url(../fonts/Arial_Rounded_MT_Bold_Bold.ttf);
+    font-weight: 700;
 }
-.profile img{
-    width:30%;
-    margin:40px 0 10px 0;
+
+.profile img {
+    width: 30%;
+    margin: 40px 0 10px 0;
     border-radius: 50%;
 }
-.menu-items .item{
-    border-width:0px;
-    color:#b7b6b6;
+
+.menu-items .item {
+    border-width: 1px;
+    color: #575757;
 }
-.menu-items .item-content{
-    padding:8px 49px 8px 16px;
+/*
+.menu-items .item-content {
+    padding: 8px 49px 8px 16px;
 }
-.profile{
+*/
+
+.profile {
     border-bottom: 1px solid #b7b6b6;
 }
-.profile h4{
-    margin:0 0 20px 0;
-    color:#b7b6b6;
-}
-.slider-padding{
-    padding:40px 40px 10px 40px;
-}
-.title-txt{
-    font-size: 24px;
-  text-align: center;
-  color: #a6a6a6;
-}
-.create-btn{
-   background-color: #a6a6a6;
-  color: #fff;
-  min-height: 29px;
-  line-height: 0;
-  border-radius: 0;
-  padding: 0 70px;
-  font-size: 18px;
 
+.profile h4 {
+    margin: 0 0 20px 0;
 }
-.mt40{
+
+.slider-padding {
+    padding: 40px 40px 10px 40px;
+}
+
+.title-txt {
+    font-size: 24px;
+    text-align: center;
+    color: #575757;
+}
+
+.create-btn {
+    background-color: #a6a6a6;
+    color: #fff;
+    min-height: 29px;
+    line-height: 0;
+    border-radius: 0;
+    padding: 0 70px;
+    font-size: 18px;
+}
+
+.mt40 {
     margin-top: 40px;
 }
-.mt50{
+
+.mt50 {
     margin-top: 50px!important;
 }
-button.button.create-btn.activated{
-    border-color: #a6a6a6;
-  background-color: #a6a6a6;
-  box-shadow: none;;
+
+.mt20 {
+    margin-top: 20px;
 }
-.btn-width{
+.mtb20{
+    margin:20px 0!important;
+}
+
+button.button.create-btn.activated {
+    border-color: #a6a6a6;
+    background-color: #a6a6a6;
+    box-shadow: none;
+    ;
+}
+
+.btn-width {
     width: 100%;
 }
-.pull-right{
+
+.pull-right {
     float: right;
 }
-.cart-list .list{
+
+.cart-list .list {
     width: 80%;
-  margin: 30px auto 0 auto;
+    margin: 30px auto 0 auto;
 }
-.social-btn{
+
+.social-btn {
     width: 80%;
     margin: 0 auto;
 }
-.btn-twitter{
+
+.btn-twitter {
     background-color: #55ACEE;
-    color:#fff;
+    color: #fff;
 }
-.btn-gplus{
+
+.btn-gplus {
     background-color: #D43F2B;
-    color:#fff;
+    color: #fff;
 }
-.btn-fb{
+
+.btn-fb {
     background-color: #3A5795;
-    color:#fff;
+    color: #fff;
 }
-.modal-backdrop{
+
+.modal-backdrop {
     background-color: rgba(0, 0, 0, 0.4);
 }
-.design-popup{
+
+.design-popup {
     width: 100%;
-  margin: 175px auto 0;
+    margin: 175px auto 0;
 }
-.custom{
+
+.custom {
     padding: 10px;
 }
-.bar .title.title-left{
+
+.bar .title.title-left {
     text-align: center;
 }
-.pad-item .item-content{
+
+.pad-item .item-content {
     padding: 16px;
 }
-.cart-list .item-input{
-    padding:0;
+
+.cart-list .item-input {
+    padding: 0;
+}
+.logo-size{
+    height:150px;
+    width:auto;
+}
+.title.title-center.header-item,
+.button-clear.button-clear {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+    font-family: 'ArialRounded';
+}
+h1.title.title-left {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  font-family: 'ArialRounded';
+}
+button.button.button-icon.button-clear.ion-navicon.small-icon:before,a.button.button-icon.icon.ln-cart.small-icon:before{
+    font-size: 25px;
+}
+.button.fb-btn.button-outline {
+    border-color: #4870a6;
+    color: #4870a6;
+}
+
+.button.twitt-btn.button-outline {
+    border-color: #00bbef;
+    color: #00bbef;
+}
+
+.button.gplus-btn.button-outline {
+    border-color: #e84c3d;
+    color: #e84c3d;
+}
+
+.button.fb-btn.button-outline.activated {
+    background-color: #4870a6;
+    color: #fff;
+}
+.button.twitt-btn.button-outline.activated {
+    background-color: #00bbef;
+    color: #fff;
+}
+.button.gplus-btn.button-outline.activated {
+    background-color: #e84c3d;
+    color: #fff;
 }

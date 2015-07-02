@@ -1,22 +1,31 @@
-<ion-view view-title="Login">
-    <ion-content class="homebg">
+<ion-view>
+    <ion-header-bar align-title="left" class="bar-positive">
+
+        <h1 class="title">tweke</h1>
+
+    </ion-header-bar>
+    <ion-content class="has-header">
         <div class="text-center mt40">
-            <img src="img/logo.png" height="100px" width="100px">
+            <img class="logo-size" src="img/logo_shadow.png">
         </div>
-        <div class="social-btn mt50">
-            <button class="button button-block">
-                <span class="pull-left"><i class="fa fa-facebook"></i></span><span class="pull-right">Sign in with Facebook</span>
+        <div class="padding mt20">
+            <a href="#/app/home" class="button button-block button-outline button-positive">
+                LOGIN
+            </a>
+            <div class="text-center padding">
+                - OR -
+            </div>
+            <button class="button icon-left ion-social-facebook button-block button-outline fb-btn">
+                FACEBOOK
             </button>
 
-            <button class="button button-block">
-                <span class="pull-left"><i class="fa fa-twitter"></i></span><span class="pull-right">Sign in with Twitter</span>
+            <button class="button icon-left ion-social-twitter button-block button-outline twitt-btn mtb20">
+                TWITTER
             </button>
 
-            <button class="button button-block">
-                <span class="pull-left"><i class="fa fa-google-plus"></i></span><span class="pull-right">Sign in with Google+</span>
+            <button class="button icon-left ion-social-googleplus button-block button-outline gplus-btn">
+                GOOGLE+
             </button>
         </div>
-
-
     </ion-content>
 </ion-view>
