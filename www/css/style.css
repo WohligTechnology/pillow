@@ -74,6 +74,9 @@ button.button.create-btn.activated {
 .padding0{
     padding:0px;
 }
+.item p{
+    color:#575757;
+}
 .btn-width {
     width: 100%;
 }
