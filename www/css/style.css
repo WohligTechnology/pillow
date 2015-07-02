@@ -71,7 +71,9 @@ button.button.create-btn.activated {
     box-shadow: none;
     ;
 }
-
+.padding0{
+    padding:0px;
+}
 .btn-width {
     width: 100%;
 }
@@ -81,8 +83,8 @@ button.button.create-btn.activated {
 }
 
 .cart-list .list {
-    width: 80%;
-    margin: 30px auto 0 auto;
+   
+    margin: 30px 0 0 0;
 }
 
 .social-btn {
