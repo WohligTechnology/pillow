@@ -11,16 +11,17 @@
     margin: 15px 0 5px 0;
     border-radius: 50%;
 }
+.profile h4{
+    font-weight: normal;
+}
 
 .menu-items .item {
     border-width: 0px;
     color: #575757;
 }
-/*
 .menu-items .item-content {
-    padding: 8px 49px 8px 16px;
+    padding: 10px 49px 10px 16px;
 }
-*/
 
 .profile {
     border-bottom: 1px solid #b7b6b6;
@@ -153,6 +154,9 @@ h1.title.title-left {
   vertical-align: middle;
   font-size: 14px;
   line-height: 16px;
+}
+.item-icon-left.icon-size .icon{
+    font-size: 23px;
 }
 button.button.button-icon.button-clear.ion-navicon.small-icon:before,a.button.button-icon.icon.ln-cart.small-icon:before{
     font-size: 25px;
