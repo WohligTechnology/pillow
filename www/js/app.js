@@ -30,12 +30,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     controller: 'AppCtrl'
   })
 
-  .state('app.cart', {
-    url: "/cart",
+  .state('app.product', {
+    url: "/product",
     views: {
       'menuContent': {
-        templateUrl: "templates/cart.html",
-          controller: 'CartCtrl'
+        templateUrl: "templates/product.html",
+          controller: 'ProductCtrl'
       }
     }
   })
@@ -68,12 +68,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
   
-      .state('app.all-order', {
-      url: "/all-order",
+   .state('app.checkout', {
+      url: "/checkout",
       views: {
         'menuContent': {
-          templateUrl: "templates/all-order.html",
-          controller: 'AllorderCtrl'
+          templateUrl: "templates/checkout.html",
+          controller: 'CheckoutCtrl'
+        }
+      }
+    })
+  
+      .state('app.cart', {
+      url: "/cart",
+      views: {
+        'menuContent': {
+          templateUrl: "templates/cart.html",
+          controller: 'CartCtrl'
         }
       }
     })

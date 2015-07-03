@@ -1,0 +1,38 @@
+<ion-view view-title="My Cart">
+    <ion-content class="has-header">
+        <div class="text-center mt40">
+            <img src="img/pillow1.png" height="200px" width="200px">
+        </div>
+        <ion-list class="cart-list">
+            <ion-item>
+                <label class="item-input item-select">
+                    <div class="input-label padding0">
+                        Size
+                    </div>
+                    <select>
+                        <option>16*16</option>
+                        <option selected>17*17</option>
+                        <option>18*18</option>
+                    </select>
+                </label>
+            </ion-item>
+            <ion-item>
+                <span>Quantity</span>
+                <span class="pull-right">1</span>
+            </ion-item>
+            <ion-item>
+                <span>Total</span>
+                <span class="pull-right">Rs.500</span>
+            </ion-item>
+        </ion-list>
+
+        <div class="padding mt40">
+            <button class="button button-block button-positive button-outline" ng-click="addcart();">
+                Add to cart
+            </button>
+            <a href="#/app/checkout" class="button button-block button-positive button-outline">
+            Checkout
+        </a>
+        </div>
+    </ion-content>
+</ion-view>

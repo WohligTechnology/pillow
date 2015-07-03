@@ -145,6 +145,15 @@ h1.title.title-left {
   font-weight: 700;
   font-family: 'ArialRounded';
 }
+.select-text{
+      display: block;
+ padding: 7px 10px 7px 0px;
+  height: 34px;
+  color: #111;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 16px;
+}
 button.button.button-icon.button-clear.ion-navicon.small-icon:before,a.button.button-icon.icon.ln-cart.small-icon:before{
     font-size: 25px;
 }

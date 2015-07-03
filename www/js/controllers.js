@@ -73,9 +73,10 @@ angular.module('starter.controllers', [])
         $scope.modal.hide();
     };
 })
+.controller('CheckoutCtrl', function($scope) {})
+.controller('CartCtrl', function($scope) {})
 .controller('OrderCtrl', function($scope) {})
-.controller('AllorderCtrl', function($scope) {})
-.controller('CartCtrl', function($scope,$ionicPopup, $timeout, $window) {
+.controller('ProductCtrl', function($scope,$ionicPopup, $timeout, $window) {
       $scope.addcart = function () {
 
         var alertPopup = $ionicPopup.show({
