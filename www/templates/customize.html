@@ -1,25 +1,30 @@
 <ion-view view-title="Customize Pillow">
     <ion-content>
         <div class="text-center mt40">
-            <img src="img/pillow1.png" class="logo-size">
+           <div class="maskimg m0auto">
+               
+           </div>
+<!--            <img src="img/pillow1.png" class="logo-size">-->
+            <div class="m0auto pos">
+                <img src="img/arrowt.png" class="arrowt">
+                <img src="img/arrowr.png" class="arrowr">
+                <img src="img/arrowb.png" class="arrowb">
+                <img src="img/arrowl.png" class="arrowl">
+            </div>
         </div>
-        <div class="mt40 padding">
-            
-<!--
-                <button class="button button-stable btn-width">
-                    Add More
-                </button>
--->
-            <a class="button button-block button-outline button-positive icon-right ion-plus" ng-click="openedit();">Add More</a>
-         
-<!--
-                <button class="button button-stable btn-width">
-                    Go Ahead
-                </button>
--->
-                <a href="#/app/product" class="button button-block button-outline button-positive icon-right ion-chevron-right btn-width">Proceed</a>
+         <div class="row mt20">
+               <div class="col">
+                   <a class="button button-outline button-positive icon-right ion-plus btn-width" ng-click="openedit();">Add More</a>
+               </div>
+               <div class="col">
+                   <a class="button button-outline button-positive icon-right ion-edit btn-width" ng-click="openedit();">Edit</a>
+               </div>
+            </div>
+        <div class="padding">
+           
+            <a href="#/app/product" class="button button-block button-outline button-positive icon-right ion-chevron-right btn-width">Proceed</a>
 
-            
+
         </div>
     </ion-content>
 </ion-view>

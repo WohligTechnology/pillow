@@ -40,7 +40,33 @@
     text-align: center;
     color: #575757;
 }
-
+.maskimg{
+    height:150px;
+    width: 150px;
+    background: black;
+}
+.m0auto{
+    margin:0 auto;
+}
+.pos{
+    position: relative;
+}
+.arrowt{
+    position: absolute;
+    top:0;
+}
+.arrowr{
+    position: absolute;
+    right:0;
+}
+.arrowb{
+    position: absolute;
+    bottom:0;
+}
+.arrowl{
+    position: absolute;
+    left:0;
+}
 .create-btn {
     background-color: #a6a6a6;
     color: #fff;
