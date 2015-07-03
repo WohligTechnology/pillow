@@ -8,7 +8,7 @@
 
 .profile img {
     width: 30%;
-    margin: 15px 0 0 0;
+    margin: 15px 0 5px 0;
     border-radius: 50%;
 }
 
@@ -64,6 +64,9 @@
 .mtb20{
     margin:20px 0!important;
 }
+.mr10{
+    margin-right: 10px;
+}
 
 button.button.create-btn.activated {
     border-color: #a6a6a6;
@@ -74,7 +77,7 @@ button.button.create-btn.activated {
 .padding0{
     padding:0px;
 }
-.item p{
+.item p,.item{
     color:#575757;
 }
 .btn-width {
@@ -114,14 +117,6 @@ button.button.create-btn.activated {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.design-popup {
-    width: 100%;
-    margin: 175px auto 0;
-}
-
-.custom {
-    padding: 10px;
-}
 
 .bar .title.title-left {
     text-align: center;
@@ -138,11 +133,10 @@ button.button.create-btn.activated {
     height:150px;
     width:auto;
 }
-.title.title-center.header-item,
-.button-clear.button-clear {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
+.paddingb65{
+    padding-bottom: 65px;
+}
+.bar .title {
     font-family: 'ArialRounded';
 }
 h1.title.title-left {
@@ -153,6 +147,9 @@ h1.title.title-left {
 }
 button.button.button-icon.button-clear.ion-navicon.small-icon:before,a.button.button-icon.icon.ln-cart.small-icon:before{
     font-size: 25px;
+}
+button.button.button-clear.icon-right.ln-cross.small-icon:before{
+    font-size: 20px;
 }
 .button.fb-btn.button-outline {
     border-color: #4870a6;

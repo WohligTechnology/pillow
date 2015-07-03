@@ -57,7 +57,22 @@ angular.module('starter.controllers', [])
         $scope.modal.hide();
     };
 })
-.controller('CustomizeCtrl', function($scope) {})
+.controller('CustomizeCtrl', function($scope,$ionicModal, $timeout) {
+    $ionicModal.fromTemplateUrl('templates/popup-design.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openedit = function () {
+        $scope.modal.show();
+    };
+
+    $scope.closeModal = function () {
+        $scope.modal.hide();
+    };
+})
 .controller('OrderCtrl', function($scope) {})
 .controller('AllorderCtrl', function($scope) {})
 .controller('CartCtrl', function($scope,$ionicPopup, $timeout, $window) {
