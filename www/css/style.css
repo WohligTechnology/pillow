@@ -11,7 +11,8 @@
     margin: 15px 0 5px 0;
     border-radius: 50%;
 }
-.profile h4{
+
+.profile h4 {
     font-weight: normal;
 }
 
@@ -19,6 +20,7 @@
     border-width: 0px;
     color: #575757;
 }
+
 .menu-items .item-content {
     padding: 10px 49px 10px 16px;
 }
@@ -40,44 +42,73 @@
     text-align: center;
     color: #575757;
 }
-.maskimg{
-   width: 275px;
-    height: 300px;
+
+.img-size {
+    height: 125px;
+    overflow: hidden;
+}
+
+.img-size img {
+    width: 100%;
+    height: auto;
+}
+
+.img-input {
+    position: absolute;
+    bottom: 5px;
+    border: 1px solid #1fd7fb!important;
+    width: 40px;
+    height: 25px!important;
+    left: 5px;
+    text-align: center;
+    padding: 2px;
+}
+
+.maskimg {
+    width: 250px;
+    height: 250px;
     overflow: hidden;
     color: #fff;
     background: teal;
-/*    -webkit-mask-image: url(../img/profile-pic.png);*/
 }
-.m0auto{
-    margin:0 auto;
+
+.m0auto {
+    margin: 0 auto;
 }
-.pos{
+
+.pos {
     position: relative;
 }
-.nav-arrow{
-    width: 30%;
-    height:92px;
+
+.nav-arrow {
+    width: 95px;
+    height: 92px;
 }
-.arrowt{
+
+.arrowt {
     position: absolute;
-    top:0;
+    top: 0;
     left: 31px;
 }
-.arrowr{
+
+.arrowr {
     position: absolute;
-    right:0;
-    top:31px;
+    right: 0;
+    top: 31px;
 }
-.arrowb{
+
+.arrowb {
     position: absolute;
-    bottom:0;
+    bottom: 0;
     left: 32px;
 }
-.arrowl{
+
+.arrowl {
     position: absolute;
-    left:0;
-    top:31px;
+    left: 0;
+    top: 31px;
 }
+
 .create-btn {
     background-color: #a6a6a6;
     color: #fff;
@@ -99,10 +130,12 @@
 .mt20 {
     margin-top: 20px;
 }
-.mtb20{
-    margin:20px 0!important;
+
+.mtb20 {
+    margin: 20px 0!important;
 }
-.mr10{
+
+.mr10 {
     margin-right: 10px;
 }
 
@@ -112,12 +145,16 @@ button.button.create-btn.activated {
     box-shadow: none;
     ;
 }
-.padding0{
-    padding:0px;
+
+.padding0 {
+    padding: 0px;
 }
-.item p,.item{
-    color:#575757;
+
+.item p,
+.item {
+    color: #575757;
 }
+
 .btn-width {
     width: 100%;
 }
@@ -127,7 +164,6 @@ button.button.create-btn.activated {
 }
 
 .cart-list .list {
-   
     margin: 30px 0 0 0;
 }
 
@@ -155,7 +191,6 @@ button.button.create-btn.activated {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-
 .bar .title.title-left {
     text-align: center;
 }
@@ -167,40 +202,50 @@ button.button.create-btn.activated {
 .cart-list .item-input {
     padding: 0;
 }
-.logo-size{
-    height:150px;
-    width:100%;
+
+.logo-size {
+    height: 150px;
+    width: 100%;
 }
-.paddingb65{
+
+.paddingb65 {
     padding-bottom: 65px;
 }
+
 .bar .title {
     font-family: 'ArialRounded';
 }
+
 h1.title.title-left {
-  color: #fff;
-  font-size: 23px;
-  font-weight: 700;
-  font-family: 'ArialRounded';
+    color: #fff;
+    font-size: 23px;
+    font-weight: 700;
+    font-family: 'ArialRounded';
 }
-.select-text{
-      display: block;
- padding: 7px 10px 7px 0px;
-  height: 34px;
-  color: #111;
-  vertical-align: middle;
-  font-size: 14px;
-  line-height: 16px;
+
+.select-text {
+    display: block;
+    padding: 7px 10px 7px 0px;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
 }
-.item-icon-left.icon-size .icon{
+
+.item-icon-left.icon-size .icon {
     font-size: 23px;
 }
-button.button.button-icon.button-clear.ion-navicon.small-icon:before,a.button.button-icon.icon.ln-cart.small-icon:before{
+
+button.button.button-icon.button-clear.ion-navicon.small-icon:before,
+a.button.button-icon.icon.ln-cart.small-icon:before {
     font-size: 25px;
 }
-button.button.button-clear.icon-right.ln-cross.small-icon:before{
+
+button.button.button-clear.icon-right.ln-cross.small-icon:before {
     font-size: 20px;
 }
+
 .button.fb-btn.button-outline {
     border-color: #4870a6;
     color: #4870a6;
@@ -220,10 +265,12 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before{
     background-color: #4870a6;
     color: #fff;
 }
+
 .button.twitt-btn.button-outline.activated {
     background-color: #00bbef;
     color: #fff;
 }
+
 .button.gplus-btn.button-outline.activated {
     background-color: #e84c3d;
     color: #fff;
