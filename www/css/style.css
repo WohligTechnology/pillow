@@ -52,6 +52,10 @@
     width: 100%;
     height: auto;
 }
+.img-text{
+    font-size: 11px;
+    padding: 15px;
+}
 
 .img-input {
     position: absolute;
@@ -69,7 +73,8 @@
     height: 250px;
     overflow: hidden;
     color: #fff;
-    background: teal;
+ background: url(../img/pillow1.png);
+    -webkit-mask-image: url(../img/pillow1.png);
 }
 
 .m0auto {
