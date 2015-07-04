@@ -41,9 +41,12 @@
     color: #575757;
 }
 .maskimg{
-    height:150px;
-    width: 150px;
-    background: black;
+   width: 275px;
+    height: 300px;
+    overflow: hidden;
+    color: #fff;
+    background: teal;
+/*    -webkit-mask-image: url(../img/profile-pic.png);*/
 }
 .m0auto{
     margin:0 auto;
@@ -51,21 +54,29 @@
 .pos{
     position: relative;
 }
+.nav-arrow{
+    width: 30%;
+    height:92px;
+}
 .arrowt{
     position: absolute;
     top:0;
+    left: 31px;
 }
 .arrowr{
     position: absolute;
     right:0;
+    top:31px;
 }
 .arrowb{
     position: absolute;
     bottom:0;
+    left: 32px;
 }
 .arrowl{
     position: absolute;
     left:0;
+    top:31px;
 }
 .create-btn {
     background-color: #a6a6a6;
@@ -158,7 +169,7 @@ button.button.create-btn.activated {
 }
 .logo-size{
     height:150px;
-    width:auto;
+    width:100%;
 }
 .paddingb65{
     padding-bottom: 65px;
