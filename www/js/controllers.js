@@ -145,28 +145,28 @@ angular.module('starter.controllers', [])
                 var x = document.getElementById('img1').offsetTop;
                 x = x - 90 + step;
                 console.log("Down=" + x);
-                document.getElementById('img1').style.top = x + "px";
+                document.getElementById('img1').style.backgroundPositionY = x + "px";
                 break;
 
             case "up":
                 var x = document.getElementById('img1').offsetTop;
                 x = x + 8 - step;
                 console.log("Up=" + x);
-                document.getElementById('img1').style.top = x + "px";
+                document.getElementById('img1').style.backgroundPositionY = x + "px";
                 break;
 
             case "left":
                 var y = document.getElementById('img1').offsetLeft;
                 y = y + 14 - step;
                 console.log("Left=" + y);
-                document.getElementById('img1').style.left = y + "px";
+                document.getElementById('img1').style.backgroundPositionX = y + "px";
                 break;
 
             case "right":
                 var y = document.getElementById('img1').offsetLeft;
                 y = y - 84 + step;
                 console.log("Right=" + y);
-                document.getElementById('img1').style.left = y + "px";
+                document.getElementById('img1').style.backgroundPositionX = y + "px";
                 break;
             }
         }

@@ -52,7 +52,8 @@
     width: 100%;
     height: auto;
 }
-.img-text{
+
+.img-text {
     font-size: 11px;
     padding: 15px;
 }
@@ -73,17 +74,22 @@
     height: 250px;
     overflow: hidden;
     color: #fff;
- background: url(../img/mask-img.png);
+    background: url(../img/mask-img.png);
     -webkit-mask-image: url(../img/mask-img.png);
 }
 
-.frame1{
+.frame1 {
     background-image: url(../img/demo.jpg);
-    background-size: cover;
+    background-size: 100% auto;
+    background-position: 0 0;
+    background-repeat: no-repeat;
 }
-.frame2{
+
+.frame2 {
     background-image: url(../img/demo1.jpg);
-    background-size: cover;
+    background-size: 100% auto;
+    background-position: 0 0;
+    background-repeat: no-repeat;
 }
 
 .m0auto {
@@ -136,7 +142,6 @@
 .mt40 {
     margin-top: 40px;
 }
-
 
 .mt50 {
     margin-top: 50px!important;
@@ -231,9 +236,10 @@ button.button.create-btn.activated {
     font-family: 'ArialRounded';
 }
 
-.bar .button.back-button{
-    color:#fff;
+.bar .button.back-button {
+    color: #fff;
 }
+
 h1.title.title-left {
     color: #fff;
     font-size: 23px;
