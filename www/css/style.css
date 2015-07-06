@@ -45,7 +45,7 @@
 
 .img-size {
     height: 125px;
-    overflow: hidden;
+    width: 100%;
 }
 
 .img-size img {
@@ -63,7 +63,7 @@
     border: 1px solid #1fd7fb!important;
     width: 40px;
     height: 25px!important;
-    left: 5px;
+    left: 35px;
     text-align: center;
     padding: 2px;
 }
@@ -73,8 +73,8 @@
     height: 250px;
     overflow: hidden;
     color: #fff;
- background: url(../img/pillow1.png);
-    -webkit-mask-image: url(../img/pillow1.png);
+ background: url(../img/mask-img.png);
+    -webkit-mask-image: url(../img/mask-img.png);
 }
 
 .m0auto {
@@ -126,6 +126,10 @@
 
 .mt40 {
     margin-top: 40px;
+}
+
+.mt75{
+    margin-top:75px;
 }
 
 .mt50 {

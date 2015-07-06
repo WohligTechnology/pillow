@@ -2,6 +2,43 @@
     <ion-content>
 
         <div class="text-center mt40">
+            <!-- SVG begins -->
+            <svg>
+
+                <!-- Definition of a mask begins -->
+                <defs>
+                    <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                        <image width="300px" height="300px" xlink:href="img/mask-img.png"></image>
+                    </mask>
+                </defs>
+                <!-- Definition of a mask ends -->
+
+                <foreignObject width="300px" height="300px" style="mask: url(#mask);">
+
+                    <!-- HTML begins -->
+                    <script>
+                        head();
+                    </script>
+                    <div class="maskimg m0auto">
+                        <!--                        <img src="img/demo1.jpg" class="img-size">-->
+                        <div class="img-size pos">
+                            <img src="img/demo.jpg" class="">
+                            <input type="text" class="positive-border img-input">
+                        </div>
+                        <div class="img-size pos">
+                            <img src="img/demo1.jpg" class="">
+                            <input type="text" class="positive-border img-input">
+                        </div>
+                    </div>
+                    <script>
+                        foot();
+                    </script>
+                    <!-- HTML ends -->
+
+                </foreignObject>
+            </svg>
+            <!-- SVG ends -->
+            <!--
             <div class="maskimg m0auto">
                 <div class="img-size pos">
                     <img src="img/demo.jpg" class="">
@@ -12,7 +49,8 @@
                     <input type="text" class="positive-border img-input">
                 </div>
             </div>
-            <div class="img-text">
+-->
+            <div class="img-text mt75">
                 Adjust the image inside the pillow using arrows.
             </div>
             <div class="m0auto nav-arrow pos">
@@ -38,4 +76,28 @@
 
         </div>
     </ion-content>
+    <script>
+        function head() {
+            if (window.SVGForeignObjectElement) {
+                document.write('\
+            <svg width="400px" height="300px">\
+                <defs>\
+                    <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">\
+                        <image width="400px" height="300px" xlink:href="mouse.png"/>\
+                    </mask>\
+                </defs>\
+                <foreignObject width="100%" height="100%" style="mask: url(#mask);">\
+        ');
+            }
+        }
+
+        function foot() {
+            if (window.SVGForeignObjectElement) {
+                document.write('\
+                </foreignObject>\
+            </svg>\
+        ');
+            }
+        }
+    </script>
 </ion-view>

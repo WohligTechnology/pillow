@@ -88,6 +88,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
   
+   .state('register', {
+        url: "/register",
+        templateUrl: "templates/register.html",
+        controller: 'RegisterCtrl'
+    })
+  
     .state('login', {
         url: "/login",
         templateUrl: "templates/login.html",
