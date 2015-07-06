@@ -77,6 +77,15 @@
     -webkit-mask-image: url(../img/mask-img.png);
 }
 
+.frame1{
+    background-image: url(../img/demo.jpg);
+    background-size: cover;
+}
+.frame2{
+    background-image: url(../img/demo1.jpg);
+    background-size: cover;
+}
+
 .m0auto {
     margin: 0 auto;
 }
