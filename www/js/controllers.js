@@ -77,6 +77,7 @@ angular.module('starter.controllers', [])
 .controller('CartCtrl', function($scope) {})
 .controller('OrderCtrl', function($scope) {})
 .controller('RegisterCtrl', function($scope) {})
+.controller('LoginAccCtrl', function($scope) {})
 .controller('ProductCtrl', function($scope,$ionicPopup, $timeout, $window) {
       $scope.addcart = function () {
 

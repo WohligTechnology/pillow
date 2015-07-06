@@ -99,6 +99,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         templateUrl: "templates/login.html",
         controller: 'LoginCtrl'
     })
+  
+   .state('login-acc', {
+        url: "/login-acc",
+        templateUrl: "templates/login_acc.html",
+        controller: 'LoginAccCtrl'
+    })
 
   .state('app.customize', {
     url: "/customize",
