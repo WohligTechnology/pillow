@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
             $scope.modal.hide();
         };
     })
-    .controller('CustomizeCtrl', function ($scope, $ionicModal, $timeout, $interval) {
+    .controller('CustomizeCtrl', function ($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window) {
 
         //modal for picture
         $ionicModal.fromTemplateUrl('templates/popup-design.html', {
@@ -86,6 +86,8 @@ angular.module('starter.controllers', [])
         $scope.closeModal = function () {
             $scope.modal.hide();
         };
+
+
         //Edit and Done button toggle
         $scope.editimg = "true";
         $scope.edit_img = function () {
@@ -102,7 +104,19 @@ angular.module('starter.controllers', [])
         $scope.mouseUp = function () {
             $interval.cancel(promise);
         };
+        //Popup for image selection
+        $scope.imgselected = function () {
 
+            var alertPopup = $ionicPopup.show({
+                title: "Image selected!",
+                //                template: 'Login Successfull'
+            });
+            $timeout(function () {
+                alertPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+        }
+
+        //Moving image in the mask image
         $scope.moveImg = function (str, ishold) {
             var step = 50; // change this to different step value
             switch (str) {
