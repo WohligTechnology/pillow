@@ -105,16 +105,16 @@ angular.module('starter.controllers', [])
             $interval.cancel(promise);
         };
         //Popup for image selection
-        $scope.imgselected = function () {
-
-            var alertPopup = $ionicPopup.show({
-                title: "Image selected!",
-                //                template: 'Login Successfull'
-            });
-            $timeout(function () {
-                alertPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
-        }
+//        $scope.imgselected = function () {
+//
+//            var alertPopup = $ionicPopup.show({
+//                title: "Image selected!",
+//                //                template: 'Login Successfull'
+//            });
+//            $timeout(function () {
+//                alertPopup.close(); //close the popup after 3 seconds for some reason
+//            }, 3000);
+//        }
 
         //Moving image in the mask image
         $scope.moveImg = function (str, ishold) {
