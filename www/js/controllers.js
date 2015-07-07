@@ -142,31 +142,83 @@ angular.module('starter.controllers', [])
             var step = 50; // change this to different step value
             switch (str) {
             case "down":
-                var x = document.getElementById('img1').offsetTop;
-                x = x - 90 + step;
-                console.log("Down=" + x);
-                document.getElementById('img1').style.backgroundPositionY = x + "px";
+                //                var x = document.getElementById('img1').offsetTop;
+                //                x = x - 90 + step;
+                //                console.log("Down=" + x);
+                var x = document.getElementById('img1').style.backgroundPositionY;
+                var index = x.indexOf("px");
+                console.log(index);
+                if (index == -1) {
+                    console.log(index);
+                    document.getElementById('img1').style.backgroundPositionY = "1px";
+                } else {
+                    x = x.substr(0, index);
+                    console.log(x);
+                    var down = parseInt(x) + 1;
+                    console.log("Down=" + down);
+                    document.getElementById('img1').style.backgroundPositionY = down + "px";
+                }
+                //                angular.element('#img1').addClass('backgroundPositionY', x + "px");
                 break;
 
             case "up":
-                var x = document.getElementById('img1').offsetTop;
-                x = x + 8 - step;
-                console.log("Up=" + x);
-                document.getElementById('img1').style.backgroundPositionY = x + "px";
+                //                var x = document.getElementById('img1').offsetTop;
+                //                x = x + 8 - step;
+                //                console.log("Up=" + x);
+                //                document.getElementById('img1').style.backgroundPositionY = x + "px";
+                var x = document.getElementById('img1').style.backgroundPositionY;
+                var index = x.indexOf("px");
+                console.log(index);
+                if (index == -1) {
+                    console.log(index);
+                    document.getElementById('img1').style.backgroundPositionY = "-1px";
+                } else {
+                    x = x.substr(0, index);
+                    console.log(x);
+                    var up = parseInt(x) - 1;
+                    console.log("Up=" + up);
+                    document.getElementById('img1').style.backgroundPositionY = up + "px";
+                }
                 break;
 
             case "left":
-                var y = document.getElementById('img1').offsetLeft;
-                y = y + 14 - step;
-                console.log("Left=" + y);
-                document.getElementById('img1').style.backgroundPositionX = y + "px";
+                //                var y = document.getElementById('img1').offsetLeft;
+                //                y = y + 14 - step;
+                //                console.log("Left=" + y);
+                //                document.getElementById('img1').style.backgroundPositionX = y + "px";
+                var x = document.getElementById('img1').style.backgroundPositionX;
+                var index = x.indexOf("px");
+                console.log(index);
+                if (index == -1) {
+                    console.log(index);
+                    document.getElementById('img1').style.backgroundPositionX = "-1px";
+                } else {
+                    x = x.substr(0, index);
+                    console.log(x);
+                    var left = parseInt(x) - 1;
+                    console.log("Left=" + left);
+                    document.getElementById('img1').style.backgroundPositionX = left + "px";
+                }
                 break;
 
             case "right":
-                var y = document.getElementById('img1').offsetLeft;
-                y = y - 84 + step;
-                console.log("Right=" + y);
-                document.getElementById('img1').style.backgroundPositionX = y + "px";
+                //                var y = document.getElementById('img1').offsetLeft;
+                //                y = y - 84 + step;
+                //                console.log("Right=" + y);
+                //                document.getElementById('img1').style.backgroundPositionX = y + "px";
+                var x = document.getElementById('img1').style.backgroundPositionX;
+                var index = x.indexOf("px");
+                console.log(index);
+                if (index == -1) {
+                    console.log(index);
+                    document.getElementById('img1').style.backgroundPositionX = "1px";
+                } else {
+                    x = x.substr(0, index);
+                    console.log(x);
+                    var right = parseInt(x) + 1;
+                    console.log("Right=" + right);
+                    document.getElementById('img1').style.backgroundPositionX = right + "px";
+                }
                 break;
             }
         }
