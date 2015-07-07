@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
             $scope.modal.hide();
         };
     })
-    .controller('CustomizeCtrl', function ($scope, $ionicModal, $timeout) {
+    .controller('CustomizeCtrl', function ($scope, $ionicModal, $timeout, $interval) {
 
         //modal for picture
         $ionicModal.fromTemplateUrl('templates/popup-design.html', {
@@ -66,6 +66,18 @@ angular.module('starter.controllers', [])
         }).then(function (modal) {
             $scope.modal = modal;
         });
+
+        $scope.Time = 150;
+        $scope.altTime = 125;
+
+        var promise;
+        $scope.mouseDown = function () {
+            promise = $interval(function () {
+                $scope.Time = $scope.Time + 1;
+                console.log($scope.Time);
+            }, 100);
+
+        };
 
         $scope.openedit = function () {
             $scope.modal.show();
@@ -87,137 +99,143 @@ angular.module('starter.controllers', [])
             $scope.doneimg = false;
             $scope.editimg = true;
         }
+        $scope.mouseUp = function () {
+            $interval.cancel(promise);
+        };
 
-        //Changing the position of image
-        //                $scope.moveup = function () {
-        //                    document.getElementById('up').style.top = 20 + "px";
-        //                }
-        //                $scope.moveright = function () {
-        //                    document.getElementById('up').style.right = 20 + "px";
-        //                }
-        //                $scope.movebottom = function () {
-        //                    document.getElementById('up').style.bottom = 20 + "px";
-        //                }
-        //                $scope.moveleft = function () {
-        //                    document.getElementById('up').style.left = 20 + "px";
-        //                }
-
-        //        $scope.moveImg = function (str) {
-        //            var step = 10;
-        //            var x = 0; // change this to different step value
-        //            var y = 0;
-        //            console.log("x=" + x + ",y=" + y);
-        //            switch (str) {
-        //            case "down":
-        //                x = document.getElementById('up').offsetTop;
-        //                console.log("Down=" + x);
-        //                x = x + step;
-        //                document.getElementById('up').style.top = x + "px";
-        //                break;
-        //
-        //            case "up":
-        //                x = document.getElementById('up').offsetTop;
-        //                console.log("UP=" + x);
-        //                x = x - step;
-        //                document.getElementById('up').style.top = x + "px";
-        //                break;
-        //
-        //            case "left":
-        //                y = document.getElementById('up').offsetLeft;
-        //                console.log("Left=" + y);
-        //                y = y - step;
-        //                document.getElementById('up').style.left = y + "px";
-        //                break;
-        //
-        //            case "right":
-        //                y = document.getElementById('up').offsetLeft;
-        //                console.log("Right=" + y);
-        //                y = y + step;
-        //                document.getElementById('up').style.left = y + "px";
-        //                break;
-        //            }
-        //        }
-
-        $scope.moveImg = function (str) {
+        $scope.moveImg = function (str, ishold) {
             var step = 50; // change this to different step value
             switch (str) {
             case "down":
-                //                var x = document.getElementById('img1').offsetTop;
-                //                x = x - 90 + step;
-                //                console.log("Down=" + x);
-                var x = document.getElementById('img1').style.backgroundPositionY;
-                var index = x.indexOf("px");
-                console.log(index);
-                if (index == -1) {
+                if (ishold == 0) {
+                    var x = document.getElementById('img1').style.backgroundPositionY;
+                    var index = x.indexOf("px");
                     console.log(index);
-                    document.getElementById('img1').style.backgroundPositionY = "1px";
-                } else {
-                    x = x.substr(0, index);
-                    console.log(x);
-                    var down = parseInt(x) + 1;
-                    console.log("Down=" + down);
-                    document.getElementById('img1').style.backgroundPositionY = down + "px";
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById('img1').style.backgroundPositionY = "1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var down = parseInt(x) + 1;
+                        console.log("Down=" + down);
+                        document.getElementById('img1').style.backgroundPositionY = down + "px";
+                    }
+                } else if (ishold == 1) {
+                    promise = $interval(function () {
+                        var x = document.getElementById('img1').style.backgroundPositionY;
+                        var index = x.indexOf("px");
+                        console.log(index);
+                        if (index == -1) {
+                            console.log(index);
+                            document.getElementById('img1').style.backgroundPositionY = "1px";
+                        } else {
+                            x = x.substr(0, index);
+                            console.log(x);
+                            var down = parseInt(x) + 1;
+                            console.log("Down=" + down);
+                            document.getElementById('img1').style.backgroundPositionY = down + "px";
+                        }
+                    }, 100);
                 }
-                //                angular.element('#img1').addClass('backgroundPositionY', x + "px");
                 break;
-
             case "up":
-                //                var x = document.getElementById('img1').offsetTop;
-                //                x = x + 8 - step;
-                //                console.log("Up=" + x);
-                //                document.getElementById('img1').style.backgroundPositionY = x + "px";
-                var x = document.getElementById('img1').style.backgroundPositionY;
-                var index = x.indexOf("px");
-                console.log(index);
-                if (index == -1) {
+                if (ishold == 0) {
+                    var x = document.getElementById('img1').style.backgroundPositionY;
+                    var index = x.indexOf("px");
                     console.log(index);
-                    document.getElementById('img1').style.backgroundPositionY = "-1px";
-                } else {
-                    x = x.substr(0, index);
-                    console.log(x);
-                    var up = parseInt(x) - 1;
-                    console.log("Up=" + up);
-                    document.getElementById('img1').style.backgroundPositionY = up + "px";
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById('img1').style.backgroundPositionY = "-1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var up = parseInt(x) - 1;
+                        console.log("Up=" + up);
+                        document.getElementById('img1').style.backgroundPositionY = up + "px";
+                    }
+                } else if (ishold == 1) {
+                    promise = $interval(function () {
+                        var x = document.getElementById('img1').style.backgroundPositionY;
+                        var index = x.indexOf("px");
+                        console.log(index);
+                        if (index == -1) {
+                            console.log(index);
+                            document.getElementById('img1').style.backgroundPositionY = "-1px";
+                        } else {
+                            x = x.substr(0, index);
+                            console.log(x);
+                            var up = parseInt(x) - 1;
+                            console.log("Up=" + up);
+                            document.getElementById('img1').style.backgroundPositionY = up + "px";
+                        }
+                    }, 100);
                 }
                 break;
-
             case "left":
-                //                var y = document.getElementById('img1').offsetLeft;
-                //                y = y + 14 - step;
-                //                console.log("Left=" + y);
-                //                document.getElementById('img1').style.backgroundPositionX = y + "px";
-                var x = document.getElementById('img1').style.backgroundPositionX;
-                var index = x.indexOf("px");
-                console.log(index);
-                if (index == -1) {
+                if (ishold == 0) {
+                    var x = document.getElementById('img1').style.backgroundPositionX;
+                    var index = x.indexOf("px");
                     console.log(index);
-                    document.getElementById('img1').style.backgroundPositionX = "-1px";
-                } else {
-                    x = x.substr(0, index);
-                    console.log(x);
-                    var left = parseInt(x) - 1;
-                    console.log("Left=" + left);
-                    document.getElementById('img1').style.backgroundPositionX = left + "px";
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById('img1').style.backgroundPositionX = "-1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var left = parseInt(x) - 1;
+                        console.log("Left=" + left);
+                        document.getElementById('img1').style.backgroundPositionX = left + "px";
+                    }
+                } else if (ishold == 1) {
+                    promise = $interval(function () {
+                        var x = document.getElementById('img1').style.backgroundPositionX;
+                        var index = x.indexOf("px");
+                        console.log(index);
+                        if (index == -1) {
+                            console.log(index);
+                            document.getElementById('img1').style.backgroundPositionX = "-1px";
+                        } else {
+                            x = x.substr(0, index);
+                            console.log(x);
+                            var left = parseInt(x) - 1;
+                            console.log("Left=" + left);
+                            document.getElementById('img1').style.backgroundPositionX = left + "px";
+                        }
+                    }, 100);
                 }
                 break;
-
             case "right":
-                //                var y = document.getElementById('img1').offsetLeft;
-                //                y = y - 84 + step;
-                //                console.log("Right=" + y);
-                //                document.getElementById('img1').style.backgroundPositionX = y + "px";
-                var x = document.getElementById('img1').style.backgroundPositionX;
-                var index = x.indexOf("px");
-                console.log(index);
-                if (index == -1) {
+                if (ishold == 0) {
+                    var x = document.getElementById('img1').style.backgroundPositionX;
+                    var index = x.indexOf("px");
                     console.log(index);
-                    document.getElementById('img1').style.backgroundPositionX = "1px";
-                } else {
-                    x = x.substr(0, index);
-                    console.log(x);
-                    var right = parseInt(x) + 1;
-                    console.log("Right=" + right);
-                    document.getElementById('img1').style.backgroundPositionX = right + "px";
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById('img1').style.backgroundPositionX = "1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var right = parseInt(x) + 1;
+                        console.log("Right=" + right);
+                        document.getElementById('img1').style.backgroundPositionX = right + "px";
+                    }
+                } else if (ishold == 1) {
+                    promise = $interval(function () {
+                        var x = document.getElementById('img1').style.backgroundPositionX;
+                        var index = x.indexOf("px");
+                        console.log(index);
+                        if (index == -1) {
+                            console.log(index);
+                            document.getElementById('img1').style.backgroundPositionX = "1px";
+                        } else {
+                            x = x.substr(0, index);
+                            console.log(x);
+                            var right = parseInt(x) + 1;
+                            console.log("Right=" + right);
+                            document.getElementById('img1').style.backgroundPositionX = right + "px";
+                        }
+                    }, 100);
                 }
                 break;
             }
@@ -242,4 +260,30 @@ angular.module('starter.controllers', [])
         }
     })
     .controller('LoginCtrl', function ($scope) {})
-    .controller('PlaylistCtrl', function ($scope, $stateParams) {});
+    .controller('PlaylistCtrl', function ($scope, $stateParams) {})
+
+.directive('time', function ($interval) {
+    return {
+        templateUrl: 'time.html',
+        restrict: 'E',
+        scope: {
+            Time: '=value'
+        },
+        link: function (scope, element, attrs) {
+            element.addClass('time');
+
+            var promise;
+            scope.mouseDown = function () {
+                promise = $interval(function () {
+                    scope.Time = scope.Time + 1;
+                    console.log(scope.Time);
+                }, 100);
+
+            };
+
+            scope.mouseUp = function () {
+                $interval.cancel(promise);
+            };
+        }
+    };
+});

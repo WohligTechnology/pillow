@@ -28,9 +28,11 @@
                             <input type="text" class="positive-border img-input" style="bottom:28px;">
                         </div>
                     </div>
+                    <!--
                     <script>
                         foot();
                     </script>
+-->
                     <!-- HTML ends -->
 
                 </foreignObject>
@@ -64,10 +66,10 @@
                     Adjust the image inside the pillow using arrows.
                 </div>
                 <div class="m0auto nav-arrow pos">
-                    <img src="img/arrowt.png" class="arrowt" ng-click="moveImg( 'up')" value='Up'>
-                    <img src="img/arrowl.png" class="arrowl" ng-click="moveImg( 'left')" value='Left'>
-                    <img src="img/arrowr.png" class="arrowr" ng-click="moveImg( 'right')" value='right'>
-                    <img src="img/arrowb.png" class="arrowb" ng-click="moveImg( 'down')" value='down'>
+                    <img src="img/arrowt.png" class="arrowt" ng-click="moveImg('up',0)" ng-mousedown="moveImg('up',1);" ng-mouseup="mouseUp()" value='Up'>
+                    <img src="img/arrowl.png" class="arrowl" ng-click="moveImg('left',0)" ng-mousedown="moveImg('left',1);" ng-mouseup="mouseUp()" value='Left'>
+                    <img src="img/arrowr.png" class="arrowr" ng-click="moveImg('right',0)" ng-mousedown="moveImg('right',1);" ng-mouseup="mouseUp()" value='right'>
+                    <img src="img/arrowb.png" class="arrowb" ng-click="moveImg('down',0)" ng-mousedown="moveImg('down',1);" ng-mouseup="mouseUp()" value='down'>
                 </div>
             </div>
         </div>
