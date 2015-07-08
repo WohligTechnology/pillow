@@ -2,67 +2,17 @@
     <ion-content>
 
         <div class="text-center mt40">
-            <!-- SVG begins -->
-            <svg height="230px">
-
-                <!-- Definition of a mask begins -->
-                <defs>
-                    <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
-                        <image width="300px" height="300px" xlink:href="img/mask-img.png"></image>
-                    </mask>
-                </defs>
-                <!-- Definition of a mask ends -->
-
-                <foreignObject width="300px" height="300px" style="mask: url(#mask);">
-
-                    <!-- HTML begins -->
-                    <script>
-                        head();
-                    </script>
-                    <div class="maskimg m0auto">
-                        <!--                        <img src="img/demo1.jpg" class="img-size">-->
-                        <div class="img-size pos frame1" id="img1" ng-click="imgselected();">
-                            <input type="text" class="positive-border img-input">
-                        </div>
-                        <div class="img-size pos frame2" ng-click="imgselected();">
-                            <input type="text" class="positive-border img-input" style="bottom:28px;">
-                             <div class="overlay"></div>
-                        </div>
-                       
+            
+                <div class="maskimg m0auto">
+                    <div class="img-size pos frame1" id="img1" ng-click="imgselected();">
+                        <input type="text" class="positive-border img-input">
                     </div>
-                    <!--
-                    <script>
-                        foot();
-                    </script>
--->
-                    <!-- HTML ends -->
-
-                </foreignObject>
-            </svg>
-            <!-- SVG ends -->
-
-
-            <!--
-            <div class="maskimg m0auto">
-                <div class="img-size pos">
-                    <img src="img/demo.jpg" class="">
-                    <input type="text" class="positive-border img-input">
+                    <div class="img-size pos frame2" ng-click="imgselected();">
+                        <input type="text" class="positive-border img-input" style="bottom:28px;">
+                        <div class="overlay"></div>
+                    </div>
                 </div>
-                <div class="img-size pos">
-                    <img src="img/demo1.jpg" class="">
-                    <input type="text" class="positive-border img-input">
-                </div>
-            </div>
--->
-
-            <!--
-            <div class="m0auto nav-arrow pos" ng-show="edit">
-                <img src="img/arrowt.png" class="arrowt" ng-click="moveup();">
-                <img src="img/arrowr.png" class="arrowr" ng-click="moveright();">
-                <img src="img/arrowb.png" class="arrowb" ng-click="movebottom();">
-                <img src="img/arrowl.png" class="arrowl" ng-click="moveleft();">
-            </div>
--->
+           
             <div ng-show="edit">
                 <div class="img-text">
                     Adjust the image inside the pillow using arrows.
@@ -93,28 +43,4 @@
 
         </div>
     </ion-content>
-    <script>
-        function head() {
-            if (window.SVGForeignObjectElement) {
-                document.write('\
-            <svg width="400px" height="300px">\
-                <defs>\
-                    <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">\
-                        <image width="400px" height="300px" xlink:href="mouse.png"/>\
-                    </mask>\
-                </defs>\
-                <foreignObject width="100%" height="100%" style="mask: url(#mask);">\
-        ');
-            }
-        }
-
-        function foot() {
-            if (window.SVGForeignObjectElement) {
-                document.write('\
-                </foreignObject>\
-            </svg>\
-        ');
-            }
-        }
-    </script>
 </ion-view>
