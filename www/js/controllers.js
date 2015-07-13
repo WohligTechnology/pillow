@@ -83,31 +83,31 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                     alertPopup.close(); //close the popup after 3 seconds for some reason
                 }, 3000);
         } else {
-		   $scope.pillowImagess.push({
-                    name: 'three',
-                    img: 'img/demo.jpg'
-                });
-                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
-//            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-//                // Success! Image data is here
-//                console.log("here in upload image");
-//
-//                console.log(resultImage);
-//
-//                $scope.cameraimage = resultImage[0];
-//                $.jStorage.set("proileimg", resultImage[0]);
-//                console.log(resultImage[0]);
-//                $scope.pillowImagess.push({
+//		   $scope.pillowImagess.push({
 //                    name: 'three',
-//                    img: resultImage[0]
+//                    img: 'img/demo.jpg'
 //                });
 //                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
-//                console.log($scope.pillowImages);
-//                //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
-//
-//            }, function(err) {
-//                // An error occured. Show a message to the user
-//            });
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+
+                console.log(resultImage);
+
+                $scope.cameraimage = resultImage[0];
+                $.jStorage.set("proileimg", resultImage[0]);
+                console.log(resultImage[0]);
+                $scope.pillowImagess.push({
+                    name: 'three',
+                    img: resultImage[0]
+                });
+                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+                console.log($scope.pillowImages);
+                //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
+
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
         }
 
     }
