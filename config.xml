@@ -1,22 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<widget id="com.ionicframework.sass745086" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.wohlig.pillow" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pillow</name>
-    <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-        Ionic Framework Team
+    <description></description>
+    <author email="infog@wohlig.com" href="http://www.wohlig.com/">
+        Wohlig
     </author>
-    <content src="index.html" />
-    <icon src="www/img/icon.png">
-        <access origin="*" />
-        <preference name="webviewbounce" value="false" />
-        <preference name="UIWebViewBounce" value="false" />
-        <preference name="DisallowOverscroll" value="true" />
-        <preference name="android-minSdkVersion" value="16" />
-        <preference name="BackupWebStorage" value="none" />
 
-        <feature name="StatusBar">
-            <param name="ios-package" value="CDVStatusBar" onload="true" />
-        </feature>
+    <content src="index.html" />
+
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+
+    <preference name="fullscreen" value="false" />
+    <preference name="target-device" value="universal" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="android-minSdkVersion" value="11"/>
+    <preference name="android-targetSdkVersion" value="14" />
+    <preference name="ErrorUrl" value="" />
+    <preference name="KeepRunning" value="true" />
+    <preference name="LoadUrlTimeoutValue" value="20000" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#ffffff" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+
+<!--    <icon src="res/icon/icon.png" />-->
+<!--    <splash src="res/screen/screen.png" />-->
+
+    <!--Splash Screen Preference-->
+    <!--Refer https://github.com/apache/cordova-plugin-splashscreen for more details-->
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="SplashScreenBackgroundColor" value="#ffffff" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+
+    <!--for status bar plugin-->
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+
+    <!--for ionic keyboard plugin-->
+    <feature name="Keyboard">
+        <param name="ios-package" value="IonicKeyboard" onload="true" />
+    </feature>
+
+    <!--for splash screen plugin-->
+    <feature name="SplashScreen">
+        <param name="ios-package" value="CDVSplashScreen" />
+        <param name="android-package" value="cordova-plugin-splashscreen" />
+    </feature>
+    <!-- for iOS -->
+    <feature name="SocialSharing">
+        <param name="ios-package" value="SocialSharing" />
+    </feature>
+    <!-- for Android (you will find one in res/xml) -->
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
 </widget>
