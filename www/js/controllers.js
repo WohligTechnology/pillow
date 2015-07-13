@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngDraggable'])
+angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -58,7 +58,7 @@ angular.module('starter.controllers', ['ngDraggable'])
     };
 })
 
-.controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window) {
+.controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
     //ngDraggable
     $scope.pillowImages = [{
@@ -71,6 +71,25 @@ angular.module('starter.controllers', ['ngDraggable'])
         name: 'three',
         img: 'img/demo.jpg'
     }];
+
+    $scope.uploadPhoto = function() {
+	    console.log("picture");
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            console.log("here in upload image");
+
+            console.log(resultImage);
+
+            $scope.cameraimage = resultImage[0];
+            $.jStorage.set("proileimg", resultImage[0]);
+            console.log(resultImage[0]);
+//            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
+
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+
+    }
 
     $scope.onDropComplete = function(index, obj, evt) {
         console.log(index);

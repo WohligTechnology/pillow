@@ -3,7 +3,17 @@
 
         <div class="text-center mt40">
 
-            <div class="maskimg m0auto rowof1">
+            <div class="maskimg m0auto rowof3">
+                <div class="flex-box">
+                    <div class="box-in" ng-repeat="image in pillowImages" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+                        <div class="drag-box frame2" style="background-image: url('{{image.img}}');" ng-drag="true" ng-drag-data="image"></div>
+                    </div>
+                </div>
+                <div class="flex-box">
+                    <div class="box-in" ng-repeat="image in pillowImages" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+                        <div class="drag-box frame2" style="background-image: url('{{image.img}}');" ng-drag="true" ng-drag-data="image"></div>
+                    </div>
+                </div>
                 <div class="flex-box">
                     <div class="box-in" ng-repeat="image in pillowImages" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
                         <div class="drag-box frame2" style="background-image: url('{{image.img}}');" ng-drag="true" ng-drag-data="image"></div>
