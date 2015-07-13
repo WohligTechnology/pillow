@@ -72,6 +72,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         img: 'img/demo.jpg'
     }];
 
+	var options = {
+		maximumImagesCount: 1,
+		width: 800,
+		height: 800,
+		quality: 80
+	};
     $scope.uploadPhoto = function() {
 	    console.log("picture");
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
