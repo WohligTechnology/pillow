@@ -5,7 +5,7 @@
 
             <div class="maskimg m0auto rowof{{pillowImages.length}}">
                 <div class="flex-box" ng-repeat="pillimage in pillowImages">
-                    <div class="box-in" ng-repeat="image in pillimage" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+                    <div class="box-in" ng-repeat="image in pillimage" ng-drop="true" ng-drop-success="onDropComplete(pillowImages.indexOf(image), $data,$event)">
                         <div class="drag-box frame2" style="background-image: url('{{image.img}}');" ng-drag="true" ng-drag-data="image"></div>
                     </div>
                 </div>
