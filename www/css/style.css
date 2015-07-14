@@ -284,3 +284,6 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .frame2 {
     background-image: url(../img/demo1.jpg);
 }
+.img_opacity{
+    opacity:0.3;
+}
