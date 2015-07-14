@@ -204,7 +204,7 @@
 		   
 <!--		   FOR 9 IMAGES-->
 		   
-            <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==9">
+            <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==9">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[0]"></div>
