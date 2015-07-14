@@ -120,22 +120,44 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 
                 $scope.cameraimage = resultImage[0];
                 $.jStorage.set("proileimg", resultImage[0]);
-                if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
-                    $scope.pillowImages = [
-                        [{
+
+                _.forEach(resultImage, function(n, key) {
+				 
+                    if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                        $scope.pillowImages = [
+                            [{
+                                name: 'three',
+                                img: resultImage[key],
+                                opacity: ''
+                            }]
+                        ];
+                    } else {
+                        $scope.pillowImages.push([{
                             name: 'three',
-                            img: resultImage[0],
+                            img: resultImage[key],
                             opacity: ''
-                        }]
-                    ];
-                } else {
-                    $scope.pillowImages.push([{
-                        name: 'three',
-                        img: resultImage[0],
-                        opacity: ''
-                    }]);
-                    console.log($scope.pillowImages);
-                }
+                        }]);
+                        console.log($scope.pillowImages);
+                    }
+				 
+                });
+
+                //                if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                //                    $scope.pillowImages = [
+                //                        [{
+                //                            name: 'three',
+                //                            img: resultImage[0],
+                //                            opacity: ''
+                //                        }]
+                //                    ];
+                //                } else {
+                //                    $scope.pillowImages.push([{
+                //                        name: 'three',
+                //                        img: resultImage[0],
+                //                        opacity: ''
+                //                    }]);
+                //                    console.log($scope.pillowImages);
+                //                }
                 $scope.modal.hide();
 
             }, function(err) {
