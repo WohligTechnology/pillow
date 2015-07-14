@@ -61,53 +61,66 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 .controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
     //ngDraggable
-    $scope.pillowImagess = [{
+    $scope.pillowImages = [[{
         name: 'one',
         img: 'img/demo.jpg'
-    }];
-    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+    }]];
+//    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
     var options = {
         maximumImagesCount: 1,
         width: 800,
         height: 800,
         quality: 80
     };
+	
+	$scope.newfun = function(index){
+		console.log(index);
+	}
+	
     $scope.uploadPhoto = function() {
         console.log("picture");
-        if ($scope.pillowImagess.length > 8) {
-		   var alertPopup = $ionicPopup.show({
-                    title: "Number Of Images Excceds!",
-                    //                template: 'Login Successfull'
-                });
-                $timeout(function () {
-                    alertPopup.close(); //close the popup after 3 seconds for some reason
-                }, 3000);
-        } else {
-//		   $scope.pillowImagess.push({
-//                    name: 'three',
-//                    img: 'img/demo.jpg'
-//                });
-//                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
-            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-                // Success! Image data is here
-                console.log("here in upload image");
-
-                console.log(resultImage);
-
-                $scope.cameraimage = resultImage[0];
-                $.jStorage.set("proileimg", resultImage[0]);
-                console.log(resultImage[0]);
-                $scope.pillowImagess.push({
-                    name: 'three',
-                    img: resultImage[0]
-                });
-                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
-                console.log($scope.pillowImages);
-                //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
-
-            }, function(err) {
-                // An error occured. Show a message to the user
+        if ($scope.pillowImages.length > 8) {
+            var alertPopup = $ionicPopup.show({
+                title: "Number Of Images Excceds!",
+                //                template: 'Login Successfull'
             });
+            $timeout(function() {
+                alertPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+        } else {
+            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                $scope.pillowImages=[[{
+                    name: 'three',
+                    img: 'img/demo1.jpg'
+                }]];
+            } else {
+                $scope.pillowImages.push([{
+                    name: 'three',
+                    img: 'img/demo.jpg'
+                }]);
+			  console.log($scope.pillowImages);
+            }
+            //$scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+            //            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            //                // Success! Image data is here
+            //                console.log("here in upload image");
+            //
+            //                console.log(resultImage);
+            //
+            //                $scope.cameraimage = resultImage[0];
+            //                $.jStorage.set("proileimg", resultImage[0]);
+            //                console.log(resultImage[0]);
+            //                $scope.pillowImagess.push({
+            //                    name: 'three',
+            //                    img: resultImage[0]
+            //                });
+            //                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+            //                console.log($scope.pillowImages);
+            //                //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
+            //
+            //            }, function(err) {
+            //                // An error occured. Show a message to the user
+            //            });
         }
 
     }
@@ -182,137 +195,146 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //        }
 
     //Moving image in the mask image
+	var imgid = '';
+	
+	$scope.getImageId = function(imgd){
+			imgid = imgd;
+		console.log(imgid);
+	};
+	
     $scope.moveImg = function(str, ishold) {
+	    console.log(imgid);
         var step = 50; // change this to different step value
+	   
         switch (str) {
             case "down":
                 if (ishold == 0) {
-                    var x = document.getElementById('img1').style.backgroundPositionY;
+                    var x = document.getElementById(imgid).style.backgroundPositionY;
                     var index = x.indexOf("px");
                     console.log(index);
                     if (index == -1) {
                         console.log(index);
-                        document.getElementById('img1').style.backgroundPositionY = "1px";
+                        document.getElementById(imgid).style.backgroundPositionY = "1px";
                     } else {
                         x = x.substr(0, index);
                         console.log(x);
                         var down = parseInt(x) + 1;
                         console.log("Down=" + down);
-                        document.getElementById('img1').style.backgroundPositionY = down + "px";
+                        document.getElementById(imgid).style.backgroundPositionY = down + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
-                        var x = document.getElementById('img1').style.backgroundPositionY;
+                        var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
                         console.log(index);
                         if (index == -1) {
                             console.log(index);
-                            document.getElementById('img1').style.backgroundPositionY = "1px";
+                            document.getElementById(imgid).style.backgroundPositionY = "1px";
                         } else {
                             x = x.substr(0, index);
                             console.log(x);
                             var down = parseInt(x) + 1;
                             console.log("Down=" + down);
-                            document.getElementById('img1').style.backgroundPositionY = down + "px";
+                            document.getElementById(imgid).style.backgroundPositionY = down + "px";
                         }
                     }, 100);
                 }
                 break;
             case "up":
                 if (ishold == 0) {
-                    var x = document.getElementById('img1').style.backgroundPositionY;
+                    var x = document.getElementById(imgid).style.backgroundPositionY;
                     var index = x.indexOf("px");
                     console.log(index);
                     if (index == -1) {
                         console.log(index);
-                        document.getElementById('img1').style.backgroundPositionY = "-1px";
+                        document.getElementById(imgid).style.backgroundPositionY = "-1px";
                     } else {
                         x = x.substr(0, index);
                         console.log(x);
                         var up = parseInt(x) - 1;
                         console.log("Up=" + up);
-                        document.getElementById('img1').style.backgroundPositionY = up + "px";
+                        document.getElementById(imgid).style.backgroundPositionY = up + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
-                        var x = document.getElementById('img1').style.backgroundPositionY;
+                        var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
                         console.log(index);
                         if (index == -1) {
                             console.log(index);
-                            document.getElementById('img1').style.backgroundPositionY = "-1px";
+                            document.getElementById(imgid).style.backgroundPositionY = "-1px";
                         } else {
                             x = x.substr(0, index);
                             console.log(x);
                             var up = parseInt(x) - 1;
                             console.log("Up=" + up);
-                            document.getElementById('img1').style.backgroundPositionY = up + "px";
+                            document.getElementById(imgid).style.backgroundPositionY = up + "px";
                         }
                     }, 100);
                 }
                 break;
             case "left":
                 if (ishold == 0) {
-                    var x = document.getElementById('img1').style.backgroundPositionX;
+                    var x = document.getElementById(imgid).style.backgroundPositionX;
                     var index = x.indexOf("px");
                     console.log(index);
                     if (index == -1) {
                         console.log(index);
-                        document.getElementById('img1').style.backgroundPositionX = "-1px";
+                        document.getElementById(imgid).style.backgroundPositionX = "-1px";
                     } else {
                         x = x.substr(0, index);
                         console.log(x);
                         var left = parseInt(x) - 1;
                         console.log("Left=" + left);
-                        document.getElementById('img1').style.backgroundPositionX = left + "px";
+                        document.getElementById(imgid).style.backgroundPositionX = left + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
-                        var x = document.getElementById('img1').style.backgroundPositionX;
+                        var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
                         console.log(index);
                         if (index == -1) {
                             console.log(index);
-                            document.getElementById('img1').style.backgroundPositionX = "-1px";
+                            document.getElementById(imgid).style.backgroundPositionX = "-1px";
                         } else {
                             x = x.substr(0, index);
                             console.log(x);
                             var left = parseInt(x) - 1;
                             console.log("Left=" + left);
-                            document.getElementById('img1').style.backgroundPositionX = left + "px";
+                            document.getElementById(imgid).style.backgroundPositionX = left + "px";
                         }
                     }, 100);
                 }
                 break;
             case "right":
                 if (ishold == 0) {
-                    var x = document.getElementById('img1').style.backgroundPositionX;
+                    var x = document.getElementById(imgid).style.backgroundPositionX;
                     var index = x.indexOf("px");
                     console.log(index);
                     if (index == -1) {
                         console.log(index);
-                        document.getElementById('img1').style.backgroundPositionX = "1px";
+                        document.getElementById(imgid).style.backgroundPositionX = "1px";
                     } else {
                         x = x.substr(0, index);
                         console.log(x);
                         var right = parseInt(x) + 1;
                         console.log("Right=" + right);
-                        document.getElementById('img1').style.backgroundPositionX = right + "px";
+                        document.getElementById(imgid).style.backgroundPositionX = right + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
-                        var x = document.getElementById('img1').style.backgroundPositionX;
+                        var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
                         console.log(index);
                         if (index == -1) {
                             console.log(index);
-                            document.getElementById('img1').style.backgroundPositionX = "1px";
+                            document.getElementById(imgid).style.backgroundPositionX = "1px";
                         } else {
                             x = x.substr(0, index);
                             console.log(x);
                             var right = parseInt(x) + 1;
                             console.log("Right=" + right);
-                            document.getElementById('img1').style.backgroundPositionX = right + "px";
+                            document.getElementById(imgid).style.backgroundPositionX = right + "px";
                         }
                     }, 100);
                 }
