@@ -63,6 +63,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //ngDraggable
     $scope.blurclass = "";
     $scope.dropstatus = "true";
+	$scope.pillowImages = [
+            [{
+                name: 'one',
+                img: 'img/demo1.jpg',
+                opacity: ''
+            }]
+        ];
 //    if ($.jStorage.get("pillowimages")==null) {
 //        $scope.pillowImages = [
 //            [{
