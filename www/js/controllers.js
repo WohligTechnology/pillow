@@ -136,7 +136,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                     }]);
                     console.log($scope.pillowImages);
                 }
-			  $scope.modal.hide();
+                $scope.modal.hide();
 
             }, function(err) {
                 // An error occured. Show a message to the user
@@ -230,11 +230,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         console.log(imgid);
         console.log(mykey);
         console.log($scope.pillowImages);
-        _.forEach($scope.pillowImages, function(n, key) {
-            $scope.pillowImages[key][0].opacity = "img_opacity";
-            $scope.pillowImages[mykey][0].opacity = "";
-            console.log($scope.pillowImages[key][0].opacity);
-        });
+        if ($scope.dropstatus == "true") {
+            _.forEach($scope.pillowImages, function(n, key) {
+                $scope.pillowImages[key][0].opacity = "img_opacity";
+                $scope.pillowImages[mykey][0].opacity = "";
+                console.log($scope.pillowImages[key][0].opacity);
+            });
+        }
 
     };
 
