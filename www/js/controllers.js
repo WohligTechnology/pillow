@@ -61,22 +61,28 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 .controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
     //ngDraggable
-    $scope.pillowImages = [[{
-        name: 'one',
-        img: 'img/demo.jpg'
-    }]];
-//    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+    $scope.blurclass = "";
+    $scope.dropstatus = "true";
+
+    $scope.pillowImages = [
+        [{
+            name: 'one',
+            img: 'img/demo.jpg',
+            opacity: ''
+        }]
+    ];
+    //    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
     var options = {
         maximumImagesCount: 1,
         width: 800,
         height: 800,
         quality: 80
     };
-	
-	$scope.newfun = function(index){
-		console.log(index);
-	}
-	
+
+    $scope.newfun = function(index) {
+        console.log(index);
+    }
+
     $scope.uploadPhoto = function() {
         console.log("picture");
         if ($scope.pillowImages.length > 8) {
@@ -88,39 +94,52 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                 alertPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         } else {
-            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
-                $scope.pillowImages=[[{
-                    name: 'three',
-                    img: 'img/demo1.jpg'
-                }]];
-            } else {
-                $scope.pillowImages.push([{
-                    name: 'three',
-                    img: 'img/demo.jpg'
-                }]);
-			  console.log($scope.pillowImages);
-            }
-            //$scope.pillowImages = partitionarray($scope.pillowImagess, 3);
-            //            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            //                // Success! Image data is here
-            //                console.log("here in upload image");
-            //
-            //                console.log(resultImage);
-            //
-            //                $scope.cameraimage = resultImage[0];
-            //                $.jStorage.set("proileimg", resultImage[0]);
-            //                console.log(resultImage[0]);
-            //                $scope.pillowImagess.push({
+            //            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+            //                $scope.pillowImages = [
+            //                    [{
+            //                        name: 'three',
+            //                        img: 'img/demo1.jpg',
+            //                        opacity: ''
+            //                    }]
+            //                ];
+            //            } else {
+            //                $scope.pillowImages.push([{
             //                    name: 'three',
-            //                    img: resultImage[0]
-            //                });
-            //                $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+            //                    img: 'img/demo.jpg',
+            //                    opacity: ''
+            //                }]);
             //                console.log($scope.pillowImages);
-            //                //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + , changeprofilephoto);
-            //
-            //            }, function(err) {
-            //                // An error occured. Show a message to the user
-            //            });
+            //            }
+
+
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+
+                console.log(resultImage);
+
+                $scope.cameraimage = resultImage[0];
+                $.jStorage.set("proileimg", resultImage[0]);
+                if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                    $scope.pillowImages = [
+                        [{
+                            name: 'three',
+                            img: resultImage[0],
+                            opacity: ''
+                        }]
+                    ];
+                } else {
+                    $scope.pillowImages.push([{
+                        name: 'three',
+                        img: resultImage[0],
+                        opacity: ''
+                    }]);
+                    console.log($scope.pillowImages);
+                }
+
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
         }
 
     }
@@ -129,10 +148,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         console.log(index);
         console.log(obj);
         console.log(evt);
-        var otherObj = $scope.pillowImages[index];
-        var otherIndex = $scope.pillowImages.indexOf(obj);
-        $scope.pillowImages[index] = obj;
-        $scope.pillowImages[otherIndex] = otherObj;
+        if (obj != null && $scope.dropstatus == "true") {
+            var otherObj = $scope.pillowImages[index];
+            var otherIndex = $scope.pillowImages.indexOf(obj);
+            $scope.pillowImages[index] = obj;
+            $scope.pillowImages[otherIndex] = otherObj;
+        }
     };
 
     //modal for picture
@@ -167,6 +188,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //Edit and Done button toggle
     $scope.editimg = "true";
     $scope.edit_img = function() {
+        $scope.dropstatus = "false";
+        console.log($scope.dropstatus);
         $scope.edit = true;
         $scope.doneimg = true;
         $scope.editimg = false;
@@ -174,6 +197,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     }
 
     $scope.done_img = function() {
+        _.forEach($scope.pillowImages, function(n, key) {
+            $scope.pillowImages[key][0].opacity = "";
+        });
+        $scope.dropstatus = "true";
         $scope.edit = false;
         $scope.doneimg = false;
         $scope.editimg = true;
@@ -195,17 +222,25 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //        }
 
     //Moving image in the mask image
-	var imgid = '';
-	
-	$scope.getImageId = function(imgd){
-			imgid = imgd;
-		console.log(imgid);
-	};
-	
+    var imgid = '';
+
+    $scope.getImageId = function(imgd, mykey) {
+        imgid = imgd;
+        console.log(imgid);
+        console.log(mykey);
+        console.log($scope.pillowImages);
+        _.forEach($scope.pillowImages, function(n, key) {
+            $scope.pillowImages[key][0].opacity = "img_opacity";
+            $scope.pillowImages[mykey][0].opacity = "";
+            console.log($scope.pillowImages[key][0].opacity);
+        });
+
+    };
+
     $scope.moveImg = function(str, ishold) {
-	    console.log(imgid);
+        console.log(imgid);
         var step = 50; // change this to different step value
-	   
+
         switch (str) {
             case "down":
                 if (ishold == 0) {
