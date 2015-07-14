@@ -67,7 +67,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         $scope.pillowImages = [
             [{
                 name: 'one',
-                img: 'img/demo.jpg',
+                img: 'img/demo1.jpg',
                 opacity: ''
             }]
         ];
@@ -97,22 +97,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                 alertPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         } else {
-            //            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
-            //                $scope.pillowImages = [
-            //                    [{
-            //                        name: 'three',
-            //                        img: 'img/demo1.jpg',
-            //                        opacity: ''
-            //                    }]
-            //                ];
-            //            } else {
-            //                $scope.pillowImages.push([{
-            //                    name: 'three',
-            //                    img: 'img/demo.jpg',
-            //                    opacity: ''
-            //                }]);
-            //                console.log($scope.pillowImages);
-            //            }
+//                        if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+//                            $scope.pillowImages = [
+//                                [{
+//                                    name: 'three',
+//                                    img: 'img/demo1.jpg',
+//                                    opacity: ''
+//                                }]
+//                            ];
+//                        } else {
+//                            $scope.pillowImages.push([{
+//                                name: 'three',
+//                                img: 'img/demo.jpg',
+//                                opacity: ''
+//                            }]);
+//                            console.log($scope.pillowImages);
+//                        }
 
 
             $cordovaImagePicker.getPictures(options).then(function(resultImage) {
@@ -126,7 +126,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 
                 _.forEach(resultImage, function(n, key) {
 
-                    if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                    if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
                         $scope.pillowImages = [
                             [{
                                 name: 'three',
@@ -145,23 +145,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 
                 });
                 $.jStorage.set("pillowimages", $scope.pillowImages);
-
-                //                if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
-                //                    $scope.pillowImages = [
-                //                        [{
-                //                            name: 'three',
-                //                            img: resultImage[0],
-                //                            opacity: ''
-                //                        }]
-                //                    ];
-                //                } else {
-                //                    $scope.pillowImages.push([{
-                //                        name: 'three',
-                //                        img: resultImage[0],
-                //                        opacity: ''
-                //                    }]);
-                //                    console.log($scope.pillowImages);
-                //                }
                 $scope.modal.hide();
 
             }, function(err) {
