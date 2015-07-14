@@ -152,7 +152,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                 });
                 $.jStorage.set("pillowimages", $scope.pillowImages);
                 $scope.modal.hide();
-
+//
             }, function(err) {
                 // An error occured. Show a message to the user
             });

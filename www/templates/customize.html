@@ -2,7 +2,7 @@
     <ion-content overflow-scroll="true" has-bouncing="false">
 
         <div class="text-center mt40">
-<!--
+            <!--
 
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==2">
                 <div class="flex-box">
@@ -17,10 +17,10 @@
                 </div>
             </div>
 -->
-		   
-		   
-<!--		   FOR 1 IMAGE-->
-		   
+
+
+            <!--		   FOR 1 IMAGE-->
+
             <div class="maskimg m0auto rowof1" ng-if="pillowImages.length==1">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -28,14 +28,14 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 2 IMAGES-->
-		   
+
+            <!--		   FOR 2 IMAGES-->
+
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==2">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[0]"></div>
-					
+
                     </div>
                 </div>
                 <div class="flex-box">
@@ -44,9 +44,9 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 3 IMAGES-->
-		   
+
+            <!--		   FOR 3 IMAGES-->
+
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==3">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -62,9 +62,9 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 4 IMAGES-->
-		   
+
+            <!--		   FOR 4 IMAGES-->
+
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==4">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -78,14 +78,14 @@
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2, $data,$event)" ng-click="getImageId('img3', 2)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[2]"></div>
                     </div>
-                    <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3, $data,$event)"  ng-click="getImageId('img4', 3)">
+                    <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3, $data,$event)" ng-click="getImageId('img4', 3)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[3]"></div>
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 5 IMAGES-->
-		   
+
+            <!--		   FOR 5 IMAGES-->
+
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==5">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -107,15 +107,15 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 6 IMAGES-->
-		   
+
+            <!--		   FOR 6 IMAGES-->
+
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==6">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[0]"></div>
                     </div>
-                    <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img2, 1)">
+                    <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img2', 1)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[1]"></div>
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img3', 2)">
@@ -134,9 +134,9 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 7 IMAGES-->
-		   
+
+            <!--		   FOR 7 IMAGES-->
+
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==7">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -166,9 +166,9 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 8 IMAGES-->
-		   
+
+            <!--		   FOR 8 IMAGES-->
+
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==8">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -201,9 +201,9 @@
                     </div>
                 </div>
             </div>
-		   
-<!--		   FOR 9 IMAGES-->
-		   
+
+            <!--		   FOR 9 IMAGES-->
+
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==9">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
