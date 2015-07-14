@@ -73,7 +73,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     ];
     //    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
     var options = {
-        maximumImagesCount: 1,
+        maximumImagesCount: 9,
         width: 800,
         height: 800,
         quality: 80
