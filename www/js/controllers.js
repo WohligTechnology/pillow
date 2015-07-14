@@ -230,7 +230,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         console.log(imgid);
         console.log(mykey);
         console.log($scope.pillowImages);
-        if ($scope.dropstatus == "true") {
+        if ($scope.dropstatus == "false") {
             _.forEach($scope.pillowImages, function(n, key) {
                 $scope.pillowImages[key][0].opacity = "img_opacity";
                 $scope.pillowImages[mykey][0].opacity = "";
