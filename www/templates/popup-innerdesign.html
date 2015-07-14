@@ -1,0 +1,32 @@
+ <ion-modal-view>
+    <div class="bar bar-header bar-positive">
+        <h1 class="title">Create</h1>
+        <button class="button button-clear icon-right ln-cross small-icon" ng-click="closeModal();"></button>
+    </div>
+    <ion-content class="has-header">
+        <div>
+            <div class="item item-divider">Design a product with your photos</div>
+            <ion-list class="pad-item">
+               <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="uploadPhoto();">
+                   <i class="icon ln-photo"></i>
+                    Camera
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="closeModal();">
+                   <i class="icon ln-picture"></i>
+                    Gallery
+                </ion-item>
+                <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="closeModal();">
+                   <i class="icon ion-social-facebook"></i>
+                    Facebook
+                </ion-item>
+            </ion-list>
+<!--
+            <div class="padding">
+                <button class="button button-block button-outline button-positive" ng-click="closeModal();">
+                    Cancel
+                </button>
+            </div>
+-->
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -136,6 +136,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                     }]);
                     console.log($scope.pillowImages);
                 }
+			  $scope.modal.hide();
 
             }, function(err) {
                 // An error occured. Show a message to the user
@@ -157,7 +158,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     };
 
     //modal for picture
-    $ionicModal.fromTemplateUrl('templates/popup-design.html', {
+    $ionicModal.fromTemplateUrl('templates/popup-innerdesign.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
