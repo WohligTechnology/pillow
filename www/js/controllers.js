@@ -63,9 +63,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //ngDraggable
     $scope.blurclass = "";
     $scope.dropstatus = "true";
-	$scope.pillowImages = [];
-	$scope.pillowImages = $.jStorage.get("pillowimages");
-    if ($scope.pillowImages.length == 0) {
+    if ($.jStorage.get("pillowimages")==null) {
         $scope.pillowImages = [
             [{
                 name: 'one',
@@ -73,6 +71,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                 opacity: ''
             }]
         ];
+    }else{
+	    $scope.pillowImages = $.jStorage.get("pillowimages");
     }
     //    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
     var options = {
