@@ -56,21 +56,21 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     $scope.closeModal = function() {
         $scope.modal.hide();
     };
-	
-	var options = {
+
+    var options = {
         maximumImagesCount: 9,
         width: 800,
         height: 800,
         quality: 80
     };
-	
-	$scope.pillowImages = [
-                [{
-                    name: 'one',
-                    img: 'img/demo1.jpg',
-                    opacity: ''
-                }]
-            ];
+
+    $scope.pillowImages = [
+        [{
+            name: 'one',
+            img: 'img/demo1.jpg',
+            opacity: ''
+        }]
+    ];
 
 
     $scope.uploadPhoto = function() {
@@ -147,15 +147,26 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         $scope.pillowImages = $.jStorage.get("pillow");
     }
     var options = {
-        maximumImagesCount: 9,
-        width: 800,
-        height: 800,
-        quality: 80
+//        maximumImagesCount: 9,
+//        width: 800,
+//        height: 800,
+        quality: 80,
+        sourceType: Camera.PictureSourceType.CAMERA,
     };
 
     $scope.newfun = function(index) {
         console.log(index);
     }
+
+    //	CLICK PHOTO
+
+    $scope.clickPhoto = function() {
+
+    }
+
+
+
+    //	UPLOAD PHOTO
 
     $scope.uploadPhoto = function() {
         console.log("picture");
