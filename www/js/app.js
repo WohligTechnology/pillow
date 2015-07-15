@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
             views: {
                 'menuContent': {
                     templateUrl: "templates/home.html",
-                    controller: 'HomeCtrl'
+                    controller: 'CustomizeCtrl'
                 }
             }
         })
