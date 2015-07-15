@@ -41,6 +41,7 @@
     <access origin="*" />
     <gap:plugin name="com.ionic.keyboard" />
     <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     
