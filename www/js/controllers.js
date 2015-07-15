@@ -108,7 +108,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //	CLICK PHOTO
     
     
-    $scope.callback = function(result){
+    var callback = function(result){
 	    console.log(result);
     };
 
