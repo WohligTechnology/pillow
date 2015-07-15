@@ -45,11 +45,18 @@
     <gap:plugin name="org.apache.cordova.file-transfer" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
-    
+
     <gap:plugin name="com.synconset.imagepicker" version="1.0.4" />
-    
+
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" source="plugins.cordova.io" />
+
+    <feature name="File">
+        <param name="ios-package" value="CDVFile" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="ios-package" value="CDVFileTransfer" />
+    </feature>
 
     <feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" onload="true" />
