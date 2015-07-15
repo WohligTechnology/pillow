@@ -63,25 +63,24 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //ngDraggable
     $scope.blurclass = "";
     $scope.dropstatus = "true";
-	$scope.pillowImages = [
-            [{
-                name: 'one',
-                img: 'img/demo1.jpg',
-                opacity: ''
-            }]
-        ];
-//    if ($.jStorage.get("pillowimages")==null) {
-//        $scope.pillowImages = [
+//	$scope.pillowImages = [
 //            [{
 //                name: 'one',
 //                img: 'img/demo1.jpg',
 //                opacity: ''
 //            }]
 //        ];
-//    }else{
-//	    $scope.pillowImages = $.jStorage.get("pillowimages");
-//    }
-    //    $scope.pillowImages = partitionarray($scope.pillowImagess, 3);
+    if ($.jStorage.get("pillowimages")==null) {
+        $scope.pillowImages = [
+            [{
+                name: 'one',
+                img: 'img/demo1.jpg',
+                opacity: ''
+            }]
+        ];
+    }else{
+	    $scope.pillowImages = $.jStorage.get("pillowimages");
+    }
     var options = {
         maximumImagesCount: 9,
         width: 800,
