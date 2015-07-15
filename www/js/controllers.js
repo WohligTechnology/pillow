@@ -106,8 +106,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     $scope.clickPhoto = function() {
 
         $cordovaCamera.getPicture(options1).then(function(imageData) {
-            var image = document.getElementById('myImage');
-            image.src = "data:image/jpeg;base64," + imageData;
+            console.log(imageData);
         }, function(err) {
             // error
         });
