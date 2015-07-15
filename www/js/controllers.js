@@ -81,10 +81,18 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     } else {
         $scope.pillowImages = $.jStorage.get("pillow");
     }
+    var options1 = {
+        //        maximumImagesCount: 9,
+        //        width: 800,
+        //        height: 800,
+        quality: 80,
+        sourceType: Camera.PictureSourceType.CAMERA,
+    };
+
     var options = {
-//        maximumImagesCount: 9,
-//        width: 800,
-//        height: 800,
+        maximumImagesCount: 9,
+        width: 800,
+        height: 800,
         quality: 80,
         sourceType: Camera.PictureSourceType.CAMERA,
     };
@@ -97,6 +105,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 
     $scope.clickPhoto = function() {
 
+        $cordovaCamera.getPicture(options1).then(function(imageData) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+        }, function(err) {
+            // error
+        });
     }
 
 
