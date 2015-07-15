@@ -57,7 +57,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         $scope.modal.hide();
     };
 	
-
+	var options = {
+        maximumImagesCount: 9,
+        width: 800,
+        height: 800,
+        quality: 80
+    };
+	
 	$scope.pillowImages = [
                 [{
                     name: 'one',
