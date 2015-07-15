@@ -112,7 +112,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                     }
 
                 });
-                $.jStorage.set("pillowimages", $scope.pillowImages);
+                $.jStorage.set("pillow", $scope.pillowImages);
                 $scope.modal.hide();
                 //
             }, function(err) {
@@ -135,7 +135,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //                opacity: ''
     //            }]
     //        ];
-    if ($.jStorage.get("pillowimages") == null) {
+    if ($.jStorage.get("pillow") == null) {
         $scope.pillowImages = [
             [{
                 name: 'one',
@@ -144,7 +144,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
             }]
         ];
     } else {
-        $scope.pillowImages = $.jStorage.get("pillowimages");
+        $scope.pillowImages = $.jStorage.get("pillow");
     }
     var options = {
         maximumImagesCount: 9,
@@ -214,7 +214,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                     }
 
                 });
-                $.jStorage.set("pillowimages", $scope.pillowImages);
+                $.jStorage.set("pillow", $scope.pillowImages);
                 $scope.modal.hide();
                 //
             }, function(err) {
