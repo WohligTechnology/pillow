@@ -87,6 +87,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         //        height: 800,
         quality: 80,
         sourceType: Camera.PictureSourceType.CAMERA,
+	    allowEdit:true
     };
 
     var options = {
@@ -95,6 +96,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         height: 800,
         quality: 80,
         sourceType: Camera.PictureSourceType.CAMERA,
+	  	allowEdit: true
+	   
     };
 
     $scope.newfun = function(index) {
@@ -106,6 +109,23 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     $scope.clickPhoto = function() {
 
         $cordovaCamera.getPicture(options1).then(function(imageData) {
+		   if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
+                        $scope.pillowImages = [
+                            [{
+                                name: 'three',
+                                img: imageData,
+                                opacity: ''
+                            }]
+                        ];
+                    } else {
+                        $scope.pillowImages.push([{
+                            name: 'three',
+                            img: imageData,
+                            opacity: ''
+                        }]);
+                        console.log($scope.pillowImages);
+                    }
+
             console.log(imageData);
         }, function(err) {
             // error
