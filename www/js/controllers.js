@@ -1,3 +1,4 @@
+var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -105,6 +106,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     }
 
     //	CLICK PHOTO
+    
+    
+    $scope.callback = function(result){
+	    console.log(result);
+    };
 
     $scope.clickPhoto = function() {
 
@@ -125,14 +131,25 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
                         }]);
                         console.log($scope.pillowImages);
                     }
+		   
+		   $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
+			.then(function (result) {
+				console.log(result);
+				var data = JSON.parse(result.response);
+				callback(data);
+			}, function (err) {
+				console.log(err);
+			}, function (progress) {
+				console.log("progress");
+			});
 
             console.log(imageData);
         }, function(err) {
             // error
         });
     }
-
-
+    
+   
 
     //	UPLOAD PHOTO
 
