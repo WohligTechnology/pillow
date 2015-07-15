@@ -41,7 +41,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     };
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $timeout) {
+.controller('HomeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
     $ionicModal.fromTemplateUrl('templates/popup-design.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -56,8 +56,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     $scope.closeModal = function() {
         $scope.modal.hide();
     };
+	
 
-
+	$scope.pillowImages = [
+                [{
+                    name: 'one',
+                    img: 'img/demo1.jpg',
+                    opacity: ''
+                }]
+            ];
 
 
     $scope.uploadPhoto = function() {
