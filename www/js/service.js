@@ -14,6 +14,10 @@ myservices.factory('MyServices', function ($http) {
     returnval.login = function () {
             return "hello";
         };
+	
+    returnval.getFacebook = function () {
+            return "hello";
+        };
 
     return returnval;
 });

@@ -2,25 +2,30 @@
     <ion-content overflow-scroll="true" has-bouncing="false">
 
         <div class="text-center mt40">
-            <!--
-
-            <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==2">
-                <div class="flex-box">
-                    <div class="box-in" ng-repeat="image in pillowImages" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete($index, $data,$event)">
-                        <div class="drag-box frame2 {{pillow.opacity}}" id="img1" style="background-image: url('{{image.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="image"></div>
-                    </div>
-                </div>
-                <div class="flex-box">
-                    <div class="box-in" ng-repeat="image in pillowImages" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete($index, $data,$event)">
-                        <div class="drag-box frame2 {{pillow.opacity}}" id="img1" style="background-image: url('{{image.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="image"></div>
-                    </div>
-                </div>
-            </div>
--->
-
 
             <!--		   FOR 1 IMAGE-->
 
+<!--      START    IMAGE MOVE TEST HERE-->
+           
+           
+            <div class="maskimg m0auto rowof1" ng-if="pillowImages.length==1">
+                <div class="flex-box">
+                <img my-draggable dr-src="tb"></img>
+<!--
+                    <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
+                        <div class="drag-box frame2 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[0]"></div>
+                    </div>
+-->
+                </div>
+            </div>
+            
+            
+            
+<!--      START    IMAGE MOVE TEST HERE-->
+           
+<!--           MAIN CODE STARTS HERE-->
+            
+<!--
             <div class="maskimg m0auto rowof1" ng-if="pillowImages.length==1">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
@@ -28,6 +33,7 @@
                     </div>
                 </div>
             </div>
+-->
 
             <!--		   FOR 2 IMAGES-->
 
