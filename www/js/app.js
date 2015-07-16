@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
 
-.run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -20,10 +20,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-        .state('app', {
+    .state('app', {
         url: "/app",
         abstract: true,
         templateUrl: "templates/menu.html",
@@ -41,13 +41,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     })
 
     .state('app.browse', {
-            url: "/browse",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/browse.html"
-                }
+        url: "/browse",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/browse.html"
             }
-        })
+        }
+    })
         .state('app.home', {
             url: "/home",
             views: {
@@ -107,14 +107,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     })
 
     .state('app.customize', {
-            url: "/customize",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/customize.html",
-                    controller: 'CustomizeCtrl'
-                }
+        url: "/customize",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/customize.html",
+                controller: 'CustomizeCtrl'
             }
-        })
+        }
+    })
         .state('app.time', {
             url: "/time",
             views: {
@@ -132,66 +132,78 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     return {
         restrict: 'EA',
         replace: true,
-        scope: {image: '=drSrc'},
+        scope: {
+            image: '=drSrc'
+        },
         template: '<img src="{{image.blob_url}}">',
         link: function(scope, element, attr) {
-      var startX = 0, startY = 0, x = scope.image.x || 0, y = scope.image.y || 0;
- 
-      element.css({
-       position: 'relative',
-       cursor: 'pointer'
-      });
- 
-      element.on('mousedown', function(event) {
-        // Prevent default dragging of selected content
-        event.preventDefault();
-        startX = event.pageX - x;
-        startY = event.pageY - y;
-        $document.on('mousemove', mousemove);
-        $document.on('mouseup', mouseup);
-      });
- 
-      function mousemove(event) {
-        y = event.pageY - startY;
-        x = event.pageX - startX;
-        element.css({
-          top: y + 'px',
-          left:  x + 'px'
-        });
-      }
- 
-      function mouseup() {
-        $document.unbind('mousemove', mousemove);
-        $document.unbind('mouseup', mouseup);
-      }
-    }
-    
-    }
-  })
+            var startX = 0,
+                startY = 0,
+                x = scope.image.x || 0,
+                y = scope.image.y || 0;
 
-.filter('timeFilter', function () {
-    return function (value, max) {
-      if (value == max) return 'All';
-      var h = parseInt(value / 60);
-      var m = parseInt(value % 60);
-      var hStr = (h > 0) ? h >= 10 ? h  : '0' + h : '00';
-      var mStr = (m > 0) ? m >= 10 ? m  : '0' + m : '00';
-      var glue = (hStr && mStr) ? ':' : '';
-      return hStr + glue + mStr;
+            element.css({
+                position: 'absolute',
+                cursor: 'pointer',
+                top: y + 'px',
+                left: x + 'px'
+            });
+
+            element.on('mousedown', function(event) {
+                // Prevent default dragging of selected content
+                event.preventDefault();
+                startX = event.pageX - x;
+                startY = event.pageY - y;
+                $document.on('mousemove', mousemove);
+                $document.on('mouseup', mouseup);
+            });
+
+            function mousemove(event) {
+			  console.log(event);
+                y = event.pageY - startY;
+                x = event.pageX - startX;
+			  console.log(x);
+			  console.log(y);
+			  if(y<0){
+                element.css({
+                    top: y + 'px',
+                    left: x + 'px'
+                });
+			  }	
+            }
+
+            function mouseup() {
+                $document.unbind('mousemove', mousemove);
+                $document.unbind('mouseup', mouseup);
+            }
+        }
+
+    }
+})
+
+.filter('timeFilter', function() {
+    return function(value, max) {
+        if (value == max) return 'All';
+        var h = parseInt(value / 60);
+        var m = parseInt(value % 60);
+        var hStr = (h > 0) ? h >= 10 ? h : '0' + h : '00';
+        var mStr = (m > 0) ? m >= 10 ? m : '0' + m : '00';
+        var glue = (hStr && mStr) ? ':' : '';
+        return hStr + glue + mStr;
     };
-  });
+});
 
 
 function partitionarray(myarray, number) {
-            var arrlength = myarray.length;
-            var newarray = [];
-            var j = -1;
-            for (var i = 0; i < arrlength; i++) {
-                if (i % number == 0) {
-                    j++;
-                    newarray[j] = [];
-                }
-                newarray[j].push(myarray[i]);
-            }
-            return newarray;
-        };
+    var arrlength = myarray.length;
+    var newarray = [];
+    var j = -1;
+    for (var i = 0; i < arrlength; i++) {
+        if (i % number == 0) {
+            j++;
+            newarray[j] = [];
+        }
+        newarray[j].push(myarray[i]);
+    }
+    return newarray;
+};

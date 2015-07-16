@@ -61,14 +61,21 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
 
 .controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
+
+
+
+
+
+
+
+
     //ngDraggable
     $scope.blurclass = "";
     $scope.dropstatus = "true";
-	$scope.tb = {height:"667", width:"1000",x:20, y:30, blob_url:"img/demo1.jpg"};
     $scope.pillowImages = [
         [{
-            name: 'one',
-            img: 'img/demo1.jpg',
+            name: 'three',
+            img: "img/demo1.jpg",
             opacity: ''
         }]
     ];
@@ -88,7 +95,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         //        width: 800,
         //        height: 800,
         quality: 80,
-//        sourceType: Camera.PictureSourceType.CAMERA,
+        //        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
@@ -97,7 +104,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         width: 800,
         height: 800,
         quality: 80,
-//        sourceType: Camera.PictureSourceType.CAMERA,
+        //        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -164,9 +171,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
             $timeout(function() {
                 alertPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
-		   
+
         } else {
-		   
+
             if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
                 $scope.pillowImages = [
                     [{
@@ -317,6 +324,76 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
         }
 
     };
+
+
+    $scope.onDrag = function(evt) {
+        console.log(evt);
+
+        switch (evt.gesture.direction) {
+            case "down":
+                    var x = document.getElementById("imgtest").style.backgroundPositionY;
+                    var index = x.indexOf("px");
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById("imgtest").style.backgroundPositionY = "1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var down = parseInt(x) + 1;
+                        console.log("Down=" + down);
+                        document.getElementById("imgtest").style.backgroundPositionY = down + "px";
+                    }
+                break;
+            case "up":
+                    var x = document.getElementById("imgtest").style.backgroundPositionY;
+                    var index = x.indexOf("px");
+                    console.log(index);
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById("imgtest").style.backgroundPositionY = "-1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var up = parseInt(x) - 1;
+                        console.log("Up=" + up);
+                        document.getElementById("imgtest").style.backgroundPositionY = up + "px";
+                    }
+                break;
+            case "left":
+                    var x = document.getElementById("imgtest").style.backgroundPositionX;
+                    var index = x.indexOf("px");
+                    console.log(index);
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById("imgtest").style.backgroundPositionX = "-1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var left = parseInt(x) - 1;
+                        console.log("Left=" + left);
+                        document.getElementById("imgtest").style.backgroundPositionX = left + "px";
+                    }
+                break;
+            case "right":
+                    var x = document.getElementById("imgtest").style.backgroundPositionX;
+                    var index = x.indexOf("px");
+                    console.log(index);
+                    if (index == -1) {
+                        console.log(index);
+                        document.getElementById("imgtest").style.backgroundPositionX = "1px";
+                    } else {
+                        x = x.substr(0, index);
+                        console.log(x);
+                        var right = parseInt(x) + 1;
+                        console.log("Right=" + right);
+                        document.getElementById("imgtest").style.backgroundPositionX = right + "px";
+                    }
+                break;
+        }
+    }
+
+
+
 
     $scope.moveImg = function(str, ishold) {
         console.log(imgid);
