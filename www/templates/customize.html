@@ -10,7 +10,7 @@
            
             <div class="maskimg m0auto rowof1" ng-if="pillowImages.length==1">
                 <div class="flex-box">
-                <img my-draggable dr-src="tb"></img>
+                <img my-draggable dr-src="tb" style="position:absolute!important;"></img>
 <!--
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
                         <div class="drag-box frame2 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]" style="background-image: url('{{pillow.img}}');" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[0]"></div>

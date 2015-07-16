@@ -64,7 +64,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices']
     //ngDraggable
     $scope.blurclass = "";
     $scope.dropstatus = "true";
-	$scope.tb = {height:"auto", width:"auto",x:20, y:30, blob_url:"img/demo1.jpg"};
+	$scope.tb = {height:"667", width:"1000",x:20, y:30, blob_url:"img/demo1.jpg"};
     $scope.pillowImages = [
         [{
             name: 'one',
