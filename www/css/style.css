@@ -8,8 +8,6 @@
 .profile img {
     width: 30%;
     margin: 15px 0 5px 0;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
     border-radius: 50%;
 }
 .profile h4 {
@@ -111,8 +109,6 @@
     color: #fff;
     min-height: 29px;
     line-height: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
     padding: 0 70px;
     font-size: 18px;
@@ -135,8 +131,6 @@
 button.button.create-btn.activated {
     border-color: #a6a6a6;
     background-color: #a6a6a6;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
     ;
 }
@@ -249,14 +243,12 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .flex-box {
     display: -webkit-box;
     display: -webkit-flex;
-    display: -moz-box;
     display: -ms-flexbox;
     display: flex;
 }
 .box-in {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
-    -moz-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
 }
@@ -265,14 +257,12 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 }
 .rowof2 .drag-box {
     height: 120px;
+    overflow: hidden;
 }
 .rowof3 .drag-box {
     height: 80px;
 }
 .drag-box {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-position: 0 0;
     background-repeat: no-repeat;
@@ -282,7 +272,6 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
     background-image: url(../img/demo.jpg);
 }
 .frame2 {
-    background-image: url(../img/demo1.jpg);
 }
 .img_opacity{
     opacity:0.3;

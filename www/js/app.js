@@ -128,6 +128,86 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     $urlRouterProvider.otherwise('/app/home');
 })
 
+.directive('dragbox', function() {
+    return {
+        link: function(scope, element, attr) {
+            function createwidthdragger(element2, width) {
+
+                ionic.on("touchmove", function(data) {
+                    console.log("width");
+                    console.log(data);
+                }, element2);
+            }
+
+            function createheightdragger(element2, dimensions) {
+
+                var lastdata = {};
+
+                ionic.on("touchmove", function(data) {
+                    if (lastdata.touches) {
+                        if (!isdragger) {
+                            var currentmargin = -1 * parseInt($(element2).css("margin-top"));
+                            var changemargin = lastdata.touches[0].clientY - data.touches[0].clientY;
+                            if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight > (changemargin + currentmargin) && (changemargin + currentmargin) > 0) {
+                                $(element2).css("margin-top", -1 * (changemargin + currentmargin));
+                            } else if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight <= (changemargin + currentmargin)) {
+                                $(element2).css("margin-top", -1 * dimensions.differenceheight);
+                            } else if (changemargin < 10 && changemargin > -10 && (changemargin + currentmargin) < 0) {
+                                $(element2).css("margin-top", 0);
+                            }
+
+                        }
+                    }
+                    lastdata = data;
+
+
+
+
+
+                }, element2);
+            }
+
+
+
+
+            var myelem = {};
+            var imagedim = {};
+            $element = $(element);
+            myelem.height = $element.height();
+            myelem.width = $element.width();
+            myelem.ratio = myelem.width / myelem.height;
+            $element.children("img").load(function() {
+                imagedim.height = $(this).height();
+                imagedim.width = $(this).width();
+                imagedim.ratio = imagedim.width / imagedim.height;
+
+                if (myelem.ratio == imagedim.ratio) {
+                    $(this).css("width", "100%");
+                } else if (myelem.ratio > imagedim.ratio) {
+                    $(this).css("width", "100%");
+                    imagedim.same = "width";
+                    imagedim.newwidth = myelem.width;
+                    imagedim.newheight = imagedim.height * imagedim.newwidth / imagedim.width;
+                    imagedim.differenceheight = imagedim.newheight - myelem.height;
+
+                    console.log("JAgruti");
+
+                    createheightdragger(this, imagedim);
+                } else {
+                    $(this).css("height", "100%");
+                    imagedim.same = "height";
+                    imagdim.newheight = myelem.height;
+                    imagdim.newwidth = imagedim.newheight * imagedim.width / imagedim.height;
+                    imagedim.differencewidth = imagedim.newwidth - myelem.width;
+                    createwidthdragger(this, imagedim);
+                }
+                console.log(imagedim);
+                console.log(myelem);
+            });
+        }
+    };
+})
+
 .directive('myDraggable', function($document) {
     return {
         restrict: 'EA',
@@ -159,17 +239,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
             });
 
             function mousemove(event) {
-			  console.log(event);
+                console.log(event);
                 y = event.pageY - startY;
                 x = event.pageX - startX;
-			  console.log(x);
-			  console.log(y);
-			  if(y<0){
-                element.css({
-                    top: y + 'px',
-                    left: x + 'px'
-                });
-			  }	
+                console.log(x);
+                console.log(y);
+                if (y < 0) {
+                    element.css({
+                        top: y + 'px',
+                        left: x + 'px'
+                    });
+                }
             }
 
             function mouseup() {
