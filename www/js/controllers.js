@@ -199,7 +199,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             
                             _.forEach(resultImage, function(n, key) {
             
-                                if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
+                                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                                     $scope.pillowImages = [
                                         [{
                                             name: 'three',
