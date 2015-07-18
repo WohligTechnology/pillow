@@ -5,7 +5,8 @@
 
 var isdragger = false;
 var lastmargin = 0;
-
+var lastmarginleft = 0;
+var canceldrag = {};
 angular.module("ngDraggable", [])
     .service('ngDraggable', [
 
@@ -126,9 +127,11 @@ angular.module("ngDraggable", [])
                             // Do not start dragging on right-click
                             return;
                         }
+                     
 
                         if (_hasTouch) {
                             cancelPress();
+                            canceldrag = cancelPress;
                             _pressTimer = setTimeout(function() {
                                 cancelPress();
                                 onlongpress(evt);
@@ -136,9 +139,10 @@ angular.module("ngDraggable", [])
 
                                 isdragger = true;
                                 lastmargin = $(element).children("img").css("margin-top");
+                                lastmarginleft = $(element).children("img").css("margin-left");
 
-                            }, 1000);
-                            $document.on(_moveEvents, cancelPress);
+                            }, 500);
+                            //$document.on(_moveEvents, cancelPress);
                             $document.on(_releaseEvents, cancelPress);
                         } else {
                             onlongpress(evt);
@@ -262,7 +266,7 @@ angular.module("ngDraggable", [])
                     var onDragComplete = function(evt) {
 
                         isdragger = false;
-					
+
                         if (!onDragSuccessCallback) return;
 
                         scope.$apply(function() {

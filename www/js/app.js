@@ -131,47 +131,111 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
 .directive('dragbox', function() {
     return {
         link: function(scope, element, attr) {
-            function createwidthdragger(element2, width) {
+            var lastdata = {};
+
+            var myelem = {};
+            var imagedim = {};
+
+
+            function movetouches(data, element2, dimensions, what) {
+
+                var margin = "";
+                if (what == "height") {
+                    margin = "margin-top";
+
+                } else {
+                    margin = "margin-left";
+                }
+
+                var newtouch = {
+                    newx: 0,
+                    newy: 0
+                };
+                var newx = 0;
+                var newy = 0;
+                if (data.x) {
+                    newtouch.newx = data.x;
+                    newtouch.newy = data.y;
+                } else if (data.layerX && data.layerX != 0) {
+                    newtouch.newx = data.layerX;
+                    newtouch.newy = data.layerY;
+                } else if (data.touches) {
+                    newtouch.newx = data.touches[0].clientX;
+                    newtouch.newy = data.touches[0].clientY;
+                }
+                if (lastdata.newx) {
+                    if (!isdragger) {
+
+                        var currentmargin = -1 * parseInt($(element2).css(margin));
+                        if (what == "height") {
+                            var changemargin = lastdata.newy - newtouch.newy;
+                        } else {
+                            var changemargin = lastdata.newx - newtouch.newx;
+                        }
+
+                        if ((changemargin >= 4 || changemargin <= -4) && (changemargin < 10 && changemargin > -10)) {
+
+                            canceldrag();
+                        };
+
+
+                        if (what == "height") {
+                            if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight > (changemargin + currentmargin) && (changemargin + currentmargin) > 0) {
+                                $(element2).css(margin, -1 * (changemargin + currentmargin));
+                            } else if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight <= (changemargin + currentmargin)) {
+                                $(element2).css(margin, -1 * dimensions.differenceheight);
+                            } else if (changemargin < 10 && changemargin > -10 && (changemargin + currentmargin) < 0) {
+                                $(element2).css(margin, 0);
+                            }
+                        } else {
+                            if (changemargin < 10 && changemargin > -10 && dimensions.differencewidth > (changemargin + currentmargin) && (changemargin + currentmargin) > 0) {
+                                $(element2).css(margin, -1 * (changemargin + currentmargin));
+                            } else if (changemargin < 10 && changemargin > -10 && dimensions.differencewidth <= (changemargin + currentmargin)) {
+                                $(element2).css(margin, -1 * dimensions.differencewidth);
+                            } else if (changemargin < 10 && changemargin > -10 && (changemargin + currentmargin) < 0) {
+                                $(element2).css(margin, 0);
+                            }
+
+                        }
+
+
+                    }
+                }
+                lastdata = newtouch;
+
+
+
+
+
+            }
+
+            function createwidthdragger(element2, dimensions) {
 
                 ionic.on("touchmove", function(data) {
-                    console.log("width");
-                    console.log(data);
+                    movetouches(data, element2, dimensions, "width");
+                }, element2);
+                ionic.on("mousemove", function(data) {
+                    movetouches(data, element2, dimensions, "width");
                 }, element2);
             }
 
             function createheightdragger(element2, dimensions) {
 
-                var lastdata = {};
+
 
                 ionic.on("touchmove", function(data) {
-                    if (lastdata.touches) {
-                        if (!isdragger) {
-                            var currentmargin = -1 * parseInt($(element2).css("margin-top"));
-                            var changemargin = lastdata.touches[0].clientY - data.touches[0].clientY;
-                            if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight > (changemargin + currentmargin) && (changemargin + currentmargin) > 0) {
-                                $(element2).css("margin-top", -1 * (changemargin + currentmargin));
-                            } else if (changemargin < 10 && changemargin > -10 && dimensions.differenceheight <= (changemargin + currentmargin)) {
-                                $(element2).css("margin-top", -1 * dimensions.differenceheight);
-                            } else if (changemargin < 10 && changemargin > -10 && (changemargin + currentmargin) < 0) {
-                                $(element2).css("margin-top", 0);
-                            }
-
-                        }
-                    }
-                    lastdata = data;
-
-
-
-
-
+                    movetouches(data, element2, dimensions, "height");
+                }, element2);
+                ionic.on("mousemove", function(data) {
+                    movetouches(data, element2, dimensions, "height");
                 }, element2);
             }
 
 
 
 
-            var myelem = {};
-            var imagedim = {};
+            //            var myelem = {};
+            //            var imagedim = {};
             $element = $(element);
             myelem.height = $element.height();
             myelem.width = $element.width();
@@ -186,23 +250,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
                 } else if (myelem.ratio > imagedim.ratio) {
                     $(this).css("width", "100%");
                     imagedim.same = "width";
+                    console.log("width same");
                     imagedim.newwidth = myelem.width;
                     imagedim.newheight = imagedim.height * imagedim.newwidth / imagedim.width;
                     imagedim.differenceheight = imagedim.newheight - myelem.height;
 
-                    console.log("JAgruti");
+
 
                     createheightdragger(this, imagedim);
                 } else {
                     $(this).css("height", "100%");
                     imagedim.same = "height";
-                    imagdim.newheight = myelem.height;
-                    imagdim.newwidth = imagedim.newheight * imagedim.width / imagedim.height;
+                    console.log("height same");
+                    imagedim.newheight = myelem.height;
+                    imagedim.newwidth = imagedim.newheight * imagedim.width / imagedim.height;
                     imagedim.differencewidth = imagedim.newwidth - myelem.width;
                     createwidthdragger(this, imagedim);
                 }
-                console.log(imagedim);
-                console.log(myelem);
+
             });
         }
     };
@@ -239,11 +304,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
             });
 
             function mousemove(event) {
-                console.log(event);
                 y = event.pageY - startY;
                 x = event.pageX - startX;
-                console.log(x);
-                console.log(y);
+
                 if (y < 0) {
                     element.css({
                         top: y + 'px',
