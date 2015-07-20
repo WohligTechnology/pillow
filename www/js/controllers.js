@@ -94,6 +94,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
+	
+    var options2 = {
+        quality: 80,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true,
+	    cameraDirection  : 1
+    };
 
     var options = {
         maximumImagesCount: 9,
@@ -127,6 +134,53 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }, 3000);
         } else {
             $cordovaCamera.getPicture(options1).then(function(imageData) {
+                if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
+                    $scope.pillowImages = [
+                        [{
+                            name: 'three',
+                            img: imageData,
+                            opacity: ''
+                        }]
+                    ];
+                } else {
+                    $scope.pillowImages.push([{
+                        name: 'three',
+                        img: imageData,
+                        opacity: ''
+                    }]);
+                    console.log($scope.pillowImages);
+                }
+
+                $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
+                    .then(function(result) {
+                        console.log(result);
+                        var data = JSON.parse(result.response);
+                        callback(data);
+                    }, function(err) {
+                        console.log(err);
+                    }, function(progress) {
+                        console.log("progress");
+                    });
+
+                console.log(imageData);
+            }, function(err) {
+                // error
+            });
+        }
+    }
+
+
+    $scope.clickPhotoFront = function() {
+
+        if ($scope.pillowImages.length == 9) {
+            var alertPopup = $ionicPopup.show({
+                title: "Number Of Images Excceds!",
+            });
+            $timeout(function() {
+                alertPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+        } else {
+            $cordovaCamera.getPicture(options2).then(function(imageData) {
                 if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
                     $scope.pillowImages = [
                         [{
