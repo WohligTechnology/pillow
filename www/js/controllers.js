@@ -286,6 +286,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
                 });
 			  console.log($.jStorage.get("num"));
+			options.maximumImagesCount = $.jStorage.get("num");
+			  console.log(options);
                 $.jStorage.set("pillow", $scope.pillowImages);
                 $scope.modal.hide();
                 //
