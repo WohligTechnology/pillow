@@ -181,7 +181,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }, 3000);
         } else {
             $cordovaCamera.getPicture(options2).then(function(imageData) {
-                if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
+                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                     $scope.pillowImages = [
                         [{
                             name: 'three',
