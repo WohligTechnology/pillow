@@ -266,6 +266,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 _.forEach(resultImage, function(n, key) {
 //				 $scope.num = $scope.num - 1;
 				 $.jStorage.set("num",$.jStorage.get("num")-1);
+				 options.maximumImagesCount = $.jStorage.get("num");
                     if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                         $scope.pillowImages = [
                             [{
