@@ -76,6 +76,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             name: 'three',
             img: "img/pillow.jpg",
             opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo1.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/pillow.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo1.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/pillow.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo.jpg",
+            opacity: ''
         }]
 
     ];
