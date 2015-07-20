@@ -64,6 +64,7 @@ angular.module("ngDraggable", [])
                         // check to see if drag handle(s) was specified
                         // if querySelectorAll is available, we use this instead of find
                         // as JQLite find is limited to tagnames
+
                         if (element[0].querySelectorAll) {
                             var dragHandles = angular.element(element[0].querySelectorAll('[ng-drag-handle]'));
                         } else {
@@ -134,6 +135,8 @@ angular.module("ngDraggable", [])
                             _pressTimer = setTimeout(function() {
                                 console.log("nomasking");
                                 $(".maskimg").addClass("nomasking");
+
+                                $("#delete").addClass("deletedrop");
                                 cancelPress();
                                 onlongpress(evt);
 
@@ -243,6 +246,7 @@ angular.module("ngDraggable", [])
 
                     var onrelease = function(evt) {
                         $(".maskimg").removeClass("nomasking");
+                        $("#delete").removeClass("deletedrop");
                         if (!_dragEnabled)
                             return;
                         evt.preventDefault();

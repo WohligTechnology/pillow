@@ -276,3 +276,24 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .nomasking {
     -webkit-mask-image: none !important;
 }
+.deletedrop {
+    opacity: 1 !important;
+}
+.removebox {
+    height: 47px;
+    border: 1px solid #fc515c;
+    background: transparent;
+    opacity: 0;
+    -webkit-transition: all 1s;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    line-height: 47px;
+    color: #fc515c;
+    font-size: 14px;
+    margin-bottom: -20px;
+}
+.removebox.drag-enter {
+    background: #fc515c;
+    color: white;
+}

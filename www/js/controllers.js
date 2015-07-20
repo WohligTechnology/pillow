@@ -72,7 +72,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.blurclass = "";
     $scope.dropstatus = "true";
     $scope.pillowImages = [
-        [{
+	    [{
             name: 'three',
             img: "img/pillow.jpg",
             opacity: ''
@@ -170,7 +170,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         } else {
 
-//            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+//            if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
 //                $scope.pillowImages = [
 //                    [{
 //                        name: 'three',
@@ -226,6 +226,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     }
 
+    // ON DROP DELETE
+    $scope.onDropDelete = function(data, evt){
+	    console.log($scope.pillowImages);
+	    $scope.pillowImages.splice($scope.deleteindex,1);
+	    if($scope.pillowImages.length==0){
+		    $scope.pillowImages = [
+                    [{
+                        name: 'three',
+                        img: 'img/pillow.jpg',
+                        opacity: ''
+                    }]
+                ];
+	    }
+    }
+    
+    
     $scope.onDropComplete = function(index, obj, evt) {
         abc = $element;
         console.log(index);
@@ -344,71 +360,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $scope.dragg = "true";
     }
 
-    $scope.onDrag = function(data, evt) {
-        console.log(data);
-        console.log(evt);
-
-        //        switch (evt.gesture.direction) {
-        //            case "down":
-        //                var x = document.getElementById(imgid).style.backgroundPositionY;
-        //                var index = x.indexOf("px");
-        //                if (index == -1) {
-        //                    console.log(index);
-        //                    document.getElementById(imgid).style.backgroundPositionY = "1px";
-        //                } else {
-        //                    x = x.substr(0, index);
-        //                    console.log(x);
-        //                    var down = parseInt(x) + 1;
-        //                    console.log("Down=" + down);
-        //                    document.getElementById(imgid).style.backgroundPositionY = down + "px";
-        //                }
-        //                break;
-        //            case "up":
-        //                var x = document.getElementById(imgid).style.backgroundPositionY;
-        //                var index = x.indexOf("px");
-        //                console.log(index);
-        //                if (index == -1) {
-        //                    console.log(index);
-        //                    document.getElementById(imgid).style.backgroundPositionY = "-1px";
-        //                } else {
-        //                    x = x.substr(0, index);
-        //                    console.log(x);
-        //                    var up = parseInt(x) - 1;
-        //                    console.log("Up=" + up);
-        //                    document.getElementById(imgid).style.backgroundPositionY = up + "px";
-        //                }
-        //                break;
-        //            case "left":
-        //                var x = document.getElementById(imgid).style.backgroundPositionX;
-        //                var index = x.indexOf("px");
-        //                console.log(index);
-        //                if (index == -1) {
-        //                    console.log(index);
-        //                    document.getElementById(imgid).style.backgroundPositionX = "-1px";
-        //                } else {
-        //                    x = x.substr(0, index);
-        //                    console.log(x);
-        //                    var left = parseInt(x) - 1;
-        //                    console.log("Left=" + left);
-        //                    document.getElementById(imgid).style.backgroundPositionX = left + "px";
-        //                }
-        //                break;
-        //            case "right":
-        //                var x = document.getElementById(imgid).style.backgroundPositionX;
-        //                var index = x.indexOf("px");
-        //                console.log(index);
-        //                if (index == -1) {
-        //                    console.log(index);
-        //                    document.getElementById(imgid).style.backgroundPositionX = "1px";
-        //                } else {
-        //                    x = x.substr(0, index);
-        //                    console.log(x);
-        //                    var right = parseInt(x) + 1;
-        //                    console.log("Right=" + right);
-        //                    document.getElementById(imgid).style.backgroundPositionX = right + "px";
-        //                }
-        //                break;
-        //        }
+    $scope.deleteindex = '';
+    $scope.ondrag = function(ind) {
+	    $scope.deleteindex = ind;
     }
 
 
