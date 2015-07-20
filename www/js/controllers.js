@@ -92,7 +92,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //    }
     var options1 = {
         quality: 80,
-        sourceType: Camera.PictureSourceType.CAMERA,
+        //        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
@@ -171,58 +171,58 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         } else {
 
-//            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
-//                $scope.pillowImages = [
-//                    [{
-//                        name: 'three',
-//                        img: 'img/demo1.jpg',
-//                        opacity: ''
-//                    }]
-//                ];
-//            } else {
-//                $scope.pillowImages.push([{
-//                    name: 'three',
-//                    img: 'img/demo.jpg',
-//                    opacity: ''
-//                }]);
-//                console.log($scope.pillowImages);
-//            }
+            if ($scope.pillowImages[0][0].img == 'img/demo.jpg') {
+                $scope.pillowImages = [
+                    [{
+                        name: 'three',
+                        img: 'img/demo1.jpg',
+                        opacity: ''
+                    }]
+                ];
+            } else {
+                $scope.pillowImages.push([{
+                    name: 'three',
+                    img: 'img/demo.jpg',
+                    opacity: ''
+                }]);
+                console.log($scope.pillowImages);
+            }
 
 
-                        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-                            // Success! Image data is here
-                            console.log("here in upload image");
-            
-                            console.log(resultImage);
-            
-                            $scope.cameraimage = resultImage[0];
-            
-                            _.forEach(resultImage, function(n, key) {
-            
-                                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-                                    $scope.pillowImages = [
-                                        [{
-                                            name: 'three',
-                                            img: resultImage[key],
-                                            opacity: ''
-                                        }]
-                                    ];
-                                } else {
-                                    $scope.pillowImages.push([{
-                                        name: 'three',
-                                        img: resultImage[key],
-                                        opacity: ''
-                                    }]);
-                                    console.log($scope.pillowImages);
-                                }
-            
-                            });
-                            $.jStorage.set("pillow", $scope.pillowImages);
-                            $scope.modal.hide();
-                            //
-                        }, function(err) {
-                            // An error occured. Show a message to the user
-                        });
+            //                        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            //                            // Success! Image data is here
+            //                            console.log("here in upload image");
+            //            
+            //                            console.log(resultImage);
+            //            
+            //                            $scope.cameraimage = resultImage[0];
+            //            
+            //                            _.forEach(resultImage, function(n, key) {
+            //            
+            //                                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+            //                                    $scope.pillowImages = [
+            //                                        [{
+            //                                            name: 'three',
+            //                                            img: resultImage[key],
+            //                                            opacity: ''
+            //                                        }]
+            //                                    ];
+            //                                } else {
+            //                                    $scope.pillowImages.push([{
+            //                                        name: 'three',
+            //                                        img: resultImage[key],
+            //                                        opacity: ''
+            //                                    }]);
+            //                                    console.log($scope.pillowImages);
+            //                                }
+            //            
+            //                            });
+            //                            $.jStorage.set("pillow", $scope.pillowImages);
+            //                            $scope.modal.hide();
+            //                            //
+            //                        }, function(err) {
+            //                            // An error occured. Show a message to the user
+            //                        });
         }
 
     }
