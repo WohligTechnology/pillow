@@ -142,7 +142,7 @@ angular.module("ngDraggable", [])
                                 lastmargin = $(element).children("img").css("margin-top");
                                 lastmarginleft = $(element).children("img").css("margin-left");
 
-                            }, 500);
+                            }, 900);
                             //$document.on(_moveEvents, cancelPress);
                             $document.on(_releaseEvents, cancelPress);
                         } else {
