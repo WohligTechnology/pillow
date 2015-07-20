@@ -72,7 +72,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.blurclass = "";
     $scope.dropstatus = "true";
     $scope.pillowImages = [
-	    [{
+        [{
             name: 'three',
             img: "img/pillow.jpg",
             opacity: ''
@@ -118,39 +118,48 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.clickPhoto = function() {
 
-        $cordovaCamera.getPicture(options1).then(function(imageData) {
-            if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
-                $scope.pillowImages = [
-                    [{
+        if ($scope.pillowImages.length == 9) {
+            var alertPopup = $ionicPopup.show({
+                title: "Number Of Images Excceds!",
+            });
+            $timeout(function() {
+                alertPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+        } else {
+            $cordovaCamera.getPicture(options1).then(function(imageData) {
+                if ($scope.pillowImages[0][0].img == 'img/demo1.jpg') {
+                    $scope.pillowImages = [
+                        [{
+                            name: 'three',
+                            img: imageData,
+                            opacity: ''
+                        }]
+                    ];
+                } else {
+                    $scope.pillowImages.push([{
                         name: 'three',
                         img: imageData,
                         opacity: ''
-                    }]
-                ];
-            } else {
-                $scope.pillowImages.push([{
-                    name: 'three',
-                    img: imageData,
-                    opacity: ''
-                }]);
-                console.log($scope.pillowImages);
-            }
+                    }]);
+                    console.log($scope.pillowImages);
+                }
 
-            $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
-                .then(function(result) {
-                    console.log(result);
-                    var data = JSON.parse(result.response);
-                    callback(data);
-                }, function(err) {
-                    console.log(err);
-                }, function(progress) {
-                    console.log("progress");
-                });
+                $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
+                    .then(function(result) {
+                        console.log(result);
+                        var data = JSON.parse(result.response);
+                        callback(data);
+                    }, function(err) {
+                        console.log(err);
+                    }, function(progress) {
+                        console.log("progress");
+                    });
 
-            console.log(imageData);
-        }, function(err) {
-            // error
-        });
+                console.log(imageData);
+            }, function(err) {
+                // error
+            });
+        }
     }
 
 
@@ -162,7 +171,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         if ($scope.pillowImages.length > 8) {
             var alertPopup = $ionicPopup.show({
                 title: "Number Of Images Excceds!",
-                //                template: 'Login Successfull'
             });
             $timeout(function() {
                 alertPopup.close(); //close the popup after 3 seconds for some reason
@@ -170,78 +178,78 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         } else {
 
-//            if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-//                $scope.pillowImages = [
-//                    [{
-//                        name: 'three',
-//                        img: 'img/demo1.jpg',
-//                        opacity: ''
-//                    }]
-//                ];
-//            } else {
-//                $scope.pillowImages.push([{
-//                    name: 'three',
-//                    img: 'img/demo.jpg',
-//                    opacity: ''
-//                }]);
-//                console.log($scope.pillowImages);
-//            }
+            //            if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+            //                $scope.pillowImages = [
+            //                    [{
+            //                        name: 'three',
+            //                        img: 'img/demo1.jpg',
+            //                        opacity: ''
+            //                    }]
+            //                ];
+            //            } else {
+            //                $scope.pillowImages.push([{
+            //                    name: 'three',
+            //                    img: 'img/demo.jpg',
+            //                    opacity: ''
+            //                }]);
+            //                console.log($scope.pillowImages);
+            //            }
 
 
-                                    $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-                                        // Success! Image data is here
-                                        console.log("here in upload image");
-                        
-                                        console.log(resultImage);
-                        
-                                        $scope.cameraimage = resultImage[0];
-                        
-                                        _.forEach(resultImage, function(n, key) {
-                        
-                                            if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-                                                $scope.pillowImages = [
-                                                    [{
-                                                        name: 'three',
-                                                        img: resultImage[key],
-                                                        opacity: ''
-                                                    }]
-                                                ];
-                                            } else {
-                                                $scope.pillowImages.push([{
-                                                    name: 'three',
-                                                    img: resultImage[key],
-                                                    opacity: ''
-                                                }]);
-                                                console.log($scope.pillowImages);
-                                            }
-                        
-                                        });
-                                        $.jStorage.set("pillow", $scope.pillowImages);
-                                        $scope.modal.hide();
-                                        //
-                                    }, function(err) {
-                                        // An error occured. Show a message to the user
-                                    });
+            $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+                // Success! Image data is here
+                console.log("here in upload image");
+
+                console.log(resultImage);
+
+                $scope.cameraimage = resultImage[0];
+
+                _.forEach(resultImage, function(n, key) {
+
+                    if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+                        $scope.pillowImages = [
+                            [{
+                                name: 'three',
+                                img: resultImage[key],
+                                opacity: ''
+                            }]
+                        ];
+                    } else {
+                        $scope.pillowImages.push([{
+                            name: 'three',
+                            img: resultImage[key],
+                            opacity: ''
+                        }]);
+                        console.log($scope.pillowImages);
+                    }
+
+                });
+                $.jStorage.set("pillow", $scope.pillowImages);
+                $scope.modal.hide();
+                //
+            }, function(err) {
+                // An error occured. Show a message to the user
+            });
         }
 
     }
 
     // ON DROP DELETE
-    $scope.onDropDelete = function(data, evt){
-	    console.log($scope.pillowImages);
-	    $scope.pillowImages.splice($scope.deleteindex,1);
-	    if($scope.pillowImages.length==0){
-		    $scope.pillowImages = [
-                    [{
-                        name: 'three',
-                        img: 'img/pillow.jpg',
-                        opacity: ''
-                    }]
-                ];
-	    }
+    $scope.onDropDelete = function(data, evt) {
+        console.log($scope.pillowImages);
+        $scope.pillowImages.splice($scope.deleteindex, 1);
+        if ($scope.pillowImages.length == 0) {
+            $scope.pillowImages = [
+                [{
+                    name: 'three',
+                    img: 'img/pillow.jpg',
+                    opacity: ''
+                }]
+            ];
+        }
     }
-    
-    
+
+
     $scope.onDropComplete = function(index, obj, evt) {
         abc = $element;
         console.log(index);
@@ -362,7 +370,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.deleteindex = '';
     $scope.ondrag = function(ind) {
-	    $scope.deleteindex = ind;
+        $scope.deleteindex = ind;
     }
 
 
