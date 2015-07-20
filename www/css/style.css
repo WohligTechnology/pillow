@@ -257,7 +257,6 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 }
 .rowof2 .drag-box {
     height: 120px;
-    overflow: hidden;
 }
 .rowof3 .drag-box {
     height: 80px;
@@ -266,13 +265,11 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
     background-size: cover;
     background-position: 0 0;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
-
 .frame1 {
     background-image: url(../img/demo.jpg);
 }
-.frame2 {
-}
-.img_opacity{
-    opacity:0.3;
+.frame2 {} .img_opacity {
+    opacity: 0.3;
 }
