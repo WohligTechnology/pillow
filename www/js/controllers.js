@@ -71,6 +71,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //ngDraggable
 	$scope.num = 9;
 	$.jStorage.set("num",$scope.num);
+	console.log($.jStorage.get("num"));
     $scope.blurclass = "";
     $scope.dropstatus = "true";
     $scope.pillowImages = [
@@ -138,6 +139,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options1).then(function(imageData) {
 //			  $scope.num = $scope.num - 1;
 			  $.jStorage.set("num",$.jStorage.get("num")-1);
+			  console.log($.jStorage.get("num"));
                 if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                     $scope.pillowImages = [
                         [{
@@ -187,6 +189,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options2).then(function(imageData) {
 //			  $scope.num = $scope.num - 1;
 			  $.jStorage.set("num",$.jStorage.get("num")-1);
+			  console.log($.jStorage.get("num"));
                 if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                     $scope.pillowImages = [
                         [{
@@ -258,10 +261,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
             $cordovaImagePicker.getPictures(options).then(function(resultImage) {
                 // Success! Image data is here
-                console.log("here in upload image");
-
-                console.log(resultImage);
-
                 $scope.cameraimage = resultImage[0];
 
                 _.forEach(resultImage, function(n, key) {
@@ -285,6 +284,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     }
 
                 });
+			  console.log($.jStorage.get("num"));
                 $.jStorage.set("pillow", $scope.pillowImages);
                 $scope.modal.hide();
                 //
@@ -297,7 +297,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     // ON DROP DELETE
     $scope.onDropDelete = function(data, evt) {
-        console.log($scope.pillowImages);
         $scope.pillowImages.splice($scope.deleteindex, 1);
         if ($scope.pillowImages.length == 0) {
             $scope.pillowImages = [
@@ -313,14 +312,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.onDropComplete = function(index, obj, evt) {
         abc = $element;
-        console.log(index);
         var classname = $($element).attr("class");
         classname = "." + classname;
         for (var i = 0; i < 5; i++) {
             classname = classname.replace(" ", ".");
         }
         classname = classname.substr(0, classname.length - 1) + index + " img";
-        console.log(classname);
         setTimeout(function() {
             $(classname).css("margin-top", lastmargin);
             $(classname).css("margin-left", lastmarginleft);
