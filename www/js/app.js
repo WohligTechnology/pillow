@@ -174,7 +174,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
                         }
 
                         if ((changemargin >= 4 || changemargin <= -4) && (changemargin < 10 && changemargin > -10)) {
-
                             canceldrag();
                         };
 

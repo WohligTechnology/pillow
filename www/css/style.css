@@ -59,7 +59,7 @@
 .maskimg {
     width: 240px;
     height: 240px;
-    overflow: hidden;
+    overflow: visible;
     color: #fff;
     background: url(../img/mask-img.png) 100%;
     -webkit-mask-image: url(../img/mask-img.png);

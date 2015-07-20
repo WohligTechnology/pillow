@@ -127,11 +127,10 @@ angular.module("ngDraggable", [])
                             // Do not start dragging on right-click
                             return;
                         }
-                     
-
+                        
                         if (_hasTouch) {
                             cancelPress();
-                            canceldrag = cancelPress;
+
                             _pressTimer = setTimeout(function() {
                                 cancelPress();
                                 onlongpress(evt);
@@ -155,7 +154,7 @@ angular.module("ngDraggable", [])
                         $document.off(_moveEvents, cancelPress);
                         $document.off(_releaseEvents, cancelPress);
                     };
-
+                    canceldrag = cancelPress;
                     var onlongpress = function(evt) {
                         if (!_dragEnabled) return;
                         evt.preventDefault();

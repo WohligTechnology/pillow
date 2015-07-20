@@ -100,6 +100,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             name: 'three',
             img: "img/demo.jpg",
             opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo.jpg",
+            opacity: ''
+        }],[{
+            name: 'three',
+            img: "img/demo.jpg",
+            opacity: ''
         }]
 
     ];
