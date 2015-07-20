@@ -69,6 +69,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
     //ngDraggable
+	$scope.num = 9;
     $scope.blurclass = "";
     $scope.dropstatus = "true";
     $scope.pillowImages = [
@@ -103,7 +104,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     };
 
     var options = {
-        maximumImagesCount: 9,
+        maximumImagesCount: $scope.num,
         width: 800,
         height: 800,
         quality: 80,
@@ -134,6 +135,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }, 3000);
         } else {
             $cordovaCamera.getPicture(options1).then(function(imageData) {
+			  $scope.num = $scope.num - 1;
                 if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                     $scope.pillowImages = [
                         [{
@@ -181,6 +183,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }, 3000);
         } else {
             $cordovaCamera.getPicture(options2).then(function(imageData) {
+			  $scope.num = $scope.num - 1;
                 if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                     $scope.pillowImages = [
                         [{
@@ -259,7 +262,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 $scope.cameraimage = resultImage[0];
 
                 _.forEach(resultImage, function(n, key) {
-
+				 $scope.num = $scope.num - 1;
                     if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                         $scope.pillowImages = [
                             [{
