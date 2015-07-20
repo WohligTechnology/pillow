@@ -173,7 +173,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
                             var changemargin = lastdata.newx - newtouch.newx;
                         }
 
-                        if ((changemargin >= 4 || changemargin <= -4) && (changemargin < 10 && changemargin > -10)) {
+                        if ((changemargin >= 1 || changemargin <= -1) && (changemargin < 10 && changemargin > -10)) {
                             canceldrag();
                         };
 

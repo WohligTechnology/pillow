@@ -127,11 +127,13 @@ angular.module("ngDraggable", [])
                             // Do not start dragging on right-click
                             return;
                         }
-                        
+
                         if (_hasTouch) {
                             cancelPress();
 
                             _pressTimer = setTimeout(function() {
+                                console.log("nomasking");
+                                $(".maskimg").addClass("nomasking");
                                 cancelPress();
                                 onlongpress(evt);
 
@@ -240,6 +242,7 @@ angular.module("ngDraggable", [])
                     };
 
                     var onrelease = function(evt) {
+                        $(".maskimg").removeClass("nomasking");
                         if (!_dragEnabled)
                             return;
                         evt.preventDefault();

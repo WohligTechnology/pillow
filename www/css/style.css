@@ -273,3 +273,6 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .frame2 {} .img_opacity {
     opacity: 0.3;
 }
+.nomasking {
+    -webkit-mask-image: none !important;
+}
