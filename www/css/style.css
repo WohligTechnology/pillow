@@ -371,4 +371,17 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .gridcontainer {
     height: 100px;
     overflow: hidden;
+    position: relative;
+}
+
+.imageselection {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: #12D712;
+    font-size: 25px;
+}
+
+.pull-right {
+    float: right;
 }

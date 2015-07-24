@@ -30,9 +30,11 @@
         </div>
         <div ng-show="showimages">
             <div class="row" ng-repeat="imagesrow in socialimagesrow">
+
                 <div class="col" ng-repeat="image in imagesrow">
-                    <div class="gridcontainer" ng-click="socialclickphoto(image)">
-                        <img ng-src="{{image}}" class="full-image" alt="">
+                    <div class="gridcontainer" ng-click="socialImageClick(image)">
+                        <img ng-src="{{image.url}}" class="full-image" alt="">
+                        <span class="ion-checkmark-circled imageselection" ng-show="image.status"></span>
                     </div>
 
                 </div>
@@ -42,4 +44,12 @@
 
 
     </ion-content>
+    <ion-footer-bar align-title="left" class="bar-positive" ng-show="showimages">
+        <div style="width:100%;">
+            <button ng-click="cancelSocialPhoto();" class="button">Cancel</button>
+            <button ng-click="doneSocialPhoto(socialimagesrow);" class="button pull-right">Done</button>
+            <h1 class="title">You can Select {{9-pillowImages.length}} Images</h1>
+
+        </div>
+    </ion-footer-bar>
 </ion-modal-view>

@@ -1,5 +1,4 @@
 var abc = 0;
-var facebookImages = [];
 var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices', 'ngTouch'])
 
@@ -233,10 +232,16 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 if (data.value) {
                     MyServices.getFacebookImages().success(function (data) {
                         $ionicLoading.hide();
-                        facebookImages = data;
+                        $scope.socialimages = [];
+                        _.each(data, function (n) {
+                            $scope.socialimages.push({
+                                url: n,
+                                status: false
+                            });
+                        });
+                        $scope.toPushSocial = [];
                         $scope.showimages = true;
-                        $scope.socialimages = data;
-                        $scope.socialimagesrow = partitionarray(data, 3);
+                        $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
                     });
                 } else {
                     //Login value facebook
@@ -245,27 +250,44 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         );
     };
 
-    $scope.socialclickphoto = function (imageData) {
+    $scope.toPushSocial = [];
+    $scope.cancelSocialPhoto = function () {
+        $scope.showimages = false;
+        $scope.socialimages = [];
+        $scope.socialimagesrow = [];
+        $scope.modal.hide();
+        $scope.toPushSocial = [];
+    }
+    $scope.doneSocialPhoto = function () {
 
-        if ($scope.pillowImages.length == 9) {
-            var alertPopup = $ionicPopup.show({
-                title: "Number Of Images Excceds!",
-            });
-            $timeout(function () {
-                alertPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
-        } else {
+
+        _.each($scope.toPushSocial, function (n) {
             $scope.pillowImages.push([{
                 name: 'three',
-                img: imageData,
+                img: n.url,
                 opacity: ''
-                    }]);
-            
-            $scope.modal.hide();
+                            }]);
+        });
 
-        }
 
+        $scope.cancelSocialPhoto();
     }
+
+    $scope.socialImageClick = function (image) {
+        if ((9 - $scope.pillowImages.length - $scope.toPushSocial.length) > 0 || image.status) {
+            image.status = !image.status;
+            if (image.status) {
+                $scope.toPushSocial.push(image);
+            } else {
+                var index1 = $scope.toPushSocial.indexOf(image);
+                $scope.toPushSocial.splice(index1, 1);
+
+            }
+        }
+        console.log($scope.toPushSocial);
+    }
+
+
 
     //	UPLOAD PHOTO
 
@@ -392,7 +414,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $scope.Time = $scope.Time + 1;
             console.log($scope.Time);
         }, 100);
-
     };
 
     $scope.openedit = function () {
