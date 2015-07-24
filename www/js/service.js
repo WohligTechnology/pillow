@@ -30,6 +30,9 @@ myservices.factory('MyServices', function ($http) {
     returnval.getFacebookImages = function () {
         return $http.get(adminhauth + "getFacebookImages");
     }
+    returnval.getInstagramImages = function () {
+        return $http.get(adminhauth + "getInstagramImages");
+    }
     returnval.checkLogid=function(logid) {
         return $http.get(adminhauth + "checkLogid",{params:{logid:logid}});
     }

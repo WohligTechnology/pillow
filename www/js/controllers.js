@@ -215,6 +215,42 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         }
     }
 
+    //upload photo instagram
+
+    $scope.instagramPhoto = function () {
+        console.log("Data");
+        $scope.toPushSocial = [];
+        $ionicLoading.show({
+            template: 'Loading...'
+        });
+
+        MyServices.checkLogin("Instagram").success(
+            function (data, status) {
+                if (data.value) {
+                    MyServices.getInstagramImages().success(function (data) {
+                        $ionicLoading.hide();
+                        $scope.socialimages = [];
+                        _.each(data, function (n) {
+                            $scope.socialimages.push({
+                                url: n,
+                                status: false
+                            });
+                        });
+
+                        $scope.showimages = true;
+                        $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
+                    });
+                } else {
+                    $ionicLoading.hide();
+                    $scope.socialimages = [];
+                    $scope.facebooklogid = data.id;
+                    $scope.facebookLogin("Instagram");
+                }
+            }
+        );
+    };
+
+
     //upload photo facebook
 
     $scope.showimages = false;
@@ -247,7 +283,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     $ionicLoading.hide();
                     $scope.socialimages = [];
                     $scope.facebooklogid = data.id;
-                    $scope.facebookLogin(data.id);
+                    $scope.facebookLogin("Facebook");
                 }
             }
         );
@@ -302,7 +338,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         } else {
             ref.close();
             if (data.value == "SUCCESS" && !$scope.showimages) {
-                $scope.facebookPhoto();
+                if (data.type == "Facebook") {
+                    $scope.facebookPhoto();
+                }
+                if (data.type == "Instagram") {
+                    $scope.instagramPhoto();
+                }
             }
             $interval.cancel(stopinterval);
         }
@@ -312,8 +353,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         MyServices.checkLogid($scope.facebooklogid).success(checkfb);
     };
 
-    $scope.facebookLogin = function () {
-        ref = window.open(adminhauth + 'login/Facebook?logid=' + $scope.facebooklogid, '_blank', 'location=no');
+    $scope.facebookLogin = function (provider) {
+        ref = window.open(adminhauth + 'login/' + provider + '?logid=' + $scope.facebooklogid, '_blank', 'location=no');
         stopinterval = $interval(callAtIntervalfb, 1000);
         ref.addEventListener('exit', function (event) {
             $interval.cancel(stopinterval);
