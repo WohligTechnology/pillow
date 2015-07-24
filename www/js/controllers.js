@@ -321,6 +321,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             //            }
 
 
+            options.maximumImagesCount=9 - $scope.pillowImages.length;
+            
             $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 $scope.cameraimage = resultImage[0];
