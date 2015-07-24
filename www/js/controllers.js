@@ -496,6 +496,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     };
 
     $scope.closeModal = function () {
+        $scope.cancelSocialPhoto();
         $scope.modal.hide();
     };
 
