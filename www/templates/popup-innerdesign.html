@@ -4,24 +4,20 @@
         <button class="button button-clear icon-right ln-cross small-icon" ng-click="closeModal();"></button>
     </div>
     <ion-content class="has-header">
-        <div>
+        <div ng-hide="showimages">
             <div class="item item-divider">Design a product with your photos</div>
             <ion-list class="pad-item">
                 <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="clickPhoto();">
-                    <i class="icon ln-photo"></i>
-                    Camera
+                    <i class="icon ln-photo"></i> Camera
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="clickPhotoFront();">
-                    <i class="icon ln-photo"></i>
-                    Front Camera
+                    <i class="icon ln-photo"></i> Front Camera
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="uploadPhoto();">
-                    <i class="icon ln-picture"></i>
-                    Gallery
+                    <i class="icon ln-picture"></i> Gallery
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/customize" class="item-icon-left" ng-click="closeModal();">
-                    <i class="icon ion-social-facebook"></i>
-                    Facebook
+                <ion-item nav-clear menu-close class="item-icon-left" ng-click="facebookPhoto();">
+                    <i class="icon ion-social-facebook"></i> Facebook
                 </ion-item>
             </ion-list>
             <!--
@@ -32,5 +28,18 @@
             </div>
 -->
         </div>
+        <div ng-show="showimages">
+            <div class="row" ng-repeat="imagesrow in socialimagesrow">
+                <div class="col" ng-repeat="image in imagesrow">
+                    <div class="gridcontainer" ng-click="socialclickphoto(image)">
+                        <img ng-src="{{image}}" class="full-image" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
     </ion-content>
 </ion-modal-view>
