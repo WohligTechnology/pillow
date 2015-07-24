@@ -244,7 +244,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
                     });
                 } else {
-                    //Login value facebook
+                    $ionicLoading.hide();
+                    $scope.socialimages = [];
+                    $scope.facebooklogid = data.id;
+                    $scope.facebookLogin(data.id);
                 }
             }
         );
@@ -288,6 +291,33 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
 
 
+    // FACEBOOK LOGO
+
+    var stopinterval = 0;
+
+    var checkfb = function (data, status) {
+        console.log(data);
+        if (data.value == null) {
+            console.log("Do nothing");
+        } else {
+            ref.close();
+            $scope.facebookPhoto();
+            $interval.cancel(stopinterval);
+        }
+    }
+
+    var callAtIntervalfb = function () {
+        MyServices.checkLogid($scope.facebooklogid).success(checkfb);
+    };
+
+    $scope.facebookLogin = function () {
+        ref = window.open(adminhauth + 'login/Facebook?logid=' + $scope.facebooklogid, '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervalfb, 1000);
+        ref.addEventListener('exit', function (event) {
+            $interval.cancel(stopinterval);
+        });
+    };
+
 
     //	UPLOAD PHOTO
 
@@ -321,8 +351,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             //            }
 
 
-            options.maximumImagesCount=9 - $scope.pillowImages.length;
-            
+            options.maximumImagesCount = 9 - $scope.pillowImages.length;
+
             $cordovaImagePicker.getPictures(options).then(function (resultImage) {
                 // Success! Image data is here
                 $scope.cameraimage = resultImage[0];
