@@ -222,7 +222,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.facebookPhoto = function () {
         console.log("Data");
-
+        $scope.toPushSocial = [];
         $ionicLoading.show({
             template: 'Loading...'
         });
@@ -239,7 +239,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 status: false
                             });
                         });
-                        $scope.toPushSocial = [];
+
                         $scope.showimages = true;
                         $scope.socialimagesrow = partitionarray($scope.socialimages, 3);
                     });
@@ -301,7 +301,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             console.log("Do nothing");
         } else {
             ref.close();
-            if (data.value == "SUCCESS") {
+            if (data.value == "SUCCESS" && !$scope.showimages) {
                 $scope.facebookPhoto();
             }
             $interval.cancel(stopinterval);
