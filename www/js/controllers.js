@@ -301,7 +301,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             console.log("Do nothing");
         } else {
             ref.close();
-            $scope.facebookPhoto();
+            if (data.value == "SUCCESS") {
+                $scope.facebookPhoto();
+            }
             $interval.cancel(stopinterval);
         }
     }
