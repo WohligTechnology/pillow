@@ -82,28 +82,28 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         }]
     ];
 
-    //    var options1 = {
-    //        quality: 80,
-    //        sourceType: Camera.PictureSourceType.CAMERA,
-    //        allowEdit: true
-    //    };
-    //	
-    //    var options2 = {
-    //        quality: 80,
-    //        sourceType: Camera.PictureSourceType.CAMERA,
-    //        allowEdit: true,
-    //	    cameraDirection  : 1
-    //    };
-    //
-    //    var options = {
-    //        maximumImagesCount: $.jStorage.get("num"),
-    //        width: 800,
-    //        height: 800,
-    //        quality: 80,
-    //        sourceType: Camera.PictureSourceType.CAMERA,
-    //        allowEdit: true
-    //
-    //    };
+        var options1 = {
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true
+        };
+    	
+        var options2 = {
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+    	    cameraDirection  : 1
+        };
+    
+        var options = {
+            maximumImagesCount: 9 - $scope.pillowImages.length,
+            width: 800,
+            height: 800,
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true
+    
+        };
 
     $scope.newfun = function(index) {
         console.log(index);
@@ -376,7 +376,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         } else {
 
-            /*               if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+                           /*if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                             $scope.pillowImages = [
                                 [{
                                     name: 'three',
