@@ -84,13 +84,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+//            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
     	
         var options2 = {
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+//            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
     	    cameraDirection  : 1
         };
@@ -100,7 +100,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+//            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
     
         };
