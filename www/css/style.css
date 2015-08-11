@@ -385,3 +385,14 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .pull-right {
     float: right;
 }
+
+
+.ng-invalid.ng-dirty,
+.ng-dirty {
+    border-left: solid red;
+    border-right: solid red;
+}
+
+.ng-dirty>* {
+    color: red;
+}

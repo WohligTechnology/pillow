@@ -22,17 +22,17 @@
                 <input type="text" placeholder="Last Name">
             </label>
 -->
-            <label class="item item-input">
-                <input type="text" placeholder="Email">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
+                <input type="text" placeholder="Email" ng-model="user.email">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Password">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
+                <input type="password" placeholder="Password" ng-model="user.password">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Confirm Password">
+            <label class="item item-input" ng-class="allvalidation[2].validation">
+                <input type="password" placeholder="Confirm Password" ng-model="user.cpassword">
             </label>
             
-                <a href="#/app/home" class="button button-block button-outline button-positive">Sign Up</a>
+                <a class="button button-block button-outline button-positive" ng-click="signUp()">Sign Up</a>
             
         </div>
     </ion-content>

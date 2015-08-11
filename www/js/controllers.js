@@ -1,5 +1,5 @@
 var abc = 0;
-var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
+//var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices', 'ngTouch'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
@@ -115,22 +115,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     var callback = function(result) {
         console.log("click result");
         console.log(result);
-	    if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-                    $scope.pillowImages = [
-                        [{
-                            name: 'three',
-                            img: result,
-                            opacity: ''
-                        }]
-                    ];
-                } else {
-                    $scope.pillowImages.push([{
-                        name: 'three',
-                        img: result,
-                        opacity: ''
-                    }]);
-                    console.log($scope.pillowImages);
-                }
+        if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+            $scope.pillowImages = [
+                [{
+                    name: 'three',
+                    img: result,
+                    opacity: ''
+                }]
+            ];
+        } else {
+            $scope.pillowImages.push([{
+                name: 'three',
+                img: result,
+                opacity: ''
+            }]);
+            console.log($scope.pillowImages);
+        }
     };
 
     $scope.clickPhoto = function() {
@@ -147,22 +147,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
                 console.log($.jStorage.get("num"));
-//                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-//                    $scope.pillowImages = [
-//                        [{
-//                            name: 'three',
-//                            img: imageData,
-//                            opacity: ''
-//                        }]
-//                    ];
-//                } else {
-//                    $scope.pillowImages.push([{
-//                        name: 'three',
-//                        img: imageData,
-//                        opacity: ''
-//                    }]);
-//                    console.log($scope.pillowImages);
-//                }
+                //                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+                //                    $scope.pillowImages = [
+                //                        [{
+                //                            name: 'three',
+                //                            img: imageData,
+                //                            opacity: ''
+                //                        }]
+                //                    ];
+                //                } else {
+                //                    $scope.pillowImages.push([{
+                //                        name: 'three',
+                //                        img: imageData,
+                //                        opacity: ''
+                //                    }]);
+                //                    console.log($scope.pillowImages);
+                //                }
 
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
@@ -196,22 +196,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
                 console.log($.jStorage.get("num"));
-//                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
-//                    $scope.pillowImages = [
-//                        [{
-//                            name: 'three',
-//                            img: imageData,
-//                            opacity: ''
-//                        }]
-//                    ];
-//                } else {
-//                    $scope.pillowImages.push([{
-//                        name: 'three',
-//                        img: imageData,
-//                        opacity: ''
-//                    }]);
-//                    console.log($scope.pillowImages);
-//                }
+                //                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+                //                    $scope.pillowImages = [
+                //                        [{
+                //                            name: 'three',
+                //                            img: imageData,
+                //                            opacity: ''
+                //                        }]
+                //                    ];
+                //                } else {
+                //                    $scope.pillowImages.push([{
+                //                        name: 'three',
+                //                        img: imageData,
+                //                        opacity: ''
+                //                    }]);
+                //                    console.log($scope.pillowImages);
+                //                }
 
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
@@ -762,9 +762,95 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('OrderCtrl', function($scope) {})
 
-.controller('RegisterCtrl', function($scope) {})
+.controller('RegisterCtrl', function($scope, MyServices, $timeout, $ionicPopup, $location) {
 
-.controller('LoginAccCtrl', function($scope) {})
+    $scope.user = {};
+    $scope.allvalidation = [];
+    $scope.signUp = function() {
+        $scope.allvalidation = [{
+            field: $scope.user.email,
+            validation: ""
+        }, {
+            field: $scope.user.password,
+            validation: ""
+        }, {
+            field: $scope.user.cpassword,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            if ($scope.user.password != $scope.user.cpassword) {
+                var alertPopup = $ionicPopup.show({
+                    title: "Password UnMatch",
+                    //                template: 'Login Successfull'
+                });
+                $timeout(function() {
+                    alertPopup.close(); //close the popup after 3 seconds for some reason
+                }, 3000);
+            } else {
+                MyServices.signup($scope.user, function(data, status) {
+                    console.log(data);
+                    if (data == "false") {
+                        var alertPopup = $ionicPopup.show({
+                            title: "User Already exist",
+                            //                template: 'Login Successfull'
+                        });
+                        $timeout(function() {
+                            alertPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 3000);
+                    } else {
+                        MyServices.setUser(data);
+                        $location.url("/tab/home");
+                    }
+
+                });
+            }
+        }
+    }
+
+})
+
+.controller('LoginAccCtrl', function($scope, MyServices, $interval, $location, $ionicPopup, $timeout) {
+
+    $scope.user = {};
+
+    $scope.allvalidation = [];
+
+    var callback = function(data, status) {
+        console.log(data);
+    };
+
+    $scope.normalLogin = function() {
+
+        $scope.allvalidation = [{
+            field: $scope.user.email,
+            validation: ""
+        }, {
+            field: $scope.user.password,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            MyServices.login($scope.user, function(data, status) {
+                if (data == "false") {
+                    var alertPopup = $ionicPopup.show({
+                        title: "Wroung Email ID OR password.",
+                        //                template: 'Login Successfull'
+                    });
+                    $timeout(function() {
+                        alertPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 3000);
+                } else {
+                    MyServices.setUser(data);
+                    $location.url("/tab/home");
+                }
+            });
+        }
+
+
+    }
+
+})
 
 .controller('ProductCtrl', function($scope, $ionicPopup, $timeout, $window) {
     $scope.addcart = function() {
@@ -779,11 +865,50 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
 })
 
-.controller('LoginCtrl', function($scope) {
+.controller('LoginCtrl', function($scope, MyServices, $interval, $location) {
 
-	$scope.socialLogin = function(type){
-		
-	}
+
+	MyServices.logout();
+	MyServices.logoutJstorage();
+	
+    var authenticatesuccess = function(data, status) {
+        console.log(data);
+        if (data != "false") {
+            MyServices.setUser(data);
+            user = data;
+            $location.url("/tab/home");
+        } else {
+            console.log("stay here");
+        };
+    };
+
+    //    MyServices.authenticate().success(authenticatesuccess);
+
+    var checksocial = function(data, status) {
+        if (data != "false") {
+            console.log("Facebook Login");
+            $interval.cancel(stopinterval);
+            ref.close();
+            MyServices.authenticate().success(authenticatesuccess);
+        } else {
+            console.log("Do nothing");
+        }
+    };
+
+    var callAtIntervalsocial = function() {
+        MyServices.authenticate().success(checksocial);
+    };
+
+
+    $scope.socialLogin = function(type) {
+        console.log(type);
+        ref = window.open(adminhauth + 'login/' + type, '_blank', 'location=no');
+        stopinterval = $interval(callAtIntervalsocial, 2000);
+        ref.addEventListener('exit', function(event) {
+            MyServices.authenticate().success(authenticatesuccess);
+            $interval.cancel(stopinterval);
+        });
+    }
 
 })
 

@@ -20,13 +20,13 @@
                 <input type="text" placeholder="Last Name">
             </label>
 -->
-            <label class="item item-input">
-                <input type="text" placeholder="Email">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
+                <input type="text" placeholder="Email" ng-model="user.email">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Password">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
+                <input type="password" placeholder="Password" ng-model="user.password">
             </label>
-                <a href="#/app/home" class="button button-block button-outline button-positive">Login</a>
+                <a class="button button-block button-outline button-positive" ng-click="normalLogin()">Login</a>
         </div>
     </ion-content>
 </ion-view>
