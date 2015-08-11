@@ -301,8 +301,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 	    
 	    console.log("socail facebook");
 	    console.log($scope.toPushSocial);
+	    console.log($scope.toPushSocial[0].url);
 
-$cordovaFileTransfer.upload(adminurl + "imageuploadproduct", $scope.toPushSocial.url, {})
+$cordovaFileTransfer.upload(adminurl + "imageuploadproduct", $scope.toPushSocial[0].url, {})
                     .then(function(result) {
                         console.log(result);
                         var data = JSON.parse(result.response);
