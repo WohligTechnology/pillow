@@ -298,18 +298,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.toPushSocial = [];
     }
     $scope.doneSocialPhoto = function() {
+	    
+	    console.log("socail facebook");
+	    console.log($scope.toPushSocial);
 
-
-        _.each($scope.toPushSocial, function(n) {
-            $scope.pillowImages.push([{
-                name: 'three',
-                img: n.url,
-                opacity: ''
-            }]);
-        });
-
-
-        $scope.cancelSocialPhoto();
+$cordovaFileTransfer.upload(adminurl + "imageuploadproduct", $scope.toPushSocial.url, {})
+                    .then(function(result) {
+                        console.log(result);
+                        var data = JSON.parse(result.response);
+                        callback(data);
+                    }, function(err) {
+                        console.log(err);
+                    }, function(progress) {
+                        console.log("progress");
+                    });
+//        _.each($scope.toPushSocial, function(n) {
+//            $scope.pillowImages.push([{
+//                name: 'three',
+//                img: n.url,
+//                opacity: ''
+//            }]);
+//        });
+//
+//
+//        $scope.cancelSocialPhoto();
     }
 
     $scope.socialImageClick = function(image) {
@@ -741,7 +753,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
 })
 
-.controller('LoginCtrl', function($scope) {})
+.controller('LoginCtrl', function($scope) {
+	
+	
+	
+})
 
 .directive('time', function($interval) {
     return {
