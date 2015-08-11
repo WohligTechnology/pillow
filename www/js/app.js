@@ -325,6 +325,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     }
 })
 
+
+.filter('imgpath', function () {
+    return function (input) {
+        if (input.slice(0, 3) == "htt") {
+            return input;
+        } else {
+            return "http://wohlig.co.in/tweeke/uploads/" + input;
+        }
+    };
+})
+
+
 .filter('timeFilter', function() {
     return function(value, max) {
         if (value == max) return 'All';

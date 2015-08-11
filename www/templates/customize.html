@@ -425,7 +425,7 @@
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(5,$data,$event)" ng-click="getImageId('img1', 5)">
                         <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]" ng-drag="{{dropstatus}}" ng-drag-data="pillowImages[5]" dragbox on-drag="ondrag(5)">
 
-                            <img ng-src="{{pillow.img}}" alt="">
+                            <img ng-src="{{pillow.img | imgpath}}" alt="">
 
                         </div>
 
