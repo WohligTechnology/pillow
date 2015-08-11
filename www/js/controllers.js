@@ -82,28 +82,28 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         }]
     ];
 
-    var options1 = {
-        quality: 80,
-        //            sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true
-    };
-
-    var options2 = {
-        quality: 80,
-        //            sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        cameraDirection: 1
-    };
-
-    var options = {
-        maximumImagesCount: 9 - $scope.pillowImages.length,
-        width: 800,
-        height: 800,
-        quality: 80,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true
-
-    };
+        var options1 = {
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true
+        };
+    	
+        var options2 = {
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+    	    cameraDirection  : 1
+        };
+    
+        var options = {
+            maximumImagesCount: 9 - $scope.pillowImages.length,
+            width: 800,
+            height: 800,
+            quality: 80,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true
+    
+        };
 
     $scope.newfun = function(index) {
         console.log(index);
@@ -126,11 +126,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 alertPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         } else {
-            $cordovaCamera.getPicture({
-                quality: 80,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true
-            }).then(function(imageData) {
+            $cordovaCamera.getPicture(options1).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
                 console.log($.jStorage.get("num"));
@@ -180,12 +176,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 alertPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         } else {
-            $cordovaCamera.getPicture({
-                quality: 80,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                cameraDirection: 1
-            }).then(function(imageData) {
+            $cordovaCamera.getPicture(options2).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
                 console.log($.jStorage.get("num"));
@@ -307,31 +298,19 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.toPushSocial = [];
     }
     $scope.doneSocialPhoto = function() {
+	    
+	    console.log("socail facebook");
+	    console.log($scope.toPushSocial);
+        _.each($scope.toPushSocial, function(n) {
+            $scope.pillowImages.push([{
+                name: 'three',
+                img: n.url,
+                opacity: ''
+            }]);
+        });
 
-        console.log("socail facebook");
-        console.log($scope.toPushSocial);
-        console.log($scope.toPushSocial[0].url);
 
-        $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", $scope.toPushSocial[0].url, {})
-            .then(function(result) {
-                console.log(result);
-                var data = JSON.parse(result.response);
-                callback(data);
-            }, function(err) {
-                console.log(err);
-            }, function(progress) {
-                console.log("progress");
-            });
-        //        _.each($scope.toPushSocial, function(n) {
-        //            $scope.pillowImages.push([{
-        //                name: 'three',
-        //                img: n.url,
-        //                opacity: ''
-        //            }]);
-        //        });
-        //
-        //
-        //        $scope.cancelSocialPhoto();
+        $scope.cancelSocialPhoto();
     }
 
     $scope.socialImageClick = function(image) {
@@ -398,7 +377,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         } else {
 
-            /*if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
+                           /*if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                             $scope.pillowImages = [
                                 [{
                                     name: 'three',
@@ -737,6 +716,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 break;
         }
     }
+    
+    //proceed
+    $scope.proceed = function(){
+	    console.log($scope.pillowImages);
+    }
 
 })
 
@@ -764,9 +748,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 })
 
 .controller('LoginCtrl', function($scope) {
-
-
-
+	
+	
+	
 })
 
 .directive('time', function($interval) {
