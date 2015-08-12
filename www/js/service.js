@@ -54,6 +54,12 @@ myservices.factory('MyServices', function($http) {
     returnval.logoutJstorage = function() {
         $.jStorage.flush();
     }
+    returnval.setImages = function(data) {
+        $.jStorage.set("pillowImages", data);
+    }
+    returnval.getImages = function(data) {
+        return $.jStorage.get("pillowImages");
+    }
     returnval.signup = function(data, callback) {
         $http({
             url: adminurl + "signup",

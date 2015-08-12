@@ -169,6 +169,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
                         var data = JSON.parse(result.response);
+				 console.log("in response");
+				 console.log(data);
                         callback(data);
                     }, function(err) {
                         console.log(err);
@@ -754,6 +756,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //proceed
     $scope.proceed = function() {
         console.log($scope.pillowImages);
+	   MyServices.setImages($scope.pillowImages);
     }
 
 })
