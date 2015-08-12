@@ -114,7 +114,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //	CLICK PHOTO
 
 
-    var callback = function(result) {
+    $scope.callback = function(result) {
         console.log("click result");
         console.log(result);
         if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
@@ -148,7 +148,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options1).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
-                console.log($.jStorage.get("num"));
+//                console.log($.jStorage.get("num"));
                 //                if ($scope.pillowImages[0][0].img == 'img/pillow.jpg') {
                 //                    $scope.pillowImages = [
                 //                        [{
