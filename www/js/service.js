@@ -1,5 +1,5 @@
-var adminbase = "http://192.168.2.11/pillowbackend/pillow/";
-//var adminbase = "http://wohlig.co.in/tweeke/";
+//var adminbase = "http://192.168.2.11/pillowbackend/pillow/";
+var adminbase = "http://wohlig.co.in/tweeke/";
 var myserverbase = "http://wohlig.co.in/spingr/index.php/json/";
 //var adminbase = "http://192.168.2.28/osb/";
 var adminurl = adminbase + "index.php/json/";
