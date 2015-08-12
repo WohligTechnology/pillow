@@ -1,4 +1,4 @@
-var adminbase = "http://localhost/pillowbackend/pillow/";
+var adminbase = "http://192.168.2.11/pillowbackend/pillow/";
 //var adminbase = "http://wohlig.co.in/tweeke/";
 var myserverbase = "http://wohlig.co.in/spingr/index.php/json/";
 //var adminbase = "http://192.168.2.28/osb/";
@@ -41,6 +41,9 @@ myservices.factory('MyServices', function($http) {
     }
     returnval.setUser = function(data) {
         return $.jStorage.set("user", data);
+    }
+    returnval.getUser = function() {
+        return $.jStorage.get("user");
     }
     returnval.authenticate = function(data) {
         return $http.get(adminurl + "authenticate");

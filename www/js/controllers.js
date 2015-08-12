@@ -2,7 +2,7 @@ var abc = 0;
 //var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices', 'ngTouch'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -10,6 +10,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+	
+	$scope.user=MyServices.getUser();
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -84,13 +86,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-        //            sourceType: Camera.PictureSourceType.CAMERA,
+                    sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-        //            sourceType: Camera.PictureSourceType.CAMERA,
+                    sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -100,7 +102,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-        //            sourceType: Camera.PictureSourceType.CAMERA,
+                    sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
