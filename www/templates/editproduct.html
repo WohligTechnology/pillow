@@ -463,7 +463,7 @@
         <ion-list class="cart-list">
             <ion-item>
                 <label class="item-input item-select">
-                    <div class="input-label padding0">
+                    <div class="input-label">
                         Size
                     </div>
                     
@@ -491,12 +491,12 @@
         </ion-list>
 
         <div class="padding mt40">
-            <button class="button button-block button-positive button-outline" ng-click="addCart();">
-                Add to cart
+            <button class="button button-block button-positive button-outline" ng-click="addCart(1);">
+                Save cart
             </button>
-            <a href="#/app/checkout" class="button button-block button-positive button-outline">
+            <button class="button button-block button-positive button-outline" ng-click="addCart(2);">
             Checkout
-        </a>
+        </button>
         </div>
     </ion-content>
 </ion-view>

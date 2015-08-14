@@ -20,9 +20,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$httpProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider, $ionicConfigProvider) {
 	
 	 $httpProvider.defaults.withCredentials = true;
+	  $ionicConfigProvider.views.maxCache(0);
     $stateProvider
 
     .state('app', {
@@ -114,6 +115,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
             'menuContent': {
                 templateUrl: "templates/customize.html",
                 controller: 'CustomizeCtrl'
+            }
+        }
+    })
+    .state('app.edit', {
+        url: "/edit/:id",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/editpillow.html",
+                controller: 'EditCtrl'
+            }
+        }
+    })
+    .state('app.editproduct', {
+        url: "/editproduct",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/editproduct.html",
+                controller: 'EditProductCtrl'
             }
         }
     })
@@ -331,7 +350,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
         if (input.slice(0, 3) == "htt") {
             return input;
         } else {
-            return "http://wohlig.co.in/tweeke/uploads/" + input;
+            return "http://localhost/pillowbackend/pillow/uploads/" + input;
         }
     };
 })

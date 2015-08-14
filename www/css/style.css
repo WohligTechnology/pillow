@@ -396,3 +396,23 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
 .ng-dirty>* {
     color: red;
 }
+
+/*jagruti*/
+
+.button-bar > .button:last-child {
+    border-radius: 0px 5px 5px 0px;
+}
+.button-bar > .button:first-child {
+    border-radius: 5px 0px 0px 5px;
+}
+.qty {
+    padding: 1% 3%;
+}
+
+
+.no-connect h3 {
+    text-align: center;
+    width: 100%;
+    color: #B9B9B9;
+    padding-top: 50%;
+}
