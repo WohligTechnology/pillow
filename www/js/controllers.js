@@ -2199,10 +2199,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     var authenticatesuccess = function(data, status) {
         console.log(data);
         if (data != "false") {
+		   console.log("in not equal to 0");
             MyServices.setUser(data);
             user = data;
             $location.url("/tab/home");
         } else {
+		   console.log("in equal to 0");
             console.log("stay here");
         };
     };
