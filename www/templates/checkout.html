@@ -1,19 +1,16 @@
 <ion-view view-title="Your Orders">
     <ion-content>
         <div class="list">
-            <ion-item>
-                <span class="mr10">1x</span>20" Photo Cushion
-                <span class="item-note">Rs.25.99</span>
-            </ion-item>
-            <ion-item>
-                <span class="mr10">1x</span>20" Photo Cushion
-                <span class="item-note">Rs.25.99</span>
-            </ion-item>
-            <ion-item>
-                Total
-                <span class="item-note">Rs.50.99</span>
+            <ion-item ng-repeat="cart in carts">
+                <span class="mr10">{{cart.quantity}}x</span>20" Photo Cushion
+                <span class="item-note">Rs.{{cart.price}}</span>
             </ion-item>
 
+
+            <ion-infinite-scroll on-infinite="loadMoreCart()" ng-if="keepscrolling" distance="25%">
+            </ion-infinite-scroll>
+
+            <!--
             <div class="item item-divider">Use Discount Code</div>
             <div class="item item-input-inset">
                 <label class="item-input-wrapper">
@@ -23,65 +20,83 @@
                     Submit
                 </button>
             </div>
+-->
 
             <div class="item item-divider">Your Details</div>
 
-            <label class="item item-input">
-                <input type="text" placeholder="First Name">
+            <label class="item item-input" ng-class="allvalidation[0].validation">
+                <input type="text" placeholder="First Name *" ng-model="checkout.firstname">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Last Name">
+            <label class="item item-input" ng-class="allvalidation[1].validation">
+                <input type="text" placeholder="Last Name *" ng-model="checkout.lastnmae">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Phone">
+            <label class="item item-input" ng-class="allvalidation[2].validation">
+                <input type="text" placeholder="Phone *" ng-model="checkout.phone">
             </label>
 
             <div class="item item-divider">Billing Address</div>
-            <label class="item item-input">
-                <input type="text" placeholder="House Name / Number">
+            <label class="item item-input" ng-class="allvalidation[3].validation">
+                <input type="text" placeholder="Address *" ng-model="checkout.billingaddress">
+            </label>
+            <label class="item item-input" ng-class="allvalidation[4].validation">
+                <input type="text" placeholder="Town/City *" ng-model="checkout.billingcity">
             </label>
             <label class="item item-input">
-                <input type="text" placeholder="Address Line 1">
+                <input type="text" placeholder="State/Providence" ng-model="checkout.billingstate">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Address Line 2">
+            <label class="item item-input" ng-class="allvalidation[5].validation">
+                <input type="text" placeholder="Postal/Zip Code *" ng-model="checkout.billingpincode">
             </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Town/City">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="State/Country/Providence">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Postal/Zip Code">
-            </label>
-            <label class="item item-input item-select ">
+            <label class="item item-input item-select" ng-class="allvalidation[6].validation">
                 <div class="input-label select-text">
-                    Country
+                    Country *
                 </div>
-                <select>
-                    <option>India</option>
-                    <option selected>Austria</option>
-                    <option>France</option>
+                <select ng-model="checkout.billingcountry">
+                    <option ng-repeat="country in countries">{{country.value}}</option>
                 </select>
             </label>
 
             <div class="item item-toggle">
-               <div class="input-label select-text">
-                     Ship to my billing address
+                <div class="input-label select-text">
+                    Ship to my billing address
                 </div>
-               
+
                 <label class="toggle toggle-positive">
-                    <input type="checkbox">
+                    <input type="checkbox" ng-model="checkout.shipto">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </div>
+            
+            
+            <div ng-show="!checkout.shipto">
+            <div class="item item-divider">Shipping Address</div>
+            <label class="item item-input" ng-class="allvalidation[6].validation">
+                <input type="text" placeholder="Address *" ng-model="checkout.shippingaddress">
+            </label>
+            <label class="item item-input" ng-class="allvalidation[7].validation">
+                <input type="text" placeholder="Town/City *" ng-model="checkout.shippingcity">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="State/Providence" ng-model="checkout.shippingstate">
+            </label>
+            <label class="item item-input" ng-class="allvalidation[8].validation">
+                <input type="text" placeholder="Postal/Zip Code *" ng-model="chekout.shippingpincode">
+            </label>
+            <label class="item item-input item-select" ng-class="allvalidation[6].validation">
+                <div class="input-label select-text">
+                    Country *
+                </div>
+                <select ng-model="checkout.shippingcountry">
+                    <option ng-repeat="country in countries">{{country.value}}</option>
+                </select>
+            </label>
+		   </div>
 
 
             <div class="padding">
-                <button class="button button-block button-positive button-outline">Purchase</button>
+                <button class="button button-block button-positive button-outline" ng-click="checkOut()">Purchase</button>
             </div>
         </div>
     </ion-content>

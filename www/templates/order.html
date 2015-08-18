@@ -1,21 +1,23 @@
 <ion-view view-title="My Orders">
     <ion-content>
-        <div class="list">
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/pillow.jpg">
-                <h3>Photo Cushion</h3>
-                <h4 class="positive">Rs.25.99</h4>
-                <p>Quantity:1</p>
-                 <button class="button button-balanced button-outline button-small">Delivered</button>
-            </a>
-            <a class="item item-thumbnail-left" href="#">
-                <img src="img/pillow.jpg">
-                <h3>Photo Cushion</h3>
-                <h4 class="positive">Rs.25.99</h4>
-                <p>Quantity:1</p>
-                 <button class="button button-balanced button-outline button-small">Delivered</button>
-            </a>
-           
+       
+        <div class="no-connect" ng-if="shownoorder">
+            <h3>No Orders yet...</h3>
         </div>
+        <div class="no-connect" ng-if="showloading">
+            <h3>Loading...</h3>
+        </div>
+        <div class="list" ng-if="orders != ''">
+            <a class="item item-thumbnail-left" href="#" ng-repeat="order in orders">
+                <img src="{{order.thumbnail | imgpath}}">
+                <h3>Photo Cushion</h3>
+                <h4 class="positive">Rs.{{order.finalprice}}</h4>
+                <p>Quantity:{{order.quantity}}</p>
+                 <button class="button button-balanced button-outline button-small">Delivered</button>
+            </a>
+        </div>
+        
+        <ion-infinite-scroll on-infinite="loadMoreCart()" ng-if="keepscrolling" distance="25%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

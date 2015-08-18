@@ -99,13 +99,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-        //                    sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-        //                    sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -115,7 +115,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-        //                    sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -901,13 +901,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-            //                    sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-            //                    sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -917,7 +917,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-            //                    sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };
@@ -1619,7 +1619,141 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     })
 
-.controller('CheckoutCtrl', function($scope) {})
+.controller('CheckoutCtrl', function($scope, MyServices, $location, $ionicPopup, $timeout) {
+
+    $scope.carts = [];
+    $scope.shownocart = false;
+    $scope.showloading = true;
+    $scope.pageno = 1;
+    $scope.total = 0;
+    $scope.checkout = {};
+    $scope.checkout.shipto = true;
+
+    $.jStorage.deleteKey("pillowImages");
+
+    // all countries
+    $scope.countries = MyServices.getCountries();
+
+    //get all in cart
+    $scope.cartRefresh = function(page) {
+
+        MyServices.getallcartbyuser(page).success(function(data) {
+            console.log(data.queryresult);
+            if (data.queryresult.length == 0 && $scope.carts.length == 0) {
+                $scope.showloading = false;
+                $scope.shownocart = true;
+                $scope.keepscrolling = false;
+            } else if (data.queryresult.length == 0) {
+                $scope.keepscrolling = false;
+            } else {
+                $scope.showloading = false;
+                $scope.keepscrolling = true;
+                _.each(data.queryresult, function(n) {
+                    $scope.total += parseInt(n.price);
+                    $scope.carts.push(n);
+                })
+            }
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+
+
+    }
+
+    $scope.cartRefresh(1);
+
+    $scope.loadMoreCart = function() {
+        $scope.cartRefresh(++$scope.pageno);
+    }
+
+    //checkout
+    $scope.checkOut = function() {
+
+        if ($scope.checkout.shipto == true) {
+            $scope.allvalidation = [{
+                field: $scope.checkout.firstname,
+                validation: ""
+            }, {
+                field: $scope.checkout.lastnmae,
+                validation: ""
+            }, {
+                field: $scope.checkout.phone,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingaddress,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingcity,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingpincode,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingcountry,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation);
+        } else {
+            $scope.allvalidation = [{
+                field: $scope.checkout.firstname,
+                validation: ""
+            }, {
+                field: $scope.checkout.lastnmae,
+                validation: ""
+            }, {
+                field: $scope.checkout.phone,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingaddress,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingcity,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingstate,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingpincode,
+                validation: ""
+            }, {
+                field: $scope.checkout.billingcountry,
+                validation: ""
+            }, {
+                field: $scope.checkout.shippingaddress,
+                validation: ""
+            }, {
+                field: $scope.checkout.shippingcity,
+                validation: ""
+            }, {
+                field: $scope.checkout.shippingpincode,
+                validation: ""
+            }, {
+                field: $scope.checkout.shippingcountry,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation);
+        }
+
+        if (check) {
+            $scope.checkout.user = $.jStorage.get("user").id;
+            $scope.checkout.finalamount = $scope.total;
+            MyServices.userCheckout($scope.checkout).success(function(data) {
+			  console.log(data);
+			  if(data != 0){
+				  var alertPopup = $ionicPopup.show({
+                            title: "Order is placed.",
+                            //                template: 'Login Successfull'
+                        });
+                        $timeout(function() {
+                            alertPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 3000);
+			  }
+
+            })
+        }
+    }
+
+})
 
 .controller('CartCtrl', function($scope, MyServices) {
 
@@ -1627,7 +1761,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.shownocart = false;
     $scope.showloading = true;
     $scope.pageno = 1;
-	$scope.total = 0;
+    $scope.total = 0;
 
     $.jStorage.deleteKey("pillowImages");
 
@@ -1646,7 +1780,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 $scope.showloading = false;
                 $scope.keepscrolling = true;
                 _.each(data.queryresult, function(n) {
-				 $scope.total += parseInt(n.price);
+                    $scope.total += parseInt(n.price);
                     $scope.carts.push(n);
                 })
             }
@@ -1663,11 +1797,63 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.cartRefresh(++$scope.pageno);
     }
 
+    
+    //remove cart
+    $scope.removeCart = function(cart){
+	    MyServices.deletecartbyid(cart.id).success(function(data){
+		    if(data == "true"){
+			    $scope.cartRefresh(1);
+		    }
+	    });
+    }
 
 
 })
 
-.controller('OrderCtrl', function($scope) {})
+.controller('OrderCtrl', function($scope, MyServices, $location) {
+
+	$scope.orders = [];
+    $scope.shownoorder = false;
+    $scope.showloading = true;
+    $scope.pageno = 1;
+    $scope.total = 0;
+
+    $.jStorage.deleteKey("pillowImages");
+
+
+    $scope.cartRefresh = function(page) {
+
+        MyServices.getorderproductbyuser(page).success(function(data) {
+            console.log(data.queryresult);
+            if (data.queryresult.length == 0 && $scope.orders.length == 0) {
+                $scope.showloading = false;
+                $scope.shownoorder = true;
+                $scope.keepscrolling = false;
+            } else if (data.queryresult.length == 0) {
+                $scope.keepscrolling = false;
+            } else {
+                $scope.showloading = false;
+                $scope.keepscrolling = true;
+                _.each(data.queryresult, function(n) {
+                    $scope.total += parseInt(n.price);
+                    $scope.orders.push(n);
+                })
+            }
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+
+
+    }
+
+    $scope.cartRefresh(1);
+
+    $scope.loadMoreCart = function() {
+        $scope.cartRefresh(++$scope.pageno);
+    }
+
+
+})
 
 .controller('RegisterCtrl', function($scope, MyServices, $timeout, $ionicPopup, $location) {
 

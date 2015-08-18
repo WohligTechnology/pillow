@@ -8,13 +8,13 @@
         </div>
         <div class="list" ng-if="carts != ''">
             <a class="item item-thumbnail-left" href="#/app/edit/{{cart.id}}" ng-repeat="cart in carts">
-                <img src="img/pillow.jpg">
+                <img src="{{cart.thumbnail | imgpath}}">
                 <h3>{{cart.xsize}} * {{cart.ysize}} Photo Cushion</h3>
                 <h4 class="positive">Rs.{{cart.price}}</h4>
                 <!--                <p>Size:20"</p>-->
                 <p>Quantity:{{cart.quantity }}</p>
                 <!--                <p>Filler:Yes</p>-->
-                <button class="button button-clear button-assertive button-small">REMOVE</button>
+                <button class="button button-clear button-assertive button-small" ng-click="removeCart(cart)">REMOVE</button>
             </a>
             <div class="item item-divider">Total Ammount</div>
             <!--
