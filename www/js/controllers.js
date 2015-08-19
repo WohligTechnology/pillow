@@ -99,13 +99,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-//                            sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-//                            sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -115,7 +115,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-//                            sourceType: Camera.PictureSourceType.CAMERA,
+                            sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -814,7 +814,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
 
 })
-    .controller('EditCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams) {
+    .controller('EditCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams,$state) {
 
         $scope.cart = MyServices.getCart();
 
@@ -901,13 +901,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-//                                sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-//                                sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -917,7 +917,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-//                                sourceType: Camera.PictureSourceType.CAMERA,
+                                sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };
@@ -1610,10 +1610,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             console.log("after image");
             console.log($scope.pillowImages);
             $scope.imageData.images = $scope.pillowImages;
-
             MyServices.setImages($scope.imageData);
-
-
+		   $state.go("app.editproduct");
             $location.url("/app/editproduct");
         }
 
