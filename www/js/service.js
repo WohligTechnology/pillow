@@ -577,7 +577,7 @@ myservices.factory('MyServices', function($http) {
     }
     returnval.getCart = function() {
 	    $http.get(adminurl + "getallcartbyuser?userid="+$.jStorage.get("user").id).success(function(data){
-		    cart = data.queryresult.length;
+//		    cart = data.queryresult.length;
 		    $.jStorage.set("cart", cart);
 	    });
 	    
