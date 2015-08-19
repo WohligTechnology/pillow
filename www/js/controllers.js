@@ -1893,7 +1893,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         }, 3000);
                     } else {
                         MyServices.setUser(data);
-                        $location.url("/tab/home");
+                        $location.url("/app/home");
                     }
 
                 });
@@ -1935,7 +1935,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     }, 3000);
                 } else {
                     MyServices.setUser(data);
-                    $location.url("/tab/home");
+                    $location.url("/app/home");
                 }
             });
         }
@@ -2202,7 +2202,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 		   console.log("in not equal to 0");
             MyServices.setUser(data);
             user = data;
-            $location.url("/tab/home");
+            $location.url("/app/home");
         } else {
 		   console.log("in equal to 0");
             console.log("stay here");
