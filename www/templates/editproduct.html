@@ -16,7 +16,7 @@
             <div class="maskimg m0auto rowof1" ng-if="pillowImages.length==1">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -33,7 +33,7 @@
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==2">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -43,7 +43,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1, $data,$event)" ng-click="getImageId('img2', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -56,7 +56,7 @@
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==3">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -64,7 +64,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -74,7 +74,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -89,7 +89,7 @@
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==4">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -97,7 +97,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -107,7 +107,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -115,7 +115,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3,$data,$event)" ng-click="getImageId('img1', 3)">
-                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  ragbox>
+                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg3" style="{{pillow.style}}">
 
@@ -130,7 +130,7 @@
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==5">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -138,7 +138,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -146,7 +146,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -156,7 +156,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3,$data,$event)" ng-click="getImageId('img1', 3)">
-                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  ragbox>
+                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg3" style="{{pillow.style}}">
 
@@ -164,7 +164,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(4,$data,$event)" ng-click="getImageId('img1', 4)">
-                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  ragbox>
+                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg4" style="{{pillow.style}}">
 
@@ -179,7 +179,7 @@
             <div class="maskimg m0auto rowof2" ng-if="pillowImages.length==6">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -187,7 +187,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -195,7 +195,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -205,7 +205,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3,$data,$event)" ng-click="getImageId('img1', 3)">
-                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  ragbox>
+                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg3" style="{{pillow.style}}">
 
@@ -213,7 +213,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(4,$data,$event)" ng-click="getImageId('img1', 4)">
-                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  ragbox>
+                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg4" style="{{pillow.style}}">
 
@@ -221,7 +221,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(5,$data,$event)" ng-click="getImageId('img1', 5)">
-                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  ragbox>
+                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg5" style="{{pillow.style}}">
 
@@ -236,7 +236,7 @@
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==7">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -244,7 +244,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -252,7 +252,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -262,7 +262,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3,$data,$event)" ng-click="getImageId('img1', 3)">
-                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  ragbox>
+                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg3" style="{{pillow.style}}">
 
@@ -270,7 +270,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(4,$data,$event)" ng-click="getImageId('img1', 4)">
-                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  ragbox>
+                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg4" style="{{pillow.style}}">
 
@@ -278,7 +278,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(5,$data,$event)" ng-click="getImageId('img1', 5)">
-                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  ragbox>
+                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg5" style="{{pillow.style}}">
 
@@ -288,7 +288,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(6,$data,$event)" ng-click="getImageId('img1', 6)">
-                        <div class="drag-box frame2 element6 {{pillow.opacity}}" id="img7" ng-repeat="pillow in pillowImages[6]"  ragbox>
+                        <div class="drag-box frame2 element6 {{pillow.opacity}}" id="img7" ng-repeat="pillow in pillowImages[6]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg6" style="{{pillow.style}}">
 
@@ -303,7 +303,7 @@
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==8">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -311,7 +311,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -319,7 +319,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
@@ -329,7 +329,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(3,$data,$event)" ng-click="getImageId('img1', 3)">
-                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  ragbox>
+                        <div class="drag-box frame2 element3 {{pillow.opacity}}" id="img4" ng-repeat="pillow in pillowImages[3]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg3" style="{{pillow.style}}">
 
@@ -337,7 +337,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(4,$data,$event)" ng-click="getImageId('img1', 4)">
-                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  ragbox>
+                        <div class="drag-box frame2 element4 {{pillow.opacity}}" id="img5" ng-repeat="pillow in pillowImages[4]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg4" style="{{pillow.style}}">
 
@@ -345,7 +345,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(5,$data,$event)" ng-click="getImageId('img1', 5)">
-                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  ragbox>
+                        <div class="drag-box frame2 element5 {{pillow.opacity}}" id="img6" ng-repeat="pillow in pillowImages[5]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg5" style="{{pillow.style}}">
 
@@ -355,7 +355,7 @@
                 </div>
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(6,$data,$event)" ng-click="getImageId('img1', 6)">
-                        <div class="drag-box frame2 element6 {{pillow.opacity}}" id="img7" ng-repeat="pillow in pillowImages[6]"  ragbox>
+                        <div class="drag-box frame2 element6 {{pillow.opacity}}" id="img7" ng-repeat="pillow in pillowImages[6]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg6" style="{{pillow.style}}">
 
@@ -363,7 +363,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(7,$data,$event)" ng-click="getImageId('img1', 7)">
-                        <div class="drag-box frame2 element7 {{pillow.opacity}}" id="img8" ng-repeat="pillow in pillowImages[7]"  ragbox>
+                        <div class="drag-box frame2 element7 {{pillow.opacity}}" id="img8" ng-repeat="pillow in pillowImages[7]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg7" style="{{pillow.style}}">
 
@@ -378,7 +378,7 @@
             <div class="maskimg m0auto rowof3" ng-if="pillowImages.length==9">
                 <div class="flex-box">
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(0,$data,$event)" ng-click="getImageId('img1', 0)">
-                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  ragbox>
+                        <div class="drag-box frame2 element0 {{pillow.opacity}}" id="img1" ng-repeat="pillow in pillowImages[0]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg0" style="{{pillow.style}}">
 
@@ -386,7 +386,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(1,$data,$event)" ng-click="getImageId('img1', 1)">
-                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  ragbox>
+                        <div class="drag-box frame2 element1 {{pillow.opacity}}" id="img2" ng-repeat="pillow in pillowImages[1]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg1" style="{{pillow.style}}">
 
@@ -394,7 +394,7 @@
 
                     </div>
                     <div class="box-in" ng-drop="{{dropstatus}}" ng-drop-success="onDropComplete(2,$data,$event)" ng-click="getImageId('img1', 2)">
-                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  ragbox>
+                        <div class="drag-box frame2 element2 {{pillow.opacity}}" id="img3" ng-repeat="pillow in pillowImages[2]"  dragbox>
 
                             <img ng-src="{{pillow.img | imgpath}}" alt="" id="imgg2" style="{{pillow.style}}">
 
