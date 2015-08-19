@@ -1611,7 +1611,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             console.log($scope.pillowImages);
             $scope.imageData.images = $scope.pillowImages;
             MyServices.setImages($scope.imageData);
-		   $state.go("app.editproduct");
+//		   $state.go("editproduct");
             $location.url("/app/editproduct");
         }
 
@@ -2068,8 +2068,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 })
 
 .controller('EditProductCtrl', function($scope, $ionicPopup, $timeout, $window, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams) {
-    console.log($stateParams.id);
-
+    
     $scope.pillowImage = MyServices.getImages();
     $scope.pillowImages = $scope.pillowImage.images;
     $scope.arrayConvert = {};
