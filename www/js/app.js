@@ -267,8 +267,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
 
                 if (myelem.ratio == imagedim.ratio) {
                     $(this).css("width", "100%");
+//                    $(this).css("margin-left", "");
                 } else if (myelem.ratio > imagedim.ratio) {
                     $(this).css("width", "100%");
+//                    $(this).css("margin-left", "");
                     imagedim.same = "width";
                     console.log("width same");
                     imagedim.newwidth = myelem.width;
@@ -280,6 +282,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
                     createheightdragger(this, imagedim);
                 } else {
                     $(this).css("height", "100%");
+//                    $(this).css("margin-top", "");
+//                    $(this).css("margin-left", "");
                     imagedim.same = "height";
                     console.log("height same");
                     imagedim.newheight = myelem.height;
@@ -350,7 +354,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'myservices'])
         if (input.slice(0, 3) == "htt") {
             return input;
         } else {
-            return "http://localhost/pillowbackend/pillow/uploads/" + input;
+            return adminbase+"uploads/" + input;
         }
     };
 })

@@ -1746,6 +1746,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         });
                         $timeout(function() {
                             alertPopup.close(); //close the popup after 3 seconds for some reason
+					    $location.url("/app/home");
                         }, 3000);
 			  }
 
@@ -1989,7 +1990,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         })
     }
 
-    $scope.addCart = function() {
+    $scope.addCart = function(topage) {
 
 
         $ionicLoading.show({
@@ -2030,7 +2031,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 });
                 $timeout(function() {
                     alertPopup.close(); //close the popup after 3 seconds for some reason
-                    $location.url("/app/home");
+                    if (topage == 1)
+                        $location.url("/app/home");
+                    else
+                        $location.url("/app/checkout");
                 }, 3000);
             } else {
                 var alertPopup = $ionicPopup.show({
@@ -2051,6 +2055,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         //            alertPopup.close(); //close the popup after 3 seconds for some reason
         //        }, 3000);
     }
+    
 
     $scope.incdec = function(data) {
         if (data == 1) {
@@ -2092,7 +2097,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.calculatePrice = function(prod) {
         console.log(prod);
         prod = JSON.parse(prod);
-        $scope.productsave = prod;
+//        $scope.productsave = prod;
         $scope.arrayConvert.price = parseInt(prod.price) * parseInt($scope.arrayConvert.quantity);
     }
 
@@ -2139,9 +2144,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             });
         });
         console.log("after image");
+	    console.log($scope.productsave);
         $scope.arrayConvert.productid = $scope.productsave.id;
         $scope.arrayConvert.userid = $.jStorage.get("user").id;
-        $scope.arrayConvert.userproductcartid = $scope.productsave.id;
+        $scope.arrayConvert.userproductcartid = $scope.pillowImage.id;
         console.log($scope.arrayConvert);
 
 
@@ -2173,6 +2179,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         });
 
     }
+    
 
     $scope.incdec = function(data) {
         console.log(data);

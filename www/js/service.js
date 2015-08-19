@@ -511,10 +511,19 @@ var countries = [{
 
 myservices.factory('MyServices', function($http) {
 
+	
+    var obj = {};
+    obj.badge = 9;
     //    user = $.jStorage.get("user");
     var returnval = {};
     
 
+    returnval.setBadge = function(val) {
+        obj.badge = val;
+    }
+    returnval.getBadge = function() {
+        return obj;
+    }
     returnval.getFacebook = function() {
         return "hello";
     }
