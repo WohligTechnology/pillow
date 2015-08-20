@@ -39,7 +39,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
+        //console.log('Doing login', $scope.loginData);
 
         // Simulate a login delay. Remove this and replace with your login
         // code if using a login system
@@ -86,7 +86,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //ngDraggable
     $scope.num = 9;
     $.jStorage.set("num", $scope.num);
-    console.log($.jStorage.get("num"));
+    //console.log($.jStorage.get("num"));
     $scope.blurclass = "";
     $scope.dropstatus = "true";
     $scope.pillowImages = [
@@ -121,15 +121,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     };
 
     $scope.newfun = function(index) {
-        console.log(index);
+        //console.log(index);
     }
 
     //	CLICK PHOTO
 
 
     var callback = function(result) {
-        console.log("click result");
-        console.log(result);
+        //console.log("click result");
+        //console.log(result);
         if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
             $scope.pillowImages = [
                 [{
@@ -144,7 +144,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 img: result,
                 opacity: ''
             }]);
-            console.log($scope.pillowImages);
+            //console.log($scope.pillowImages);
         }
     };
 
@@ -161,7 +161,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options1).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
-                //                console.log($.jStorage.get("num"));
+                //                //console.log($.jStorage.get("num"));
                 //                                if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
                 //                                    $scope.pillowImages = [
                 //                                        [{
@@ -176,22 +176,22 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 //                                        img: imageData,
                 //                                        opacity: ''
                 //                                    }]);
-                //                                    console.log($scope.pillowImages);
+                //                                    //console.log($scope.pillowImages);
                 //                                }
 
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
                         var data = JSON.parse(result.response);
-                        console.log("in response");
-                        console.log(data);
+                        //console.log("in response");
+                        //console.log(data);
                         callback(data);
                     }, function(err) {
-                        console.log(err);
+                        //console.log(err);
                     }, function(progress) {
-                        console.log("progress");
+                        //console.log("progress");
                     });
 
-                console.log(imageData);
+                //console.log(imageData);
             }, function(err) {
                 // error
             });
@@ -212,7 +212,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options2).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
-                console.log($.jStorage.get("num"));
+                //console.log($.jStorage.get("num"));
                 if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
                     $scope.pillowImages = [
                         [{
@@ -227,21 +227,21 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         img: imageData,
                         opacity: ''
                     }]);
-                    console.log($scope.pillowImages);
+                    //console.log($scope.pillowImages);
                 }
 
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
-                        console.log(result);
+                        //console.log(result);
                         var data = JSON.parse(result.response);
                         callback(data);
                     }, function(err) {
-                        console.log(err);
+                        //console.log(err);
                     }, function(progress) {
-                        console.log("progress");
+                        //console.log("progress");
                     });
 
-                console.log(imageData);
+                //console.log(imageData);
             }, function(err) {
                 // error
             });
@@ -251,7 +251,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //upload photo instagram
 
     $scope.instagramPhoto = function() {
-        console.log("Data");
+        //console.log("Data");
         $scope.toPushSocial = [];
         $ionicLoading.show({
             template: 'Loading...'
@@ -290,14 +290,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
     $scope.facebookPhoto = function() {
-        console.log("Data");
+        //console.log("Data");
         $scope.toPushSocial = [];
         $ionicLoading.show({
             template: 'Loading...'
         });
 
-        console.log("in images");
-        console.log($scope.socialimages);
+        //console.log("in images");
+        //console.log($scope.socialimages);
         MyServices.checkLogin("Facebook").success(
             function(data, status) {
                 if (data.value) {
@@ -334,8 +334,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
     $scope.doneSocialPhoto = function() {
 
-        console.log("socail facebook");
-        console.log($scope.toPushSocial);
+        //console.log("socail facebook");
+        //console.log($scope.toPushSocial);
         _.each($scope.toPushSocial, function(n) {
 
             if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
@@ -373,7 +373,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
             }
         }
-        console.log($scope.toPushSocial);
+        //console.log($scope.toPushSocial);
     }
 
 
@@ -382,9 +382,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     var stopinterval = 0;
 
     var checkfb = function(data, status) {
-        console.log(data);
+        //console.log(data);
         if (data.value == null) {
-            console.log("Do nothing");
+            //console.log("Do nothing");
         } else {
             ref.close();
             if (data.value == "SUCCESS" && !$scope.showimages) {
@@ -415,7 +415,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     //	UPLOAD PHOTO
 
     $scope.uploadPhoto = function() {
-        console.log("picture");
+        //console.log("picture");
         if ($scope.pillowImages.length > 8) {
             var alertPopup = $ionicPopup.show({
                 title: "Number Of Images Excceds!",
@@ -440,7 +440,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 img: 'img/demo.jpg',
                                 opacity: ''
                             }]);
-                            console.log($scope.pillowImages);
+                            //console.log($scope.pillowImages);
                         }*/
 
 
@@ -468,27 +468,27 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     //                            img: resultImage[key],
                     //                            opacity: ''
                     //                        }]);
-                    //                        console.log($scope.pillowImages);
+                    //                        //console.log($scope.pillowImages);
                     //                    }
                     //				 
 
                     $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", resultImage[key], {})
                         .then(function(result) {
                             var data = JSON.parse(result.response);
-                            console.log("in response");
-                            console.log(data);
+                            //console.log("in response");
+                            //console.log(data);
                             callback(data);
                         }, function(err) {
-                            console.log(err);
+                            //console.log(err);
                         }, function(progress) {
-                            console.log("progress");
+                            //console.log("progress");
                         });
 
 
                 });
-                console.log($.jStorage.get("num"));
+                //console.log($.jStorage.get("num"));
                 options.maximumImagesCount = $.jStorage.get("num");
-                console.log(options);
+                //console.log(options);
                 $.jStorage.set("pillow", $scope.pillowImages);
                 $scope.modal.hide();
                 //
@@ -520,8 +520,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         classname = "." + classname;
 
 
-        console.log("clas$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        console.log(classname);
+        //console.log("clas$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        //console.log(classname);
         for (var i = 0; i < 5; i++) {
             classname = classname.replace(" ", ".");
         }
@@ -555,7 +555,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.mouseDown = function() {
         promise = $interval(function() {
             $scope.Time = $scope.Time + 1;
-            console.log($scope.Time);
+            //console.log($scope.Time);
         }, 100);
     };
 
@@ -573,7 +573,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.editimg = "true";
     $scope.edit_img = function() {
         $scope.dropstatus = "false";
-        console.log($scope.dropstatus);
+        //console.log($scope.dropstatus);
         $scope.edit = true;
         $scope.doneimg = true;
         $scope.editimg = false;
@@ -610,14 +610,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.getImageId = function(imgd, mykey) {
         imgid = imgd;
-        console.log(imgid);
-        console.log(mykey);
-        console.log($scope.pillowImages);
+        //console.log(imgid);
+        //console.log(mykey);
+        //console.log($scope.pillowImages);
         if ($scope.dropstatus == "false") {
             _.forEach($scope.pillowImages, function(n, key) {
                 $scope.pillowImages[key][0].opacity = "img_opacity";
                 $scope.pillowImages[mykey][0].opacity = "";
-                console.log($scope.pillowImages[key][0].opacity);
+                //console.log($scope.pillowImages[key][0].opacity);
             });
         }
 
@@ -625,9 +625,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.dragg = "true";
     $scope.onTap = function(evt) {
-        console.log("on tap");
-        console.log(evt);
-        console.log($scope.dragg);
+        //console.log("on tap");
+        //console.log(evt);
+        //console.log($scope.dragg);
         if ($scope.dragg == "true")
             $scope.dragg = "false";
         else
@@ -645,7 +645,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
     $scope.moveImg = function(str, ishold) {
-        console.log(imgid);
+        //console.log(imgid);
         var step = 50; // change this to different step value
 
         switch (str) {
@@ -653,30 +653,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 if (ishold == 0) {
                     var x = document.getElementById(imgid).style.backgroundPositionY;
                     var index = x.indexOf("px");
-                    console.log(index);
+                    //console.log(index);
                     if (index == -1) {
-                        console.log(index);
+                        //console.log(index);
                         document.getElementById(imgid).style.backgroundPositionY = "1px";
                     } else {
                         x = x.substr(0, index);
-                        console.log(x);
+                        //console.log(x);
                         var down = parseInt(x) + 1;
-                        console.log("Down=" + down);
+                        //console.log("Down=" + down);
                         document.getElementById(imgid).style.backgroundPositionY = down + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
                         var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionY = "1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var down = parseInt(x) + 1;
-                            console.log("Down=" + down);
+                            //console.log("Down=" + down);
                             document.getElementById(imgid).style.backgroundPositionY = down + "px";
                         }
                     }, 100);
@@ -686,30 +686,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 if (ishold == 0) {
                     var x = document.getElementById(imgid).style.backgroundPositionY;
                     var index = x.indexOf("px");
-                    console.log(index);
+                    //console.log(index);
                     if (index == -1) {
-                        console.log(index);
+                        //console.log(index);
                         document.getElementById(imgid).style.backgroundPositionY = "-1px";
                     } else {
                         x = x.substr(0, index);
-                        console.log(x);
+                        //console.log(x);
                         var up = parseInt(x) - 1;
-                        console.log("Up=" + up);
+                        //console.log("Up=" + up);
                         document.getElementById(imgid).style.backgroundPositionY = up + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
                         var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionY = "-1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var up = parseInt(x) - 1;
-                            console.log("Up=" + up);
+                            //console.log("Up=" + up);
                             document.getElementById(imgid).style.backgroundPositionY = up + "px";
                         }
                     }, 100);
@@ -719,30 +719,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 if (ishold == 0) {
                     var x = document.getElementById(imgid).style.backgroundPositionX;
                     var index = x.indexOf("px");
-                    console.log(index);
+                    //console.log(index);
                     if (index == -1) {
-                        console.log(index);
+                        //console.log(index);
                         document.getElementById(imgid).style.backgroundPositionX = "-1px";
                     } else {
                         x = x.substr(0, index);
-                        console.log(x);
+                        //console.log(x);
                         var left = parseInt(x) - 1;
-                        console.log("Left=" + left);
+                        //console.log("Left=" + left);
                         document.getElementById(imgid).style.backgroundPositionX = left + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
                         var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionX = "-1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var left = parseInt(x) - 1;
-                            console.log("Left=" + left);
+                            //console.log("Left=" + left);
                             document.getElementById(imgid).style.backgroundPositionX = left + "px";
                         }
                     }, 100);
@@ -752,30 +752,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 if (ishold == 0) {
                     var x = document.getElementById(imgid).style.backgroundPositionX;
                     var index = x.indexOf("px");
-                    console.log(index);
+                    //console.log(index);
                     if (index == -1) {
-                        console.log(index);
+                        //console.log(index);
                         document.getElementById(imgid).style.backgroundPositionX = "1px";
                     } else {
                         x = x.substr(0, index);
-                        console.log(x);
+                        //console.log(x);
                         var right = parseInt(x) + 1;
-                        console.log("Right=" + right);
+                        //console.log("Right=" + right);
                         document.getElementById(imgid).style.backgroundPositionX = right + "px";
                     }
                 } else if (ishold == 1) {
                     promise = $interval(function() {
                         var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionX = "1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var right = parseInt(x) + 1;
-                            console.log("Right=" + right);
+                            //console.log("Right=" + right);
                             document.getElementById(imgid).style.backgroundPositionX = right + "px";
                         }
                     }, 100);
@@ -786,11 +786,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     //proceed
     $scope.proceed = function() {
-        console.log($scope.pillowImages);
+        //console.log($scope.pillowImages);
 
         _.each($scope.pillowImages, function(n, key) {
-            console.log(document.getElementById("imgg" + key).style.marginLeft);
-            console.log(document.getElementById("imgg" + key).style.marginTop);
+            //console.log(document.getElementById("imgg" + key).style.marginLeft);
+            //console.log(document.getElementById("imgg" + key).style.marginTop);
 
             $scope.left = document.getElementById("imgg" + key).style.marginLeft;
             $scope.top = document.getElementById("imgg" + key).style.marginTop;
@@ -805,8 +805,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 });
             }
         });
-        console.log("after image");
-        console.log($scope.pillowImages);
+        //console.log("after image");
+        //console.log($scope.pillowImages);
 
         MyServices.setImages($scope.pillowImages);
 
@@ -845,14 +845,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
         MyServices.getuserproductcartbyid($stateParams.id).success(function(data) {
-            console.log("my data");
-            console.log(data);
+            //console.log("my data");
+            //console.log(data);
             $scope.imageData = data;
             if ($scope.status) {
                 $scope.pillowImages = $.jStorage.get("pillowImages").images;
             } else {
-                console.log("pilllow before");
-                console.log(data);
+                //console.log("pilllow before");
+                //console.log(data);
 
                 _.each(data.images, function(n, key) {
                     if (n.top == 0 && n.left == 0) {
@@ -886,11 +886,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     }
                 });
             }
-            console.log($scope.pillowImages);
+            //console.log($scope.pillowImages);
             $scope.imageData.images = $scope.pillowImages;
-            console.log($scope.imageData);
+            //console.log($scope.imageData);
         });
-        console.log($stateParams.id);
+        //console.log($stateParams.id);
 
         //    $scope.pillowImages = [
         //        [{
@@ -924,18 +924,18 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         };
 
         $scope.newfun = function(index) {
-            console.log(index);
+            //console.log(index);
         }
 
         //	CLICK PHOTO
 
 
         var callback = function(result) {
-            console.log("click result");
-            console.log(result);
+            //console.log("click result");
+            //console.log(result);
             $ionicLoading.hide();
             _.each($scope.pillowImages, function(n, key) {
-                console.log(n);
+                //console.log(n);
                 _.each(n, function(m, key) {
                     m.style = "";
                 });
@@ -955,7 +955,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     img: result,
                     opacity: ''
                 }]);
-                console.log($scope.pillowImages);
+                //console.log($scope.pillowImages);
             }
         };
 
@@ -972,7 +972,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 $cordovaCamera.getPicture(options1).then(function(imageData) {
                     //			  $scope.num = $scope.num - 1;
                     $.jStorage.set("num", $.jStorage.get("num") - 1);
-                    //                console.log($.jStorage.get("num"));
+                    //                //console.log($.jStorage.get("num"));
                     //                                if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
                     //                                    $scope.pillowImages = [
                     //                                        [{
@@ -987,25 +987,25 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     //                                        img: imageData,
                     //                                        opacity: ''
                     //                                    }]);
-                    //                                    console.log($scope.pillowImages);
+                    //                                    //console.log($scope.pillowImages);
                     //                                }
 
                     $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                         .then(function(result) {
                             var data = JSON.parse(result.response);
-                            console.log("in response");
-                            console.log(data);
+                            //console.log("in response");
+                            //console.log(data);
                             $ionicLoading.show({
                                 template: 'Loading...'
                             });
                             callback(data);
                         }, function(err) {
-                            console.log(err);
+                            //console.log(err);
                         }, function(progress) {
-                            console.log("progress");
+                            //console.log("progress");
                         });
 
-                    console.log(imageData);
+                    //console.log(imageData);
                 }, function(err) {
                     // error
                 });
@@ -1026,7 +1026,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 $cordovaCamera.getPicture(options2).then(function(imageData) {
                     //			  $scope.num = $scope.num - 1;
                     $.jStorage.set("num", $.jStorage.get("num") - 1);
-                    console.log($.jStorage.get("num"));
+                    //console.log($.jStorage.get("num"));
                     if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
                         $scope.pillowImages = [
                             [{
@@ -1041,24 +1041,24 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                             img: imageData,
                             opacity: ''
                         }]);
-                        console.log($scope.pillowImages);
+                        //console.log($scope.pillowImages);
                     }
 
                     $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                         .then(function(result) {
-                            console.log(result);
+                            //console.log(result);
                             var data = JSON.parse(result.response);
                             $ionicLoading.show({
                                 template: 'Loading...'
                             });
                             callback(data);
                         }, function(err) {
-                            console.log(err);
+                            //console.log(err);
                         }, function(progress) {
-                            console.log("progress");
+                            //console.log("progress");
                         });
 
-                    console.log(imageData);
+                    //console.log(imageData);
                 }, function(err) {
                     // error
                 });
@@ -1068,7 +1068,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         //upload photo instagram
 
         $scope.instagramPhoto = function() {
-            console.log("Data");
+            //console.log("Data");
             $scope.toPushSocial = [];
             $ionicLoading.show({
                 template: 'Loading...'
@@ -1107,14 +1107,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
         $scope.facebookPhoto = function() {
-            console.log("Data");
+            //console.log("Data");
             $scope.toPushSocial = [];
             $ionicLoading.show({
                 template: 'Loading...'
             });
 
-            console.log("in images");
-            console.log($scope.socialimages);
+            //console.log("in images");
+            //console.log($scope.socialimages);
             MyServices.checkLogin("Facebook").success(
                 function(data, status) {
                     if (data.value) {
@@ -1151,11 +1151,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         }
         $scope.doneSocialPhoto = function() {
 
-            console.log("socail facebook");
-            console.log($scope.toPushSocial);
+            //console.log("socail facebook");
+            //console.log($scope.toPushSocial);
 
             _.each($scope.pillowImages, function(n, key) {
-                console.log(n);
+                //console.log(n);
                 _.each(n, function(m, key) {
                     m.style = "";
                 });
@@ -1198,7 +1198,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
                 }
             }
-            console.log($scope.toPushSocial);
+            //console.log($scope.toPushSocial);
         }
 
 
@@ -1207,9 +1207,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         var stopinterval = 0;
 
         var checkfb = function(data, status) {
-            console.log(data);
+            //console.log(data);
             if (data.value == null) {
-                console.log("Do nothing");
+                //console.log("Do nothing");
             } else {
                 ref.close();
                 if (data.value == "SUCCESS" && !$scope.showimages) {
@@ -1240,7 +1240,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         //	UPLOAD PHOTO
 
         $scope.uploadPhoto = function() {
-            console.log("picture");
+            //console.log("picture");
             if ($scope.pillowImages.length > 8) {
                 var alertPopup = $ionicPopup.show({
                     title: "Number Of Images Excceds!",
@@ -1265,7 +1265,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 img: 'img/demo.jpg',
                                 opacity: ''
                             }]);
-                            console.log($scope.pillowImages);
+                            //console.log($scope.pillowImages);
                         }*/
 
 
@@ -1293,30 +1293,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         //                            img: resultImage[key],
                         //                            opacity: ''
                         //                        }]);
-                        //                        console.log($scope.pillowImages);
+                        //                        //console.log($scope.pillowImages);
                         //                    }
                         //				 
 
                         $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", resultImage[key], {})
                             .then(function(result) {
                                 var data = JSON.parse(result.response);
-                                console.log("in response");
-                                console.log(data);
+                                //console.log("in response");
+                                //console.log(data);
                                 $ionicLoading.show({
                                     template: 'Loading...'
                                 });
                                 callback(data);
                             }, function(err) {
-                                console.log(err);
+                                //console.log(err);
                             }, function(progress) {
-                                console.log("progress");
+                                //console.log("progress");
                             });
 
 
                     });
-                    console.log($.jStorage.get("num"));
+                    //console.log($.jStorage.get("num"));
                     options.maximumImagesCount = $.jStorage.get("num");
-                    console.log(options);
+                    //console.log(options);
                     $.jStorage.set("pillow", $scope.pillowImages);
                     $scope.modal.hide();
                     //
@@ -1330,6 +1330,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         // ON DROP DELETE
         $scope.onDropDelete = function(data, evt) {
             $scope.pillowImages.splice($scope.deleteindex, 1);
+		   _.each($scope.pillowImages, function(n, key) {
+                //console.log(n);
+                _.each(n, function(m, key) {
+                    m.style = "";
+                });
+
+            });
             if ($scope.pillowImages.length == 0) {
                 $scope.pillowImages = [
                     [{
@@ -1343,7 +1350,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
         $scope.onDropComplete = function(index, obj, evt) {
-            console.log("op dropppppppp");
+            //console.log("op dropppppppp");
             abc = $element;
             var classname = $($element).attr("class");
 
@@ -1383,7 +1390,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.mouseDown = function() {
             promise = $interval(function() {
                 $scope.Time = $scope.Time + 1;
-                console.log($scope.Time);
+                //console.log($scope.Time);
             }, 100);
         };
 
@@ -1401,7 +1408,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.editimg = "true";
         $scope.edit_img = function() {
             $scope.dropstatus = "false";
-            console.log($scope.dropstatus);
+            //console.log($scope.dropstatus);
             $scope.edit = true;
             $scope.doneimg = true;
             $scope.editimg = false;
@@ -1438,14 +1445,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         $scope.getImageId = function(imgd, mykey) {
             imgid = imgd;
-            console.log(imgid);
-            console.log(mykey);
-            console.log($scope.pillowImages);
+            //console.log(imgid);
+            //console.log(mykey);
+            //console.log($scope.pillowImages);
             if ($scope.dropstatus == "false") {
                 _.forEach($scope.pillowImages, function(n, key) {
                     $scope.pillowImages[key][0].opacity = "img_opacity";
                     $scope.pillowImages[mykey][0].opacity = "";
-                    console.log($scope.pillowImages[key][0].opacity);
+                    //console.log($scope.pillowImages[key][0].opacity);
                 });
             }
 
@@ -1453,9 +1460,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         $scope.dragg = "true";
         $scope.onTap = function(evt) {
-            console.log("on tap");
-            console.log(evt);
-            console.log($scope.dragg);
+            //console.log("on tap");
+            //console.log(evt);
+            //console.log($scope.dragg);
             if ($scope.dragg == "true")
                 $scope.dragg = "false";
             else
@@ -1473,7 +1480,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
         $scope.moveImg = function(str, ishold) {
-            console.log(imgid);
+            //console.log(imgid);
             var step = 50; // change this to different step value
 
             switch (str) {
@@ -1481,30 +1488,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     if (ishold == 0) {
                         var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionY = "1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var down = parseInt(x) + 1;
-                            console.log("Down=" + down);
+                            //console.log("Down=" + down);
                             document.getElementById(imgid).style.backgroundPositionY = down + "px";
                         }
                     } else if (ishold == 1) {
                         promise = $interval(function() {
                             var x = document.getElementById(imgid).style.backgroundPositionY;
                             var index = x.indexOf("px");
-                            console.log(index);
+                            //console.log(index);
                             if (index == -1) {
-                                console.log(index);
+                                //console.log(index);
                                 document.getElementById(imgid).style.backgroundPositionY = "1px";
                             } else {
                                 x = x.substr(0, index);
-                                console.log(x);
+                                //console.log(x);
                                 var down = parseInt(x) + 1;
-                                console.log("Down=" + down);
+                                //console.log("Down=" + down);
                                 document.getElementById(imgid).style.backgroundPositionY = down + "px";
                             }
                         }, 100);
@@ -1514,30 +1521,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     if (ishold == 0) {
                         var x = document.getElementById(imgid).style.backgroundPositionY;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionY = "-1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var up = parseInt(x) - 1;
-                            console.log("Up=" + up);
+                            //console.log("Up=" + up);
                             document.getElementById(imgid).style.backgroundPositionY = up + "px";
                         }
                     } else if (ishold == 1) {
                         promise = $interval(function() {
                             var x = document.getElementById(imgid).style.backgroundPositionY;
                             var index = x.indexOf("px");
-                            console.log(index);
+                            //console.log(index);
                             if (index == -1) {
-                                console.log(index);
+                                //console.log(index);
                                 document.getElementById(imgid).style.backgroundPositionY = "-1px";
                             } else {
                                 x = x.substr(0, index);
-                                console.log(x);
+                                //console.log(x);
                                 var up = parseInt(x) - 1;
-                                console.log("Up=" + up);
+                                //console.log("Up=" + up);
                                 document.getElementById(imgid).style.backgroundPositionY = up + "px";
                             }
                         }, 100);
@@ -1547,30 +1554,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     if (ishold == 0) {
                         var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionX = "-1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var left = parseInt(x) - 1;
-                            console.log("Left=" + left);
+                            //console.log("Left=" + left);
                             document.getElementById(imgid).style.backgroundPositionX = left + "px";
                         }
                     } else if (ishold == 1) {
                         promise = $interval(function() {
                             var x = document.getElementById(imgid).style.backgroundPositionX;
                             var index = x.indexOf("px");
-                            console.log(index);
+                            //console.log(index);
                             if (index == -1) {
-                                console.log(index);
+                                //console.log(index);
                                 document.getElementById(imgid).style.backgroundPositionX = "-1px";
                             } else {
                                 x = x.substr(0, index);
-                                console.log(x);
+                                //console.log(x);
                                 var left = parseInt(x) - 1;
-                                console.log("Left=" + left);
+                                //console.log("Left=" + left);
                                 document.getElementById(imgid).style.backgroundPositionX = left + "px";
                             }
                         }, 100);
@@ -1580,30 +1587,30 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     if (ishold == 0) {
                         var x = document.getElementById(imgid).style.backgroundPositionX;
                         var index = x.indexOf("px");
-                        console.log(index);
+                        //console.log(index);
                         if (index == -1) {
-                            console.log(index);
+                            //console.log(index);
                             document.getElementById(imgid).style.backgroundPositionX = "1px";
                         } else {
                             x = x.substr(0, index);
-                            console.log(x);
+                            //console.log(x);
                             var right = parseInt(x) + 1;
-                            console.log("Right=" + right);
+                            //console.log("Right=" + right);
                             document.getElementById(imgid).style.backgroundPositionX = right + "px";
                         }
                     } else if (ishold == 1) {
                         promise = $interval(function() {
                             var x = document.getElementById(imgid).style.backgroundPositionX;
                             var index = x.indexOf("px");
-                            console.log(index);
+                            //console.log(index);
                             if (index == -1) {
-                                console.log(index);
+                                //console.log(index);
                                 document.getElementById(imgid).style.backgroundPositionX = "1px";
                             } else {
                                 x = x.substr(0, index);
-                                console.log(x);
+                                //console.log(x);
                                 var right = parseInt(x) + 1;
-                                console.log("Right=" + right);
+                                //console.log("Right=" + right);
                                 document.getElementById(imgid).style.backgroundPositionX = right + "px";
                             }
                         }, 100);
@@ -1614,11 +1621,11 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         //proceed
         $scope.proceed = function() {
-            console.log($scope.pillowImages);
+            //console.log($scope.pillowImages);
 
             _.each($scope.pillowImages, function(n, key) {
-                console.log(document.getElementById("imgg" + key).style.marginLeft);
-                console.log(document.getElementById("imgg" + key).style.marginTop);
+                //console.log(document.getElementById("imgg" + key).style.marginLeft);
+                //console.log(document.getElementById("imgg" + key).style.marginTop);
 
                 $scope.left = document.getElementById("imgg" + key).style.marginLeft;
                 $scope.top = document.getElementById("imgg" + key).style.marginTop;
@@ -1635,8 +1642,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     });
                 }
             });
-            console.log("after image");
-            console.log($scope.pillowImages);
+            //console.log("after image");
+            //console.log($scope.pillowImages);
             $scope.imageData.images = $scope.pillowImages;
             MyServices.setImages($scope.imageData);
             //		   $state.go("editproduct");
@@ -1664,7 +1671,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.cartRefresh = function(page) {
 
         MyServices.getallcartbyuser(page).success(function(data) {
-            console.log(data.queryresult);
+            //console.log(data.queryresult);
             if (data.queryresult.length == 0 && $scope.carts.length == 0) {
                 $scope.showloading = false;
                 $scope.shownocart = true;
@@ -1764,7 +1771,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $scope.checkout.user = $.jStorage.get("user").id;
             $scope.checkout.finalamount = $scope.total;
             MyServices.userCheckout($scope.checkout).success(function(data) {
-                console.log(data);
+                //console.log(data);
                 if (data != 0) {
                     var alertPopup = $ionicPopup.show({
                         title: "Order is placed.",
@@ -1796,7 +1803,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.cartRefresh = function(page) {
 
         MyServices.getallcartbyuser(page).success(function(data) {
-            console.log(data.queryresult);
+            //console.log(data.queryresult);
             if (data.queryresult.length == 0 && $scope.carts.length == 0) {
                 $scope.showloading = false;
                 $scope.shownocart = true;
@@ -1851,7 +1858,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.cartRefresh = function(page) {
 
         MyServices.getorderproductbyuser(page).success(function(data) {
-            console.log(data.queryresult);
+            //console.log(data.queryresult);
             if (data.queryresult.length == 0 && $scope.orders.length == 0) {
                 $scope.showloading = false;
                 $scope.shownoorder = true;
@@ -1909,7 +1916,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 }, 3000);
             } else {
                 MyServices.signup($scope.user, function(data, status) {
-                    console.log(data);
+                    //console.log(data);
                     if (data == "false") {
                         var alertPopup = $ionicPopup.show({
                             title: "User Already exist",
@@ -1937,7 +1944,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.allvalidation = [];
 
     var callback = function(data, status) {
-        console.log(data);
+        //console.log(data);
     };
 
     $scope.normalLogin = function() {
@@ -1983,8 +1990,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.cart = MyServices.getCart();
 
     MyServices.getProduct().success(function(data, status) {
-        console.log("product");
-        console.log(data);
+        //console.log("product");
+        //console.log(data);
         $scope.product = data;
         $scope.oneproduct = data[0];
         $scope.productsave = data[0];
@@ -2039,14 +2046,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 }
             });
         });
-        console.log("after image");
+        //console.log("after image");
         $scope.arrayConvert.productid = $scope.productsave.id;
         $scope.arrayConvert.userid = $.jStorage.get("user").id;
-        console.log($scope.arrayConvert);
+        //console.log($scope.arrayConvert);
 
 
         MyServices.addtocart($scope.arrayConvert, function(data) {
-            console.log(data);
+            //console.log(data);
 
             $ionicLoading.hide();
 
@@ -2110,7 +2117,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.product = data;
         _.each(data, function(n) {
             if (n.id == $scope.pillowImage.product) {
-                console.log(JSON.stringify(n));
+                //console.log(JSON.stringify(n));
                 $scope.oneproduct = JSON.stringify(n);
                 $scope.productsave = n;
             }
@@ -2120,7 +2127,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     });
 
     $scope.calculatePrice = function(prod) {
-        console.log(prod);
+        //console.log(prod);
         prod = JSON.parse(prod);
         //        $scope.productsave = prod;
         $scope.arrayConvert.price = parseInt(prod.price) * parseInt($scope.arrayConvert.quantity);
@@ -2168,16 +2175,16 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                 }
             });
         });
-        console.log("after image");
-        console.log($scope.productsave);
+        //console.log("after image");
+        //console.log($scope.productsave);
         $scope.arrayConvert.productid = $scope.productsave.id;
         $scope.arrayConvert.userid = $.jStorage.get("user").id;
         $scope.arrayConvert.userproductcartid = $scope.pillowImage.id;
-        console.log($scope.arrayConvert);
+        //console.log($scope.arrayConvert);
 
 
         MyServices.editcart($scope.arrayConvert, function(data) {
-            console.log(data);
+            //console.log(data);
 
             $ionicLoading.hide();
 
@@ -2207,16 +2214,16 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
     $scope.incdec = function(data) {
-        console.log(data);
+        //console.log(data);
         if (data == 1) {
             if ($scope.arrayConvert.quantity > 1)
                 $scope.arrayConvert.quantity -= 1;
-            console.log($scope.arrayConvert.quantity);
+            //console.log($scope.arrayConvert.quantity);
             $scope.arrayConvert.price = parseInt($scope.productsave.price) * parseInt($scope.arrayConvert.quantity);
         } else {
-            console.log($scope.arrayConvert.quantity);
+            //console.log($scope.arrayConvert.quantity);
             $scope.arrayConvert.quantity += 1;
-            console.log($scope.arrayConvert.quantity);
+            //console.log($scope.arrayConvert.quantity);
             $scope.arrayConvert.price = parseInt($scope.productsave.price) * parseInt($scope.arrayConvert.quantity);
         }
     }
@@ -2229,15 +2236,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     MyServices.logoutJstorage();
 
     var authenticatesuccess = function(data, status) {
-        console.log(data);
+        //console.log(data);
         if (data != "false") {
-            console.log("in not equal to 0");
+            //console.log("in not equal to 0");
             MyServices.setUser(data);
             user = data;
             $location.url("/app/home");
         } else {
-            console.log("in equal to 0");
-            console.log("stay here");
+            //console.log("in equal to 0");
+            //console.log("stay here");
         };
     };
 
@@ -2245,12 +2252,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var checksocial = function(data, status) {
         if (data != "false") {
-            console.log("Facebook Login");
+            //console.log("Facebook Login");
             $interval.cancel(stopinterval);
             ref.close();
             MyServices.authenticate().success(authenticatesuccess);
         } else {
-            console.log("Do nothing");
+            //console.log("Do nothing");
         }
     };
 
@@ -2260,7 +2267,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 
     $scope.socialLogin = function(type) {
-        console.log(type);
+        //console.log(type);
         ref = window.open(adminhauth + 'login/' + type, '_blank', 'location=no');
         stopinterval = $interval(callAtIntervalsocial, 2000);
         ref.addEventListener('exit', function(event) {
@@ -2285,7 +2292,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             scope.mouseDown = function() {
                 promise = $interval(function() {
                     scope.Time = scope.Time + 1;
-                    console.log(scope.Time);
+                    //console.log(scope.Time);
                 }, 100);
 
             };
