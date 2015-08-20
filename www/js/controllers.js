@@ -518,6 +518,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         abc = $element;
         var classname = $($element).attr("class");
         classname = "." + classname;
+	    
 
         console.log("clas$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         console.log(classname);
@@ -1138,6 +1139,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
             console.log("socail facebook");
             console.log($scope.toPushSocial);
+		      
+	    _.each($scope.pillowImages, function(n, key){
+		    console.log(n);
+		    _.each(n, function(m, key){
+			    m.style="";
+		    });
+		    
+	    });
             _.each($scope.toPushSocial, function(n) {
 
                 if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
@@ -1321,6 +1330,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             abc = $element;
             var classname = $($element).attr("class");
 
+		
+		   
             classname = "." + classname;
             for (var i = 0; i < 5; i++) {
                 classname = classname.replace(" ", ".");
