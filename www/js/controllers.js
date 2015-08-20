@@ -99,13 +99,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-                            sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-                            sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -115,7 +115,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-                            sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -518,7 +518,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         abc = $element;
         var classname = $($element).attr("class");
         classname = "." + classname;
-	    
+
 
         console.log("clas$$$$$$$$$$$$$$$$$$$$$$$$$$$");
         console.log(classname);
@@ -815,7 +815,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     }
 
 })
-    .controller('EditCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams,$state) {
+    .controller('EditCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams, $state) {
 
         $scope.cart = MyServices.getCart();
 
@@ -902,13 +902,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-                                sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-                                sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -918,7 +918,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-                                sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };
@@ -933,6 +933,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         var callback = function(result) {
             console.log("click result");
             console.log(result);
+            $ionicLoading.hide();
+            _.each($scope.pillowImages, function(n, key) {
+                console.log(n);
+                _.each(n, function(m, key) {
+                    m.style = "";
+                });
+
+            });
             if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
                 $scope.pillowImages = [
                     [{
@@ -987,6 +995,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                             var data = JSON.parse(result.response);
                             console.log("in response");
                             console.log(data);
+                            $ionicLoading.show({
+                                template: 'Loading...'
+                            });
                             callback(data);
                         }, function(err) {
                             console.log(err);
@@ -1037,6 +1048,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         .then(function(result) {
                             console.log(result);
                             var data = JSON.parse(result.response);
+                            $ionicLoading.show({
+                                template: 'Loading...'
+                            });
                             callback(data);
                         }, function(err) {
                             console.log(err);
@@ -1139,14 +1153,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
             console.log("socail facebook");
             console.log($scope.toPushSocial);
-		      
-	    _.each($scope.pillowImages, function(n, key){
-		    console.log(n);
-		    _.each(n, function(m, key){
-			    m.style="";
-		    });
-		    
-	    });
+
+            _.each($scope.pillowImages, function(n, key) {
+                console.log(n);
+                _.each(n, function(m, key) {
+                    m.style = "";
+                });
+
+            });
             _.each($scope.toPushSocial, function(n) {
 
                 if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
@@ -1288,6 +1302,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 var data = JSON.parse(result.response);
                                 console.log("in response");
                                 console.log(data);
+                                $ionicLoading.show({
+                                    template: 'Loading...'
+                                });
                                 callback(data);
                             }, function(err) {
                                 console.log(err);
@@ -1330,8 +1347,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             abc = $element;
             var classname = $($element).attr("class");
 
-		
-		   
+
+
             classname = "." + classname;
             for (var i = 0; i < 5; i++) {
                 classname = classname.replace(" ", ".");
@@ -1622,7 +1639,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             console.log($scope.pillowImages);
             $scope.imageData.images = $scope.pillowImages;
             MyServices.setImages($scope.imageData);
-//		   $state.go("editproduct");
+            //		   $state.go("editproduct");
             $location.url("/app/editproduct");
         }
 
@@ -1747,17 +1764,17 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $scope.checkout.user = $.jStorage.get("user").id;
             $scope.checkout.finalamount = $scope.total;
             MyServices.userCheckout($scope.checkout).success(function(data) {
-			  console.log(data);
-			  if(data != 0){
-				  var alertPopup = $ionicPopup.show({
-                            title: "Order is placed.",
-                            //                template: 'Login Successfull'
-                        });
-                        $timeout(function() {
-                            alertPopup.close(); //close the popup after 3 seconds for some reason
-					    $location.url("/app/home");
-                        }, 3000);
-			  }
+                console.log(data);
+                if (data != 0) {
+                    var alertPopup = $ionicPopup.show({
+                        title: "Order is placed.",
+                        //                template: 'Login Successfull'
+                    });
+                    $timeout(function() {
+                        alertPopup.close(); //close the popup after 3 seconds for some reason
+                        $location.url("/app/home");
+                    }, 3000);
+                }
 
             })
         }
@@ -1807,14 +1824,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $scope.cartRefresh(++$scope.pageno);
     }
 
-    
+
     //remove cart
-    $scope.removeCart = function(cart){
-	    MyServices.deletecartbyid(cart.id).success(function(data){
-		    if(data == "true"){
-			    $scope.cartRefresh(1);
-		    }
-	    });
+    $scope.removeCart = function(cart) {
+        MyServices.deletecartbyid(cart.id).success(function(data) {
+            if (data == "true") {
+                $scope.cartRefresh(1);
+            }
+        });
     }
 
 
@@ -1822,7 +1839,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('OrderCtrl', function($scope, MyServices, $location) {
 
-	$scope.orders = [];
+    $scope.orders = [];
     $scope.shownoorder = false;
     $scope.showloading = true;
     $scope.pageno = 1;
@@ -2064,7 +2081,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         //            alertPopup.close(); //close the popup after 3 seconds for some reason
         //        }, 3000);
     }
-    
+
 
     $scope.incdec = function(data) {
         if (data == 1) {
@@ -2079,7 +2096,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 })
 
 .controller('EditProductCtrl', function($scope, $ionicPopup, $timeout, $window, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location, $stateParams) {
-    
+
     $scope.pillowImage = MyServices.getImages();
     $scope.pillowImages = $scope.pillowImage.images;
     $scope.arrayConvert = {};
@@ -2105,7 +2122,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.calculatePrice = function(prod) {
         console.log(prod);
         prod = JSON.parse(prod);
-//        $scope.productsave = prod;
+        //        $scope.productsave = prod;
         $scope.arrayConvert.price = parseInt(prod.price) * parseInt($scope.arrayConvert.quantity);
     }
 
@@ -2152,7 +2169,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             });
         });
         console.log("after image");
-	    console.log($scope.productsave);
+        console.log($scope.productsave);
         $scope.arrayConvert.productid = $scope.productsave.id;
         $scope.arrayConvert.userid = $.jStorage.get("user").id;
         $scope.arrayConvert.userproductcartid = $scope.pillowImage.id;
@@ -2187,7 +2204,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         });
 
     }
-    
+
 
     $scope.incdec = function(data) {
         console.log(data);
@@ -2214,12 +2231,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     var authenticatesuccess = function(data, status) {
         console.log(data);
         if (data != "false") {
-		   console.log("in not equal to 0");
+            console.log("in not equal to 0");
             MyServices.setUser(data);
             user = data;
             $location.url("/app/home");
         } else {
-		   console.log("in equal to 0");
+            console.log("in equal to 0");
             console.log("stay here");
         };
     };
