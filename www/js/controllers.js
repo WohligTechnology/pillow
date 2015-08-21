@@ -954,13 +954,14 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                             var data = JSON.parse(result.response);
                             //console.log("in response");
                             //console.log(data);
-                            $ionicLoading.show({
-                                template: 'Loading...'
-                            });
+                            
                             callback(data);
                         }, function(err) {
                             //console.log(err);
                         }, function(progress) {
+					$ionicLoading.show({
+                                template: 'Loading...'
+                            });
                             //console.log("progress");
                         });
 
@@ -1007,14 +1008,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         .then(function(result) {
                             //console.log(result);
                             var data = JSON.parse(result.response);
-                            $ionicLoading.show({
-                                template: 'Loading...'
-                            });
+                            
                             callback(data);
                         }, function(err) {
                             //console.log(err);
                         }, function(progress) {
                             //console.log("progress");
+					$ionicLoading.show({
+                                template: 'Loading...'
+                            });
                         });
 
                     //console.log(imageData);
@@ -1261,14 +1263,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 var data = JSON.parse(result.response);
                                 //console.log("in response");
                                 //console.log(data);
-                                $ionicLoading.show({
-                                    template: 'Loading...'
-                                });
+                                
                                 callback(data);
                             }, function(err) {
                                 //console.log(err);
                             }, function(progress) {
                                 //console.log("progress");
+					    $ionicLoading.show({
+                                    template: 'Loading...'
+                                });
                             });
 
 
