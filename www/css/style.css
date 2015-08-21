@@ -5,59 +5,47 @@
     src: url(../fonts/Arial_Rounded_MT_Bold_Bold.ttf);
     font-weight: 700;
 }
-
 .profile img {
     width: 30%;
     margin: 15px 0 5px 0;
     border-radius: 50%;
 }
-
 .profile h4 {
     font-weight: normal;
 }
-
 .menu-items .item {
     border-width: 0px;
     color: #575757;
 }
-
 .menu-items .item-content {
     padding: 10px 49px 10px 16px;
 }
-
 .profile {
     border-bottom: 1px solid #b7b6b6;
 }
-
 .profile h4 {
     margin: 0 0 20px 0;
 }
-
 .slider-padding {
     padding: 40px 40px 10px 40px;
 }
-
 .title-txt {
     font-size: 24px;
     text-align: center;
     color: #575757;
 }
-
 .img-size {
     height: 120px;
     width: 100%;
 }
-
 .img-size img {
     width: 100%;
     height: auto;
 }
-
 .img-text {
     font-size: 11px;
     padding: 15px;
 }
-
 .img-input {
     position: absolute;
     bottom: 5px;
@@ -68,7 +56,6 @@
     text-align: center;
     padding: 2px;
 }
-
 .maskimg {
     width: 240px;
     height: 240px;
@@ -78,7 +65,6 @@
     -webkit-mask-image: url(../img/mask-img.png);
     -webkit-mask-size: 240px;
 }
-
 .overlay {
     position: absolute;
     width: 100%;
@@ -88,44 +74,36 @@
     left: 0;
     z-index: 1;
 }
-
 .m0auto {
     margin: 0 auto;
 }
-
 .pos {
     position: relative;
 }
-
 .nav-arrow {
     width: 95px;
     height: 92px;
 }
-
 .arrowt {
     position: absolute;
     top: 0;
     left: 31px;
 }
-
 .arrowr {
     position: absolute;
     right: 0;
     top: 31px;
 }
-
 .arrowb {
     position: absolute;
     bottom: 0;
     left: 32px;
 }
-
 .arrowl {
     position: absolute;
     left: 0;
     top: 31px;
 }
-
 .create-btn {
     background-color: #a6a6a6;
     color: #fff;
@@ -135,112 +113,87 @@
     padding: 0 70px;
     font-size: 18px;
 }
-
 .mt40 {
     margin-top: 40px;
 }
-
 .mt50 {
     margin-top: 50px!important;
 }
-
 .mt20 {
     margin-top: 20px;
 }
-
 .mtb20 {
     margin: 20px 0!important;
 }
-
 .mr10 {
     margin-right: 10px;
 }
-
 button.button.create-btn.activated {
     border-color: #a6a6a6;
     background-color: #a6a6a6;
     box-shadow: none;
     ;
 }
-
 .padding0 {
     padding: 0px;
 }
-
 .item p,
 .item {
     color: #575757;
 }
-
 .btn-width {
     width: 100%;
 }
-
 .pull-right {
     float: right;
 }
-
 .cart-list .list {
     margin: 30px 0 0 0;
 }
-
 .social-btn {
     width: 80%;
     margin: 0 auto;
 }
-
 .btn-twitter {
     background-color: #55ACEE;
     color: #fff;
 }
-
 .btn-gplus {
     background-color: #D43F2B;
     color: #fff;
 }
-
 .btn-fb {
     background-color: #3A5795;
     color: #fff;
 }
-
 .modal-backdrop {
     background-color: rgba(0, 0, 0, 0.4);
 }
-
 .bar .title.title-left {
     text-align: center;
 }
-
 .pad-item .item-content {
     padding: 16px;
 }
-
-
 .logo-size {
     height: 150px;
     width: 150px;
 }
-
 .paddingb65 {
     padding-bottom: 65px;
 }
-
 .bar .title {
     font-family: 'ArialRounded';
 }
-
 .bar .button.back-button {
     color: #fff;
 }
-
 h1.title.title-left {
     color: #fff;
     font-size: 23px;
     font-weight: 700;
     font-family: 'ArialRounded';
 }
-
 .select-text {
     display: block;
     padding: 7px 10px 7px 0px;
@@ -250,101 +203,79 @@ h1.title.title-left {
     font-size: 14px;
     line-height: 16px;
 }
-
 .item-icon-left.icon-size .icon {
     font-size: 23px;
 }
-
 button.button.button-icon.button-clear.ion-navicon.small-icon:before,
 a.button.button-icon.icon.ln-cart.small-icon:before {
     font-size: 25px;
 }
-
 button.button.button-clear.icon-right.ln-cross.small-icon:before {
     font-size: 20px;
 }
-
 .button.fb-btn.button-outline {
     border-color: #4870a6;
     color: #4870a6;
 }
-
 .button.twitt-btn.button-outline {
     border-color: #00bbef;
     color: #00bbef;
 }
-
 .button.gplus-btn.button-outline {
     border-color: #e84c3d;
     color: #e84c3d;
 }
-
 .button.fb-btn.button-outline.activated {
     background-color: #4870a6;
     color: #fff;
 }
-
 .button.twitt-btn.button-outline.activated {
     background-color: #00bbef;
     color: #fff;
 }
-
 .button.gplus-btn.button-outline.activated {
     background-color: #e84c3d;
     color: #fff;
 }
-
 .flex-box {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
 }
-
 .box-in {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
     flex: 1;
 }
-
 .rowof1 .drag-box {
     height: 240px;
 }
-
 .rowof2 .drag-box {
     height: 120px;
 }
-
 .rowof3 .drag-box {
     height: 80px;
 }
-
 .drag-box {
     background-size: cover;
     background-position: 0 0;
     background-repeat: no-repeat;
     overflow: hidden;
 }
-
 .frame1 {
     background-image: url(../img/demo.jpg);
 }
-
-.frame2 {}
-
-.img_opacity {
+.frame2 {} .img_opacity {
     opacity: 0.3;
 }
-
 .nomasking {
     -webkit-mask-image: none !important;
 }
-
 .deletedrop {
     opacity: 1 !important;
 }
-
 .removebox {
     height: 47px;
     border: 1px solid #fc515c;
@@ -359,18 +290,15 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
     font-size: 14px;
     margin-bottom: -20px;
 }
-
 .removebox.drag-enter {
     background: #fc515c;
     color: white;
 }
-
 .gridcontainer {
     height: 100px;
     overflow: hidden;
     position: relative;
 }
-
 .imageselection {
     position: absolute;
     top: 2px;
@@ -378,26 +306,21 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
     color: #12D712;
     font-size: 25px;
 }
-
 .pull-right {
     float: right;
 }
-
-
 .ng-invalid.ng-dirty,
 .ng-dirty {
     border-left: solid red;
     border-right: solid red;
 }
-
 label.item.item-input.ng-dirty.ng-invalid {
-    border-left: solid red;     border-right: solid red;
+    border-left: solid red;
+    border-right: solid red;
 }
-
 .ng-dirty>* {
     color: red;
 }
-
 /*jagruti*/
 
 .button-bar > .button:last-child {
@@ -409,11 +332,16 @@ label.item.item-input.ng-dirty.ng-invalid {
 .qty {
     padding: 1% 3%;
 }
-
-
 .no-connect h3 {
     text-align: center;
     width: 100%;
     color: #B9B9B9;
     padding-top: 50%;
+}
+.button .new-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+    padding: 1px 5px 2px;
 }
