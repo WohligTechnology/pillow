@@ -393,6 +393,10 @@ button.button.button-clear.icon-right.ln-cross.small-icon:before {
     border-right: solid red;
 }
 
+label.item.item-input.ng-dirty.ng-invalid {
+    border-left: solid red;     border-right: solid red;
+}
+
 .ng-dirty>* {
     color: red;
 }

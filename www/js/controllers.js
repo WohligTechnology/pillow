@@ -1,4 +1,6 @@
 var abc = 0;
+
+var cart = 0;
 //var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices', 'ngTouch'])
 
@@ -10,10 +12,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-
-    $scope.$watch('cart', function() {
-        $scope.cart = cart;
-    });
+//$scope.$watch('cart', function() {
+//        cart = $.jStorage.get("cart");;
+//    });
     $scope.cart = $.jStorage.get("cart");
     $scope.user = MyServices.getUser();
 
@@ -56,7 +57,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('HomeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
-    $scope.cart = MyServices.getCart();
+//    $scope.cart = MyServices.getCart();
 
     $ionicModal.fromTemplateUrl('templates/popup-design.html', {
         scope: $scope,
@@ -74,9 +75,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     };
 })
 
+
 .controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location) {
 
-    $scope.cart = MyServices.getCart();
+//    $scope.cart = MyServices.getCart();
 
     $timeout(function() {
         $ionicScrollDelegate.$getByHandle('mainScroll').freezeAllScrolls(true);
@@ -1808,6 +1810,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.showloading = true;
     $scope.pageno = 1;
     $scope.total = 0;
+	cart = MyServices.getCart();
+	console.log(cart);
 
     $.jStorage.deleteKey("pillowImages");
 
@@ -2206,6 +2210,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         if (data != "false") {
             //console.log("in not equal to 0");
             MyServices.setUser(data);
+//		   MyServices.getcountofcartbyuser(data.id).success(function(data){
+//			   cart = data;
+//		   });
             user = data;
             $location.url("/app/home");
         } else {

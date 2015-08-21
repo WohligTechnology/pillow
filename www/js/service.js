@@ -8,7 +8,8 @@ var adminhauth = adminbase + "index.php/hauth/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
 var user = {};
-var cart = $.jStorage.get("cart");
+//var cart = $.jStorage.get("cart");
+
 //var user=$.jStorage.get("user");
 var countries = [{
         "value": "Please Select"
@@ -549,6 +550,9 @@ myservices.factory('MyServices', function($http) {
     returnval.getallcartbyuser = function(page) {
         return $http.get(adminurl + "getallcartbyuser?userid="+$.jStorage.get("user").id+"&pageno="+page);
     }
+    returnval.getcountofcartbyuser = function(id) {
+        return $http.get(adminurl + "getcountofcartbyuser?userid="+id);
+    }
     returnval.addtocartagain = function(id) {
         return $http.get(adminurl + "pendingaddtocart?orderproductid="+id);
     }
@@ -563,9 +567,10 @@ myservices.factory('MyServices', function($http) {
         });
     }
     returnval.setUser = function(data) {
-	    $http.get(adminurl + "getallcartbyuser?userid="+data.id).success(function(data){
-		    cart = data.queryresult.length;
-		    $.jStorage.set("cart", cart);
+	    $http.get(adminurl + "getcountofcartbyuser?userid="+data.id).success(function(data){
+		    console.log("user cart");
+		    console.log(data);
+		    $.jStorage.set("cart", parseInt(data));
 	    });
         return $.jStorage.set("user", data);
     }
@@ -579,9 +584,9 @@ myservices.factory('MyServices', function($http) {
         return $.jStorage.get("user");
     }
     returnval.getCart = function() {
-	    $http.get(adminurl + "getallcartbyuser?userid="+$.jStorage.get("user").id).success(function(data){
+	    $http.get(adminurl + "getcountofcartbyuser?userid="+$.jStorage.get("user").id).success(function(data){
 //		    cart = data.queryresult.length;
-		    $.jStorage.set("cart", cart);
+		    $.jStorage.set("cart", parseInt(data));
 	    });
 	    
         return $.jStorage.get("cart");
