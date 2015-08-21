@@ -6,16 +6,17 @@
         <div class="no-connect" ng-if="showloading">
             <h3>Loading...</h3>
         </div>
-        <div class="list" ng-if="carts != ''">
-            <a class="item item-thumbnail-left" href="#/app/edit/{{cart.id}}" ng-repeat="cart in carts">
+        <ion-list ng-if="carts != ''">
+            <ion-item class="item-thumbnail-left item-icon-right" href="#/app/edit/{{cart.id}}" ng-repeat="cart in carts">
+                <ion-option-button class="button-assertive" ng-click="removeCart(cart);">Remove</ion-option-button>
                 <img src="{{cart.thumbnail | imgpath}}">
+                <i class="icon ion-ios-arrow-right"></i>
                 <h3>{{cart.xsize}} * {{cart.ysize}} Photo Cushion</h3>
-                <h4 class="positive">Rs.{{cart.price}}</h4>
+                <h2 class="positive">Rs.{{cart.price}}</h2>
                 <!--                <p>Size:20"</p>-->
                 <p>Quantity:{{cart.quantity }}</p>
                 <!--                <p>Filler:Yes</p>-->
-                <button class="button button-clear button-assertive button-small" ng-click="removeCart(cart)">REMOVE</button>
-            </a>
+            </ion-item>
             <div class="item item-divider">Total Ammount</div>
             <!--
             <div class="item item-input-inset">
@@ -45,7 +46,7 @@
                 <a href="#/app/checkout" class="button button-block button-outline button-positive">Checkout</a>
             </div>
 
-        </div>
+        </ion-list>
 
         <ion-infinite-scroll on-infinite="loadMoreCart()" ng-if="keepscrolling" distance="25%">
         </ion-infinite-scroll>
