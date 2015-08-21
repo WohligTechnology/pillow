@@ -8,12 +8,13 @@
             <h3>Loading...</h3>
         </div>
         <div class="list" ng-if="orders != ''">
-            <a class="item item-thumbnail-left" href="#" ng-repeat="order in orders">
+            <a class="item item-thumbnail-left" ng-repeat="order in orders">
                 <img src="{{order.thumbnail | imgpath}}">
                 <h3>Photo Cushion</h3>
                 <h4 class="positive">Rs.{{order.finalprice}}</h4>
                 <p>Quantity:{{order.quantity}}</p>
-                 <button class="button button-balanced button-outline button-small">Delivered</button>
+                 <button class="button button-balanced button-outline button-small">{{order.status}}</button>
+                 <button class="button button-balanced button-outline button-small" ng-if="order.status=='Cancel'" ng-click="addToCart(order.id)">Add To Cart</button>
             </a>
         </div>
         

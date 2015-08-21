@@ -549,6 +549,9 @@ myservices.factory('MyServices', function($http) {
     returnval.getallcartbyuser = function(page) {
         return $http.get(adminurl + "getallcartbyuser?userid="+$.jStorage.get("user").id+"&pageno="+page);
     }
+    returnval.addtocartagain = function(id) {
+        return $http.get(adminurl + "pendingaddtocart?orderproductid="+id);
+    }
     returnval.getuserproductcartbyid = function(id) {
         return $http.get(adminurl + "getuserproductcartbyid?id="+id);
     }

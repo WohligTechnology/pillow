@@ -99,13 +99,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-        sourceType: Camera.PictureSourceType.CAMERA,
+                sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-        sourceType: Camera.PictureSourceType.CAMERA,
+                sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -115,7 +115,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-        sourceType: Camera.PictureSourceType.CAMERA,
+                sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -146,6 +146,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }]);
             //console.log($scope.pillowImages);
         }
+
+        $ionicLoading.hide();
     };
 
     $scope.clickPhoto = function() {
@@ -161,23 +163,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             $cordovaCamera.getPicture(options1).then(function(imageData) {
                 //			  $scope.num = $scope.num - 1;
                 $.jStorage.set("num", $.jStorage.get("num") - 1);
-                //                //console.log($.jStorage.get("num"));
-                //                                if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
-                //                                    $scope.pillowImages = [
-                //                                        [{
-                //                                            name: 'three',
-                //                                            img: imageData,
-                //                                            opacity: ''
-                //                                        }]
-                //                                    ];
-                //                                } else {
-                //                                    $scope.pillowImages.push([{
-                //                                        name: 'three',
-                //                                        img: imageData,
-                //                                        opacity: ''
-                //                                    }]);
-                //                                    //console.log($scope.pillowImages);
-                //                                }
 
                 $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", imageData, {})
                     .then(function(result) {
@@ -188,6 +173,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     }, function(err) {
                         //console.log(err);
                     }, function(progress) {
+
+                        $ionicLoading.show({
+                            template: 'Loading...'
+                        });
                         //console.log("progress");
                     });
 
@@ -425,25 +414,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             }, 3000);
 
         } else {
-
-            /*if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
-                            $scope.pillowImages = [
-                                [{
-                                    name: 'three',
-                                    img: 'img/demo1.jpg',
-                                    opacity: ''
-                                }]
-                            ];
-                        } else {
-                            $scope.pillowImages.push([{
-                                name: 'three',
-                                img: 'img/demo.jpg',
-                                opacity: ''
-                            }]);
-                            //console.log($scope.pillowImages);
-                        }*/
-
-
             options.maximumImagesCount = 9 - $scope.pillowImages.length;
 
             $cordovaImagePicker.getPictures(options).then(function(resultImage) {
@@ -454,23 +424,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                     //				 $scope.num = $scope.num - 1;
                     $.jStorage.set("num", $.jStorage.get("num") - 1);
                     options.maximumImagesCount = $.jStorage.get("num");
-                    //                    if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
-                    //                        $scope.pillowImages = [
-                    //                            [{
-                    //                                name: 'three',
-                    //                                img: resultImage[key],
-                    //                                opacity: ''
-                    //                            }]
-                    //                        ];
-                    //                    } else {
-                    //                        $scope.pillowImages.push([{
-                    //                            name: 'three',
-                    //                            img: resultImage[key],
-                    //                            opacity: ''
-                    //                        }]);
-                    //                        //console.log($scope.pillowImages);
-                    //                    }
-                    //				 
 
                     $cordovaFileTransfer.upload(adminurl + "imageuploadproduct", resultImage[key], {})
                         .then(function(result) {
@@ -481,6 +434,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         }, function(err) {
                             //console.log(err);
                         }, function(progress) {
+
+                            $ionicLoading.show({
+                                template: 'Loading...'
+                            });
                             //console.log("progress");
                         });
 
@@ -902,13 +859,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+                        sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+                        sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -918,7 +875,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-            sourceType: Camera.PictureSourceType.CAMERA,
+                        sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };
@@ -1330,7 +1287,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         // ON DROP DELETE
         $scope.onDropDelete = function(data, evt) {
             $scope.pillowImages.splice($scope.deleteindex, 1);
-		   _.each($scope.pillowImages, function(n, key) {
+            _.each($scope.pillowImages, function(n, key) {
                 //console.log(n);
                 _.each(n, function(m, key) {
                     m.style = "";
@@ -1858,7 +1815,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.cartRefresh = function(page) {
 
         MyServices.getorderproductbyuser(page).success(function(data) {
-            //console.log(data.queryresult);
+            console.log(data.queryresult);
             if (data.queryresult.length == 0 && $scope.orders.length == 0) {
                 $scope.showloading = false;
                 $scope.shownoorder = true;
@@ -1884,6 +1841,15 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     $scope.loadMoreCart = function() {
         $scope.cartRefresh(++$scope.pageno);
+    }
+
+    //addto cart
+    $scope.addToCart = function(id) {
+        MyServices.addtocartagain(id).success(function(data) {
+            console.log(data);
+            $scope.orders = [];
+            $scope.cartRefresh(1);
+        });
     }
 
 
