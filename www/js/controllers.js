@@ -2221,7 +2221,6 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('LoginCtrl', function($scope, MyServices, $interval, $location) {
 
-    console.log(MyServices.getUser());
 
     if (MyServices.getUser() != null) {
         $location.url("/app/home");
