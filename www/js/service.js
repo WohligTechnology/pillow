@@ -8,9 +8,8 @@ var adminhauth = adminbase + "index.php/hauth/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
 var user = {};
-//var cart = $.jStorage.get("cart");
 
-//var user=$.jStorage.get("user");
+var cart = 9;
 var countries = [{
         "value": "Please Select"
     }, {
@@ -550,8 +549,8 @@ myservices.factory('MyServices', function($http) {
     returnval.getallcartbyuser = function(page) {
         return $http.get(adminurl + "getallcartbyuser?userid="+$.jStorage.get("user").id+"&pageno="+page);
     }
-    returnval.getcountofcartbyuser = function(id) {
-        return $http.get(adminurl + "getcountofcartbyuser?userid="+id);
+    returnval.getcountofcartbyuser = function() {
+        return $http.get(adminurl + "getcountofcartbyuser?userid="+$.jStorage.get("user").id);
     }
     returnval.addtocartagain = function(id) {
         return $http.get(adminurl + "pendingaddtocart?orderproductid="+id);
