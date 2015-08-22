@@ -461,7 +461,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                             //console.log(data);
                             $scope.pillowImages.push([{
                                 name: 'three',
-                                img: result,
+                                img: data,
                                 opacity: ''
                             }]);
                         }, function(err) {
@@ -1285,7 +1285,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 //console.log(data);
                                 $scope.pillowImages.push([{
                                     name: 'three',
-                                    img: result,
+                                    img: data,
                                     opacity: ''
                                 }]);
                             }, function(err) {
