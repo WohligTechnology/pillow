@@ -12,9 +12,9 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-    //$scope.$watch('cart', function() {
-    //        cart = $.jStorage.get("cart");;
-    //    });
+//    $scope.$watch('cart', function() {
+//            $scope.cart = $.jStorage.get("cart");;
+//        });
     $scope.cart = MyServices.getCart();
     $scope.user = MyServices.getUser();
 
@@ -1807,6 +1807,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.removeCart = function(cart) {
         MyServices.deletecartbyid(cart.id).success(function(data) {
             if (data == "true") {
+			  $scope.carts = [];
                 $scope.cartRefresh(1);
             }
         });
@@ -1975,7 +1976,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         //console.log("product");
         //console.log(data);
         $scope.product = data;
-        $scope.oneproduct = data[0];
+        $scope.oneproduct = JSON.stringify(data[0]);
         $scope.productsave = data[0];
         $scope.arrayConvert.price = $scope.productsave.price * $scope.arrayConvert.quantity;
     });
