@@ -1289,6 +1289,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                     img: data,
                                     opacity: ''
                                 }]);
+					    $ionicLoading.hide();
                             }, function(err) {
                                 //console.log(err);
                             }, function(progress) {
