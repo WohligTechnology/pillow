@@ -598,7 +598,7 @@ myservices.factory('MyServices', function($http) {
     returnval.authenticate = function(data) {
         return $http.get(adminurl + "authenticate");
     }
-    returnval.logout = function(data) {
+    returnval.logout = function() {
         return $http.get(adminurl + "logout");
     }
     returnval.logoutJstorage = function() {

@@ -4,7 +4,7 @@ var cart = 0;
 //var adminurl = "http://wohlig.co.in/tweeke/index.php/json/";
 angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices', 'ngTouch'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -12,11 +12,20 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
-//$scope.$watch('cart', function() {
-//        cart = $.jStorage.get("cart");;
-//    });
-    $scope.cart = $.jStorage.get("cart");
+    //$scope.$watch('cart', function() {
+    //        cart = $.jStorage.get("cart");;
+    //    });
+    $scope.cart = MyServices.getCart();
     $scope.user = MyServices.getUser();
+
+    $scope.logout = function() {
+        console.log("on logout");
+        MyServices.logout().success(function() {
+            $.jStorage.flush();
+            $location.url("/login");
+        });
+
+    }
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -57,7 +66,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('HomeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices) {
 
-//    $scope.cart = MyServices.getCart();
+    //    $scope.cart = MyServices.getCart();
 
     $ionicModal.fromTemplateUrl('templates/popup-design.html', {
         scope: $scope,
@@ -78,7 +87,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('CustomizeCtrl', function($scope, $ionicModal, $timeout, $interval, $ionicPopup, $window, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, MyServices, $ionicScrollDelegate, $ionicLoading, $location) {
 
-//    $scope.cart = MyServices.getCart();
+    //    $scope.cart = MyServices.getCart();
 
     $timeout(function() {
         $ionicScrollDelegate.$getByHandle('mainScroll').freezeAllScrolls(true);
@@ -101,13 +110,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-                sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-                sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -117,7 +126,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-                sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -861,13 +870,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-                        sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-                        sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -877,7 +886,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-                        sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };
@@ -954,12 +963,12 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                             var data = JSON.parse(result.response);
                             //console.log("in response");
                             //console.log(data);
-                            
+
                             callback(data);
                         }, function(err) {
                             //console.log(err);
                         }, function(progress) {
-					$ionicLoading.show({
+                            $ionicLoading.show({
                                 template: 'Loading...'
                             });
                             //console.log("progress");
@@ -1008,13 +1017,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                         .then(function(result) {
                             //console.log(result);
                             var data = JSON.parse(result.response);
-                            
+
                             callback(data);
                         }, function(err) {
                             //console.log(err);
                         }, function(progress) {
                             //console.log("progress");
-					$ionicLoading.show({
+                            $ionicLoading.show({
                                 template: 'Loading...'
                             });
                         });
@@ -1263,13 +1272,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
                                 var data = JSON.parse(result.response);
                                 //console.log("in response");
                                 //console.log(data);
-                                
+
                                 callback(data);
                             }, function(err) {
                                 //console.log(err);
                             }, function(progress) {
                                 //console.log("progress");
-					    $ionicLoading.show({
+                                $ionicLoading.show({
                                     template: 'Loading...'
                                 });
                             });
@@ -1813,8 +1822,8 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
     $scope.showloading = true;
     $scope.pageno = 1;
     $scope.total = 0;
-	cart = MyServices.getCart();
-	console.log(cart);
+    cart = MyServices.getCart();
+    console.log(cart);
 
     $.jStorage.deleteKey("pillowImages");
 
@@ -2204,18 +2213,21 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
 .controller('LoginCtrl', function($scope, MyServices, $interval, $location) {
 
+    console.log(MyServices.getUser());
 
-    MyServices.logout();
-    MyServices.logoutJstorage();
+    if (MyServices.getUser() != null) {
+        $location.url("/app/home");
+    }
+
 
     var authenticatesuccess = function(data, status) {
         //console.log(data);
         if (data != "false") {
             //console.log("in not equal to 0");
             MyServices.setUser(data);
-//		   MyServices.getcountofcartbyuser(data.id).success(function(data){
-//			   cart = data;
-//		   });
+            //		   MyServices.getcountofcartbyuser(data.id).success(function(data){
+            //			   cart = data;
+            //		   });
             user = data;
             $location.url("/app/home");
         } else {
