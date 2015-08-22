@@ -108,13 +108,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
     var options1 = {
         quality: 80,
-        //        sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
     };
 
     var options2 = {
         quality: 80,
-        //        sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true,
         cameraDirection: 1
     };
@@ -124,7 +124,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         width: 800,
         height: 800,
         quality: 80,
-        //        sourceType: Camera.PictureSourceType.CAMERA,
+        sourceType: Camera.PictureSourceType.CAMERA,
         allowEdit: true
 
     };
@@ -254,6 +254,10 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
         $ionicLoading.show({
             template: 'Loading...'
         });
+
+        if ($scope.pillowImages[0][0].img == 'pillow.jpg') {
+            $scope.pillowImages = [];
+        }
 
         MyServices.checkLogin("Instagram").success(
             function(data, status) {
@@ -898,13 +902,13 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
 
         var options1 = {
             quality: 80,
-            //            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
         };
 
         var options2 = {
             quality: 80,
-            //            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true,
             cameraDirection: 1
         };
@@ -914,7 +918,7 @@ angular.module('starter.controllers', ['ngDraggable', 'ngCordova', 'myservices',
             width: 800,
             height: 800,
             quality: 80,
-            //            sourceType: Camera.PictureSourceType.CAMERA,
+            sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: true
 
         };

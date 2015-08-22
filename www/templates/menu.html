@@ -11,7 +11,7 @@
                
                <ion-nav-buttons side="right">
                
-				<a class="button button-icon icon ion-ios-cart small-icon" href="#/app/cart"><span class="new-badge badge badge-assertive">{{cart}}</span></a>
+				<a class="button button-icon icon ion-ios-cart small-icon" href="#/app/cart"><span class="new-badge badge badge-assertive" ng-if="cart!=0">{{cart}}</span></a>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
